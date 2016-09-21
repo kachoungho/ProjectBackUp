@@ -45,9 +45,10 @@ html, body {
 	width: 100px;
 	height: 20px;
 	line-height: 20px;
-	font-family: 'Montserrat', 'Noto-Sans', sans-serif;
+	/* font-family: 'Montserrat', 'Noto-Sans', sans-serif; */
+	font-family: '1훈고딕굴림';'
 	border: 3px solid white;
-	color: #fff;
+	color: black;
 	font-size: 20px;
 	padding: 12px 18px;
 	text-decoration: none;
@@ -62,6 +63,7 @@ html, body {
 	z-index: 5;
 	background-image: url(jsp/images/background.png);
 	background-size: cover;
+	font-family: '1훈고딕굴림';'
 }
 </style>
 
@@ -81,12 +83,16 @@ html, body {
 				</tr>
 				<br>
 				<tr align="center">
-					<td><input type="button" value="홈페이지"
+				<td>
+					<a class="btn btn-default" href="" onclick="document.location.href='aaaa'">홈페이지</a>
+					<a class="btn btn-default" href="" onclick="document.location.href='/FirstProject/info.do'">종합 정보 시스템</a>
+					</td>
+					<!-- <td><input type="button" value="홈페이지"
 						onclick="document.location.href=''"></td>
 					<td></td>
 					<td></td>
 					<td><input type="button" value="종합 정보 시스템"
-						onclick="document.location.href='/FirstProject/info.do'"></td>
+						onclick="document.location.href='/FirstProject/info.do'"></td> -->
 				</tr>
 			</table>
 		</form>

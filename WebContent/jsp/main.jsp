@@ -44,13 +44,14 @@ html, body {
 .btn-default {
 	display: block;
 	margin: 0 auto;
-	width: 100px;
+	width: 150px;
 	height: 20px;
 	line-height: 20px;
-	font-family: 'Montserrat', 'Noto-Sans', sans-serif;
+	/* font-family: 'Montserrat', 'Noto-Sans', sans-serif; */
 	/* border: 3px solid white; */
-	/* border: 3px solid black; */
+	border: 2px solid #1E3449;
 	/* color: #fff; */
+	font-family: '1훈고딕굴림';'
 	color: black;
 	font-size: 20px;
 	padding: 12px 18px;
@@ -66,8 +67,22 @@ html, body {
 	z-index: 5;
 	background-image: url(images/background.png);
 	background-size: cover;	
+	font-family: '1훈고딕굴림';'
 }
 
+#table1 {
+	display: block;
+	margin: 0 auto;
+	width: 420px;
+	height: 150px;
+	line-height: 20px;
+	border: 2px solid #1E3449;
+}
+
+.m-t-10 {
+	display:block;
+	margin-top:15px; 
+}
 </style>
 
 <!-- <link href="../css/style.css" rel="stylesheet" type=text/css"> -->
@@ -78,8 +93,8 @@ html, body {
 	<div class="main-overlay"  ><!-- style="background-color: rgba(0, 0, 0, 0.5);" -->
 		<!--  -->
 		<form name="mainForm" action="/FirstProject/login.do" method="post">
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			<table border="1" align="center">
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<table id="table1" align="center">
 				<tr>
 					<td align="left" font="30px"><font color="black">학 번</font></td>
 				</tr>
@@ -87,7 +102,7 @@ html, body {
 					<td><input type="text" style="width: 400px;" name="stu_num"></td>
 				</tr>
 				<tr>
-					<td align="left"><font color="black">비밀번호</font>
+					<td class="m-t-10" align="left"><font color="black">비밀번호 password</font>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="" style="color: black">비밀번호 찾기</a>
 					</td>
@@ -102,18 +117,20 @@ html, body {
 				</tr>
 			</table>
 
-			<table border="0" align="center">
+			<table align="center">
 			<br>
-			<tr align="center">
-				<td>
-				<!-- <a class="btn btn-default" href="" onclick="javascript:alert('\n권한이 없습니다\n\n로그인 후 사용해주세요\n')">홈페이지</a> -->
-				
-				
-				<input type="button" value="홈페이지"
-						onclick="javascript:alert('\n권한이 없습니다\n\n로그인 후 사용해주세요\n')"></td>
-				<td> </td><td> </td>
-				<td><input type="button" value="종합 정보 시스템"
-						onclick="javascript:alert('\n권한이 없습니다\n\n로그인 후 사용해주세요\n')"></td>
+				<tr align="center" >
+					<td>
+						<a class="btn btn-default" href="" onclick="javascript:alert('\n권한이 없습니다\n\n로그인 후 사용해주세요\n')">홈페이지</a>	
+					</td>
+					<td width="200">
+						<a class="btn btn-default" href="" onclick="javascript:alert('\n권한이 없습니다\n\n로그인 후 사용해주세요\n')">종합 정보 시스템</a>
+					</td>
+					<!-- <input type="button" value="홈페이지"
+							onclick="javascript:alert('\n권한이 없습니다\n\n로그인 후 사용해주세요\n')"></td>
+					<td> </td><td> </td>
+					<td><input type="button" value="종합 정보 시스템"
+							onclick="javascript:alert('\n권한이 없습니다\n\n로그인 후 사용해주세요\n')"></td> -->
 				</tr>
 			</table>
 		</form>
