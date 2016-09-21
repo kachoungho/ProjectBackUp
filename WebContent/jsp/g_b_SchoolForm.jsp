@@ -37,22 +37,29 @@
 			<td width="100" >이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
 			<td width="200" >${"이름" }</td>
 		</tr>
+				<tr >
+			<td width="100" height="30">휴학&nbsp;일자</td>
+			<td width="200">${"휴학일자" }</td>
+			<td width="100" >복학&nbsp;학기</td>
+			<td width="200" >${"복학학기" }</td>
+			<td width="100" >복학&nbsp;사유</td>
+			<td width="200" >
+				<input type="radio" name="복학사유" value="입대휴학 만료" checked="checked">입대휴학 만료<br>
+				<input type="radio" name="복학사유" value="가사휴학 만료">가사휴학 만료</td>
+			</td>
+		</tr>
 
 	</table>
 	<table width="900" valign="middle" border="0" cellspacing="0"
 		cellpadding="0">
 		<tr>
-			<td height="70"></td>
+			<td height="25"></td>
 		</tr>
 
 		<tr>
 			<td width="200"><img src="../images/dot_2.gif">&nbsp;<strong>복학 신청</strong></td>
-			<td align="left" width="75"><input type="image"
-				onClick="javascript:f_save(); return false;"
-				src="../images/btnRequest.gif"></td>
-			<td align="left" width="75"><input type="image"
-				onClick="javascript:f_print(); return false;"
-				src="../images/btnPrint2.gif"></td>
+			<td align="left" width="75"><input type="image"src="../images/btnRequest.gif"></td>
+			<td align="left" width="75"><input type="image"src="../images/btnPrint2.gif"></td>
 			<td align="right"><strong>${"복학신청기간" }
 						</strong></font></td>
 		</tr>

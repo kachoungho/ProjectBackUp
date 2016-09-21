@@ -60,7 +60,7 @@ html, body {
 	width: 100%;
 	height: 100%;
 	z-index: 5;
-	background-image: url(jsp/images/IU1.jpg);
+	background-image: url(jsp/images/background.png);
 	background-size: cover;
 }
 </style>
@@ -75,9 +75,9 @@ html, body {
 			<table border="0" align="center">
 				<tr>
 				<td colspan="4">
-				<font color="white">${ client } 접속중</font><br>
-				<font color="white">${ stu_num } 님 로그인 완료</font><br>
-				<font color="white">패스워드 : ${ stu_pwd }</font></td>
+				<font color="black">${ client } 접속중</font><br>
+				<font color="black">${ stu_num } 님 로그인 완료</font><br>
+				<font color="black">패스워드 : ${ stu_pwd }</font></td>
 				</tr>
 				<br>
 				<tr align="center">

@@ -7,6 +7,18 @@
 <title>th125 JSP Template</title>
 </head>
 <body>
+	<table width="670" border="1" cellspacing="0" cellpadding="0">
+		<tr align="center">
+		<td width="90" ><a href="/FirstProject/basic.do">기본 사항</a></td>
+		<td width="90" ><a href="/FirstProject/registerChange.do">학적 변동</a></td>
+		<td width="130" ><a href="/FirstProject/multiMajorStatus.do">다전공 이수 현황</a></td>
+		<td width="90" ><a href="/FirstProject/scholarship.do">장학 사항</a></td>
+		<td width="90" ><a href="/FirstProject/adviser.do">지도 교수</a></td>
+		<td width="90" ><a href="/FirstProject/registerStatus.do">등록 사항</a></td>
+		</tr>
+	</table>
+	<br><br><br>
+	
 	<table border="0" width="95%" cellspacing="0" cellpadding="0" valign="top">
 		<tr>
 			<td colspan="2" height="10">&nbsp;</td>
@@ -55,6 +67,5 @@
 			</td>
 		</tr>
 	</table>
-
 </body>
 </html>

@@ -8,18 +8,6 @@
 </head>
 <body>
 
-	<table width="670" border="1" cellspacing="0" cellpadding="0">
-		<tr align="center">
-		<td width="90" ><a href="/FirstProject/basic.do">기본 사항</a></td>
-		<td width="90" ><a href="/FirstProject/registerChange.do">학적 변동</a></td>
-		<td width="130" ><a href="/FirstProject/multiMajorStatus.do">다전공 이수 현황</a></td>
-		<td width="90" ><a href="/FirstProject/scholarship.do">장학 사항</a></td>
-		<td width="90" ><a href="/FirstProject/adviser.do">지도 교수</a></td>
-		<td width="90" ><a href="/FirstProject/registerStatus.do">등록 사항</a></td>
-		</tr>
-	</table>
-	<br><br><br>
-
 	<table width="670" border="0" cellspacing="0" cellpadding="0">
 		<tr>
 			<td>&nbsp;</td>
@@ -37,7 +25,7 @@
 			</td>
 
 			<td width="100" bgcolor="#D0D8FF" height="20">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명</td>
-			<td width="171" align="left">&nbsp;이종상</td> <!-- 데이터 얻어 와야할 곳 -->
+			<td width="171" align="left">이종상</td> <!-- 데이터 얻어 와야할 곳 -->
 			<td width="120" bgcolor="#D0D8FF">전공명</td>
 			<td width="250" colspan="3" align="left">&nbsp;멀티미디어공학과&nbsp;
 			</td><!-- {데이터 얻어 와야할 곳 -->
@@ -56,22 +44,29 @@
 
 		<tr bgcolor="#F5F5F5" align="center">
 			<td width="120" bgcolor="#D0D8FF" height="20">휴 대 폰</td>
-			<td width="171" align="left">&nbsp;010-2678-8904</td>
+			<td width="171" align="left">&nbsp;<input type="text" name="editTel"  onsubmit=" 여기에 경로..."></td>
 			<td width="120" bgcolor="#D0D8FF">이 메 일</td>
-			<td width="250" colspan="3" align="left">&nbsp;testiz89@hanmail.net</td>
+			<td width="250" colspan="3" align="left">&nbsp;<input type="text" name="editEmail"  onsubmit=" 여기에 경로..."></td>
 		</tr>
 		<tr bgcolor="#F5F5F5" align="center">
 			<td width="68" bgcolor="#D0D8FF" height="20">주 소</td>
-			<td width="591" colspan="6" align="left">&nbsp;[142865] 서울특별시
-				강북구 한천로124길 19 (번동, 명성) 205호</td><!-- {데이터 얻어 와야할 곳} -->
+			<td width="591" colspan="5" align="left">&nbsp;<input size="50px" type="text" name="editAddress"  onsubmit=" 여기에 경로..."></td><!-- {데이터 얻어 와야할 곳} -->
 		</tr>
 		<tr bgcolor="#F5F5F5" align="center">
 			<td width="120" bgcolor="#D0D8FF" height="20">유선전화</td>
-			<td colspan="6" width="171" align="left">&nbsp;02)842-4121</td><!-- {데이터 얻어 와야할 곳} -->
+			<td width="171" colspan="6" align="left">&nbsp;<input type="text" name="editHomeTel"  onsubmit=" 여기에 경로..."></td><!-- {데이터 얻어 와야할 곳} -->
 		</tr>
 	
 	</table>
-	
+	</td>
+		</tr>
+	<tr>
+		<td>
+		<input type="submit" value="수정"  > <!-- 수정하세여~  -->
+		<input type="reset"  value="취소"   > <!-- 수정하세여~  -->
+		</td>
+	</tr>
+	</table>
 	
 </body>
 </html>

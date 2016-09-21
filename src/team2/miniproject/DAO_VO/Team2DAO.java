@@ -49,16 +49,16 @@ public class Team2DAO {
 				String DBpwd = rs.getString("stu_pwd");
 
 				if (DBnum.equals(stu_num) && DBpwd.equals(stu_pwd)) {
-					if(stu_num.equals("1160002") && stu_pwd.equals("22")) {
+					if(stu_num.equals("admin") && stu_pwd.equals("admin")) {
 						result = 2;
-						System.out.println("¾îµå¹Î ·Î±×ÀÎ result : " + result);
+						System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ result : " + result);
 					} else {
 						result = 1;
-						System.out.println("À¯Àú ·Î±×ÀÎ result : " + result);
+						System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ result : " + result);
 					}					
 				} else {
 					result = 5;
-					System.out.println("·Î±×ÀÎ ½ÇÆÐ result : " + result);
+					System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ result : " + result);
 				}
 
 			} else {

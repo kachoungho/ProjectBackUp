@@ -9,21 +9,22 @@
 </head>
 <body>
 	<center>
-		<table width="100%" border="1" cellpading="2" cellspacing="0">
-			<tr>
+		<table width="100%" height="100%" border="1" cellpading="2" cellspacing="0">
+			<tr height="20%">
 				<td colspan="2">
 					<jsp:include page="../module/top.jsp" />
 				</td>
 			</tr>
 			<tr>
-				<td width="15%" valign="top">
+				<td height="500px" width="15%" valign="top">
 					<jsp:include page="../module/left.jsp"  flush="false"/>
 				</td>
-				<td width="85%" valign="top">
+				<td width="85%" height="60%"valign="top">
 					<jsp:include page="${ CONTENT }"/>
+					<br><br>
 				</td>
 			</tr>
-			<tr align="center">
+			<tr height="20%" align="center">
 				<!-- <td width="150" valign="top" align="center">
 				 <img src="module/gr_2.gif" border="0"/>
 					
