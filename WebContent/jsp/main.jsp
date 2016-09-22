@@ -99,17 +99,17 @@ html, body {
 					<td align="left" font="30px"><font color="black">학 번</font></td>
 				</tr>
 				<tr>
-					<td><input type="text" style="width: 400px;" name="stu_num"></td>
+					<td><input type="text" style="width: 400px;" name="mem_num"></td>
 				</tr>
 				<tr>
-					<td class="m-t-10" align="left"><font color="black">비밀번호 password</font>
+					<td class="m-t-10" align="left"><font color="black">비밀번호</font>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="" style="color: black">비밀번호 찾기</a>
 					</td>
 				</tr>
 				<tr>
 					<td><input type="password" style="width: 400px;"
-						name="stu_pwd"></td>
+						name="mem_pwd"></td>
 				</tr>
 				<tr>
 					<td align="center"><input type="submit"

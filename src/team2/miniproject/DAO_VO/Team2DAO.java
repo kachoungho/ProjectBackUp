@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -26,7 +28,7 @@ public class Team2DAO {
 	public static Team2DAO getInstance() {
 		return instance;
 	}
-
+/* Table 변경전 loginDB
 	public int loginDB(String stu_num, String stu_pwd) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -75,5 +77,83 @@ public class Team2DAO {
 			CloseUtil.close(conn);
 		}
 		return result;
+	}
+	*/
+	
+	// Table 변경후 loginDB
+	public int loginDB(String mem_num, String mem_pwd) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		
+		String sql2 = "select * from members where mem_num=? and mem_pwd = ?";
+		membersVO vo = new membersVO();
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, mem_num);
+			pstmt.setString(2, mem_pwd);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				String DBnum = rs.getString("mem_num");
+				String DBname = rs.getString("mem_name");
+				String DBpwd = rs.getString("mem_pwd");
+				
+				if (DBnum.equals(mem_num) && DBpwd.equals(mem_pwd)) {
+					if(mem_num.length() == 5) {//
+						result = 2;
+						System.out.println("admin로그인 result : " + result);
+					} else {
+						result = 1;
+						System.out.println("user로그인 result : " + result);
+					}					
+				} else {
+					result = 5;
+					System.out.println("로그인 실패 result : " + result);
+				}
+			} else {
+				vo = null;
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);		}
+		return result;
+	}
+	
+	public List<membersVO> ListloginDB(String mem_num, String mem_pwd) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = null;
+		membersVO vo = new membersVO();
+		
+		try {
+			conn = getConnection();
+			String sql1 = "select * from members where mem_num=? and mem_pwd = ?";
+			pstmt=conn.prepareStatement(sql1);
+			pstmt.setString(1, mem_num);
+			pstmt.setString(2, mem_pwd);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				list = new ArrayList(3);
+				
+				do {
+					
+					vo.setMem_num(rs.getString("mem_num"));
+					vo.setMem_name(rs.getString("mem_name"));
+					vo.setMem_pwd(rs.getString("mem_pwd"));
+					
+					list.add(vo);
+				} while(rs.next());
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);		}
+		return list;
 	}
 }

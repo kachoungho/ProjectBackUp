@@ -72,29 +72,27 @@ html, body {
 </head>
 <body><!-- background="images/gr18.jpg" -->
 	<div class="main-overlay">
-		<form name="mainForm" action="" method="post">
-			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			<table border="0" align="center">
+		<form name="mainForm2" action="" method="post">
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<table id="table1" align="center">
 				<tr>
-				<td colspan="4">
-				<font color="black">${ client } 접속중</font><br>
-				<font color="black">${ stu_num } 님 로그인 완료</font><br>
-				<font color="black">패스워드 : ${ stu_pwd }</font></td>
-				</tr>
-				<br>
-				<tr align="center">
-				<td>
-					<a class="btn btn-default" href="" onclick="document.location.href='aaaa'">홈페이지</a>
-					<a class="btn btn-default" href="" onclick="document.location.href='/FirstProject/info.do'">종합 정보 시스템</a>
-					</td>
-					<!-- <td><input type="button" value="홈페이지"
-						onclick="document.location.href=''"></td>
-					<td></td>
-					<td></td>
-					<td><input type="button" value="종합 정보 시스템"
-						onclick="document.location.href='/FirstProject/info.do'"></td> -->
+					<td align="left" font="30px"><font color="black">${ mem_name } 님 접속중</font></td>
 				</tr>
 			</table>
+
+			<table align="center">
+			<br>
+				<tr align="center" >
+					<td>
+						<a class="btn btn-default" href="#" >홈페이지</a>	
+					</td>
+					<td width="200">
+						<a class="btn btn-default" href="" onclick="javascript:alert('\n권한이 없습니다\n\n로그인 후 사용해주세요\n')">종합 정보 시스템</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 		</form>
 	</div>
 </body>
