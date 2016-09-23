@@ -149,4 +149,47 @@ public class Team2DAO {
 		} finally {			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);		}
 		return list;
 	}
+	
+	
+	public List<membersVO> ListAdviserDB(String mem_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		List list = null;
+		employeeVO vo = new employeeVO();
+		
+		try {
+			conn = getConnection();
+			String sql = "select * from students where stu_num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, mem_num);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				list = new ArrayList();
+				String name = rs.getString("stu_professor");
+				
+				String sql2 = "select * from employee where emp_name=?";
+				pstmt=conn.prepareStatement(sql2);
+				pstmt.setString(1, name);
+				rs2=pstmt.executeQuery();
+				
+				if(rs2.next()){
+					vo.setEmp_num(rs2.getString("emp_num"));
+					vo.setEmp_name(rs2.getString("emp_name"));
+					vo.setEmp_pwd(rs2.getString("emp_pwd"));
+					vo.setMajor(rs2.getString("major"));
+					vo.setEmp_email(rs2.getString("emp_email"));
+					vo.setTel(rs2.getString("tel"));
+					
+					list.add(vo);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);		}
+		return list;
+	}
 }

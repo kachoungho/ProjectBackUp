@@ -13,12 +13,12 @@
 
 	<table width="670" border="1" cellspacing="0" cellpadding="0">
 		<tr align="center">
-		<td width="90" ><a href="/FirstProject/basic.do?mem_num=${mem_num}">기본 사항</a></td>
-		<td width="90" ><a href="/FirstProject/registerChange.do?mem_num=${mem_num}">학적 변동</a></td>
-		<td width="130" ><a href="/FirstProject/multiMajorStatus.do?mem_num=${mem_num}">다전공 이수 현황</a></td>
-		<td width="90" ><a href="/FirstProject/scholarship.do?mem_num=${mem_num}">장학 사항</a></td>
-		<td width="90" ><a href="/FirstProject/adviser.do?mem_num=${mem_num}">지도 교수</a></td>
-		<td width="90" ><a href="/FirstProject/registerStatus.do?mem_num=${mem_num}">등록 사항</a></td>
+		<td width="90" ><a href="/FirstProject/basic.do?mem_num=${mem_num}&mem_name=${mem_name}">기본 사항</a></td>
+		<td width="90" ><a href="/FirstProject/registerChange.do?mem_num=${mem_num}&mem_name=${mem_name}">학적 변동</a></td>
+		<td width="130" ><a href="/FirstProject/multiMajorStatus.do?mem_num=${mem_num}&mem_name=${mem_name}">다전공 이수 현황</a></td>
+		<td width="90" ><a href="/FirstProject/scholarship.do?mem_num=${mem_num}&mem_name=${mem_name}">장학 사항</a></td>
+		<td width="90" ><a href="/FirstProject/adviser.do?mem_num=${mem_num}&mem_name=${mem_name}">지도 교수</a></td>
+		<td width="90" ><a href="/FirstProject/registerStatus.do?mem_num=${mem_num}&mem_name=${mem_name}">등록 사항</a></td>
 		</tr>
 	</table>
 	<br><br><br>

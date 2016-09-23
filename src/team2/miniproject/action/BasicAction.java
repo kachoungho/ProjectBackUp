@@ -14,6 +14,7 @@ public class BasicAction implements CommandAction {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String mem_num = request.getParameter("mem_num");
+		String mem_name = request.getParameter("mem_name");
 		List list = null;
 		
 		Team2DAO dao = Team2DAO.getInstance();
@@ -23,6 +24,7 @@ public class BasicAction implements CommandAction {
 		
 		request.setAttribute("list", list);
 		request.setAttribute("mem_num", mem_num);
+		request.setAttribute("mem_name", mem_name);
 		return "/jsp/basicForm.jsp";
 	}
 

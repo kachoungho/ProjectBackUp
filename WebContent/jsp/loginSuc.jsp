@@ -87,6 +87,7 @@ html, body {
 			<table  align="center">
 				<tr align="center">
 					<td align="center" font="30px"><font color="black">${ mem_name } 님 접속중</font></td>
+					<td><input type="button" value="로그아웃" onclick="document.location.href='/FirstProject/logout.do'"></td>
 				</tr>
 			</table>
 

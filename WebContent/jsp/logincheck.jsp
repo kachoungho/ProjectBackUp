@@ -14,6 +14,10 @@
 	<c:forEach var="list" items="${ list }">
 		<meta http-equiv="Refresh" content="0; url=/FirstProject/loginSuc.do?mem_num=${mem_num}&mem_pwd=${mem_pwd}&mem_name=${list.mem_name}&client=${client}">
 	</c:forEach>
+	<script type="text/javascript">
+		alert("로그인 성공");
+		history.go(1);
+	</script>
 </c:if>
 
 <c:if test="${result == 2}">
@@ -21,6 +25,10 @@
 	<c:forEach var="list" items="${ list }">
 		<meta http-equiv="Refresh" content="0; url=/FirstProject/loginSuc.do?mem_num=${mem_num}&mem_pwd=${mem_pwd}&mem_name=${list.mem_name}&client=${client}">
 	</c:forEach>
+	<script type="text/javascript">
+		alert("관리자 로그인 성공");
+		history.go(1);
+	</script>
 </c:if>
 
 </body>
