@@ -16,6 +16,8 @@
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
+
+
   <!-- jdbc:BoardDB DBCP setting -->
   <resource-ref>
 		<description>MiniProject</description>

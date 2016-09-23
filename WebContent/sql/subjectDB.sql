@@ -1,32 +1,173 @@
---ì—¬ê¸°ì„œ ê³¼ëª©ì½”ë“œ ( sub_code ìƒì„±ì¡°ê±´.)
---EX) COM1101   ( ì „ê³µ ê³¼ëª© )					|			--KYA0201	( êµì–‘ ê³¼ëª© ) 
--- com == í•™ê³¼ ì´ë¦„								|			--KYA == êµì–‘ê³¼ëª©ì´ë¼ëŠ” ëœ»
--- 11 == 1í•™ë…„ 1í•™ê¸°								|			--02 == êµì–‘ ê³¼ëª©ì€ 3ê°€ì§€ ì¢…ë¥˜ê°€ ìˆë‹¤. ê·¸ê²ƒì— ëŒ€í•œ ì¸ë±ìŠ¤ "01, 02, 03" ì´ ìˆìŒ
--- 01 == ê³¼ëª© Index								|			--01 == ê³¼ëª© Index.
+--¿©±â¼­ °ú¸ñÄÚµå ( sub_code »ı¼ºÁ¶°Ç.)
+--EX) COM101   ( Àü°ø °ú¸ñ )					|			--KYO201	( ±³¾ç °ú¸ñ ) 
+-- com == ÇĞ°ú ÀÌ¸§								|			--KYO == ±³¾ç°ú¸ñÀÌ¶ó´Â ¶æ
+-- 1 == 1ÇĞ³â °ú¸ñ 								|			--2 == ±³¾ç °ú¸ñÀº 3°¡Áö Á¾·ù°¡ ÀÖ´Ù. ±×°Í¿¡ ´ëÇÑ ÀÎµ¦½º "1, 2, 3" ÀÌ ÀÖÀ½
+-- 01 == °ú¸ñ Index								|			--01 == °ú¸ñ Index.
 
---ì‹œê°„ì— ê´€í•œ ì½”ë“œ?? ì´ë ‡ê²Œ í•´ì„í•˜ì„¸ìš”.
+--½Ã°£¿¡ °üÇÑ ÄÚµå?? ÀÌ·¸°Ô ÇØ¼®ÇÏ¼¼¿ä.
 --EX) MON123     
---ì›”ìš”ì¼ 123êµì‹œ ë¼ëŠ” ëœ»ìœ¼ë¡œ í•´ì„.
---í™”ìš”ì¼ 345êµì‹œë©´ TUE345 ë¼ê³  í‘œê¸° í•˜ê² ìŠµë‹ˆë‹¹ã…‡ã…ˆ?
---ì „ê³µê³¼ëª©ì¼ ê²½ìš° 3í•™ì ì´ê¸°ë•Œë¬¸ì—.
---êµì–‘ì¼ ê²½ìš° 2í•™ì ì´ë¯€ë¡œ                  TUE012
---                                        0êµì‹œëŠ” ì—†ë‹¤ ì¹˜ê³ . 12êµì‹œ ë¼ëŠ”ëœ».
-
+--¿ù¿äÀÏ 123±³½Ã ¶ó´Â ¶æÀ¸·Î ÇØ¼®.
+--È­¿äÀÏ 345±³½Ã¸é TUE345 ¶ó°í Ç¥±â ÇÏ°Ú½À´Ï´ç¤·¤¸?
+--Àü°ø°ú¸ñÀÏ °æ¿ì 3ÇĞÁ¡ÀÌ±â¶§¹®¿¡.
+--±³¾çÀÏ °æ¿ì 2ÇĞÁ¡ÀÌ¹Ç·Î                  TUE012
+--                                        0±³½Ã´Â ¾ø´Ù Ä¡°í. 12±³½Ã ¶ó´Â¶æ.
 select * from subject;
 drop table subject;
 
-insert into subject
-values('0991068', 'ì´ì¢…ìƒ', 'm', '890418-1241916', 'ë©€í‹°ë¯¸ë””ì–´ê³µí•™')
-ì½”ë“œ ê³¼ëª©ëª… í•™ì . êµìˆ˜ì´ë¦„ ì‹œê°„.
+ÄÚµå °ú¸ñ¸í ÇĞÁ¡. ±³¼öÀÌ¸§ ½Ã°£.
 
 create table subject(
 	sub_code  varchar(10) not null,
-	sub_name varchar(10) not null,
+	sub_name varchar(50) not null,
 	sub_hakjum varchar(10) not null,
 	emp_name varchar(10) not null,
 	sub_time varchar(10) not null,
 	
 	constraint subject_pk primary key (sub_code)
 );
+
+--//////////////////// 1. ÄÄÇ»ÅÍ°øÇĞ°ú Àü°ø°ú¸ñ /////////
+--//////////////////////////// 1ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('COM101', 'C¾ğ¾îÇÁ·Î±×·¡¹Ö', '3', '¾ÆÀÌÀ¯', 'MON123');
+insert into subject values('COM102', 'C¾ğ¾îÇÁ·Î±×·¡¹Ö', '3', '°æ¸®', 'TUE123');
+insert into subject values('COM103', 'C¾ğ¾îÇÁ·Î±×·¡¹Ö', '3', 'ÀÌµµ¿¬', 'WED123');
+insert into subject values('COM104', 'ÄÄÇ»ÅÍ±¸Á¶', '3', '¾ÆÀÌÀ¯', 'MON567');
+insert into subject values('COM105', 'È®·ü°úÅë°è', '3', '°æ¸®', 'TUE567');
+insert into subject values('COM106', 'ÇÁ·Î±×·¡¹Ö°³·Ğ', '3', 'ÀÌµµ¿¬', 'WED567');
+insert into subject values('COM107', 'ÄÄÇ»ÅÍ±¸Á¶', '3', 'ÀÌµµ¿¬', 'THU567');
+insert into subject values('COM108', 'HTML½Ç½À', '3', '¾ÆÀÌÀ¯', 'FRI567');
+--//////////////////////////// 2ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('COM201', 'JAVAÇÁ·Î±×·¡¹Ö', '3', '¾ÆÀÌÀ¯', 'MON123');
+insert into subject values('COM202', 'JAVAÇÁ·Î±×·¡¹Ö', '3', '°æ¸®', 'TUE123');
+insert into subject values('COM203', 'JAVAÇÁ·Î±×·¡¹Ö', '3', 'ÀÌµµ¿¬', 'WED123');
+insert into subject values('COM204', '°´Ã¼ÁöÇâÇÁ·Î±×·¡¹Ö', '3', '¾ÆÀÌÀ¯', 'MON567');
+insert into subject values('COM205', '¼±Çü´ë¼ö', '3', '°æ¸®', 'TUE567');
+insert into subject values('COM206', 'ÀÌ»ê¼öÇĞ', '3', 'ÀÌµµ¿¬', 'WED567');
+insert into subject values('COM207', 'Ã¢ÀÇÀû°øÇĞ¼³°è', '3', 'ÀÌµµ¿¬', 'THU567');
+insert into subject values('COM208', 'ÀÚ·á±¸Á¶', '3', '¾ÆÀÌÀ¯', 'FRI567');
+--//////////////////////////// 3ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('COM301', '¿î¿µÃ¼Á¦', '3', '¾ÆÀÌÀ¯', 'MON123');
+insert into subject values('COM302', '¿î¿µÃ¼Á¦', '3', '°æ¸®', 'TUE123');
+insert into subject values('COM303', '¿î¿µÃ¼Á¦', '3', 'ÀÌµµ¿¬', 'WED123');
+insert into subject values('COM304', 'À©µµ¿ìÁîÇÁ·Î±×·¡¹Ö', '3', '¾ÆÀÌÀ¯', 'MON567');
+insert into subject values('COM305', 'µ¥ÀÌÅÍº£ÀÌ½º', '3', '°æ¸®', 'TUE567');
+insert into subject values('COM306', '¼­¹öÇÁ·Î±×·¡¹Ö', '3', 'ÀÌµµ¿¬', 'WED567');
+insert into subject values('COM307', 'µ¥ÀÌÅÍÅë½Å', '3', 'ÀÌµµ¿¬', 'THU567');
+insert into subject values('COM308', 'À¥±âÃÊÇÁ·Î±×·¡¹Ö', '3', '¾ÆÀÌÀ¯', 'FRI567');
+--//////////////////////////// 4ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('COM401', 'Á¹¾÷ÇÁ·ÎÁ§Æ®', '3', '¾ÆÀÌÀ¯', 'MON123');
+insert into subject values('COM402', 'Á¹¾÷ÇÁ·ÎÁ§Æ®', '3', '°æ¸®', 'TUE123');
+insert into subject values('COM403', 'Á¹¾÷ÇÁ·ÎÁ§Æ®', '3', 'ÀÌµµ¿¬', 'WED123');
+insert into subject values('COM404', 'AndroidÇÁ·Î±×·¡¹Ö', '3', '¾ÆÀÌÀ¯', 'MON567');
+insert into subject values('COM405', 'ºòµ¥ÀÌÅÍÇÁ·Î±×·¡¹Ö', '3', '°æ¸®', 'TUE567');
+insert into subject values('COM406', 'ÀÓº£µğµå½Ã½ºÅÛ', '3', 'ÀÌµµ¿¬', 'WED567');
+insert into subject values('COM407', 'ÄÄÇ»ÅÍº¸¾È', '3', 'ÀÌµµ¿¬', 'THU567');
+insert into subject values('COM408', 'À¥°í±ŞÇÁ·Î±×·¡¹Ö', '3', '¾ÆÀÌÀ¯', 'FRI567');
+
+--//////////////////// 2.ÀÎ¹®ÇĞ°ú Àü°ø°ú¸ñ /////////
+--//////////////////////////// 1ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('HUM101', '°íÀü½Ã°¡·Ğ', '3', '±è¾Æ¶û', 'MON123');
+insert into subject values('HUM102', '°íÀü¸íÀÛÀĞ±â', '3', '¹Úº¸°Ë', 'TUE123');
+insert into subject values('HUM103', 'ÀÎ¹®ÇĞ°³·Ğ', '3', 'ÀÌÁØ±â', 'WED123');
+insert into subject values('HUM104', 'Çö´ë½ÃÀÇÀÌÇØ', '3', '±è¾Æ¶û', 'MON567');
+insert into subject values('HUM105', 'Çö´ë¼Ò¼³ÀÇÀÌÇØ', '3', '¹Úº¸°Ë', 'TUE567');
+insert into subject values('HUM106', '±âÃÊÁß±¹¾î', '3', 'ÀÌÁØ±â', 'WED567');
+insert into subject values('HUM107', '±âÃÊÀÏº»¾î', '3', '±è¾Æ¶û', 'THU567');
+insert into subject values('HUM108', '»çÈ¸ÇĞ', '3', '¹Úº¸°Ë', 'FRI567');
+--//////////////////////////// 2ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('HUM201', 'ÀÎ°£°øÇĞ°³·Ğ', '3', '±è¾Æ¶û', 'MON123');
+insert into subject values('HUM202', '´ëÁß¸ÅÃ¼¿Í¹®ÇĞ', '3', '¹Úº¸°Ë', 'TUE123');
+insert into subject values('HUM203', '¿ª»ç¿Í¹®È­', '3', 'ÀÌÁØ±â', 'WED123');
+insert into subject values('HUM204', 'ÀÎÅÍ³İÁ¤º¸È°¿ë', '3', '±è¾Æ¶û', 'MON567');
+insert into subject values('HUM205', 'Á¤º¸»çÈ¸ÀÇÀÌÇØ', '3', '¹Úº¸°Ë', 'TUE567');
+insert into subject values('HUM206', 'Áß±¹¾îÈ¸È­', '3', 'ÀÌÁØ±â', 'WED567');
+insert into subject values('HUM207', 'ÀÏº»¾îÈ¸È­', '3', '±è¾Æ¶û', 'THU567');
+insert into subject values('HUM208', 'Á¤º¸ÇĞ°³·Ğ', '3', '¹Úº¸°Ë', 'FRI567');
+--//////////////////////////// 3ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('HUM301', '¿ª»ç»êÃ¥', '3', '±è¾Æ¶û', 'MON123');
+insert into subject values('HUM302', 'ÀüÀÚ¹®¼­°ü¸®·Ğ', '3', '¹Úº¸°Ë', 'TUE123');
+insert into subject values('HUM303', '¾ğ¾î¿ÍÁ¤º¸', '3', 'ÀÌÁØ±â', 'WED123');
+insert into subject values('HUM304', 'À½¼ºÇĞ', '3', '±è¾Æ¶û', 'MON567');
+insert into subject values('HUM305', '¹®¿¹Ã¢ÀÛ¿¬½À', '3', '¹Úº¸°Ë', 'TUE567');
+insert into subject values('HUM306', '°í±ŞÁß±¹¾î', '3', 'ÀÌÁØ±â', 'WED567');
+insert into subject values('HUM307', '°í±ŞÀÏº»¾î', '3', '±è¾Æ¶û', 'THU567');
+insert into subject values('HUM308', 'ÇÑ±¹»çÈ¸ÀÇÀÌÇØ', '3', '¹Úº¸°Ë', 'FRI567');
+--//////////////////////////// 4ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('HUM401', '¿ª»ç¿¬±¸·Ğ', '3', '±è¾Æ¶û', 'MON123');
+insert into subject values('HUM402', 'Çö´ë»çÈ¸ÀÇ¹®Á¦', '3', '¹Úº¸°Ë', 'TUE123');
+insert into subject values('HUM403', 'ÀÚ·á±¸ºĞ·Ğ', '3', 'ÀÌÁØ±â', 'WED123');
+insert into subject values('HUM404', 'À½¼ºÇĞ', '3', '±è¾Æ¶û', 'MON567');
+insert into subject values('HUM405', 'À¥ÄÜÅÙÃ÷±¸Ãà·Ğ', '3', '¹Úº¸°Ë', 'TUE567');
+insert into subject values('HUM406', 'µ¥ÀÌÅÍº£ÀÌ½ºÀÌ¿ë·Ğ', '3', 'ÀÌÁØ±â', 'WED567');
+insert into subject values('HUM407', '±â·ÏÁ¤º¸ºÀ»ç·Ğ', '3', '±è¾Æ¶û', 'THU567');
+insert into subject values('HUM408', '°úÇĞ±â¼úÁ¤º¸·Ğ', '3', '¹Úº¸°Ë', 'FRI567');
+
+--//////////////////// 3. ½Ã°¢µğÀÚÀÎÇĞ°ú Àü°ø°ú¸ñ /////////
+--//////////////////////////// 1ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('DES101', 'µå·ÎÀ×±â¹ı', '3', '°­ÇÏ´Ã', 'MON123');
+insert into subject values('DES102', 'µğÀÚÀÎ¹ß»ó', '3', 'ÃÖ¿©Áø', 'TUE123');
+insert into subject values('DES103', 'Á¶Çü½ÇÇè', '3', 'ÀÌ¼º°æ', 'WED123');
+insert into subject values('DES104', 'µğÀÚÀÎÄÁ¼Á', '3', '°­ÇÏ´Ã', 'MON567');
+insert into subject values('DES105', 'µğÀÚÀÎ»ç', '3', 'ÀÌ¼º°æ', 'TUE567');
+insert into subject values('DES106', 'µğÀÚÀÎºñÆò', '3', 'ÃÖ¿©Áø', 'WED567');
+insert into subject values('DES107', '°ø°£µğÀÚÀÎ·Ğ', '3', '°­ÇÏ´Ã', 'THU567');
+insert into subject values('DES108', '±âÃÊÄÄÇ»ÅÍµğÀÚÀÎ', '3', 'ÀÌ¼º°æ', 'FRI567');
+--//////////////////////////// 2ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('DES201', '°ø°£µğÀÚÀÎ', '3', '°­ÇÏ´Ã', 'MON123');
+insert into subject values('DES202', '°ø°£Á¶Çü½ÇÇè', '3', 'ÃÖ¿©Áø', 'TUE123');
+insert into subject values('DES203', '2D¾Ö´Ï¸ŞÀÌ¼Ç', '3', 'ÀÌ¼º°æ', 'WED123');
+insert into subject values('DES204', '½Ã³ª¸®¿À', '3', '°­ÇÏ´Ã', 'MON567');
+insert into subject values('DES205', 'ÄÄÇ»ÅÍ±×·¡ÇÈ½º', '3', 'ÃÖ¿©Áø', 'TUE567');
+insert into subject values('DES206', 'µå·ÎÀ×½Ç½À', '3', 'ÀÌ¼º°æ', 'WED567');
+insert into subject values('DES207', 'ÀÔÃ¼Á¶Çü', '3', 'ÃÖ¿©Áø', 'THU567');
+insert into subject values('DES208', '¿µ»ó¿¬Ãâ', '3', 'ÀÌ¼º°æ', 'FRI567');
+--//////////////////////////// 3ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('DES301', '½Ç³»µğÀÚÀÎ', '3', '°­ÇÏ´Ã', 'MON123');
+insert into subject values('DES302', '¿µ»ó¿¹¼ú·Ğ', '3', 'ÃÖ¿©Áø', 'TUE123');
+insert into subject values('DES303', '3D¾Ö´Ï¸ŞÀÌ¼Ç', '3', 'ÀÌ¼º°æ', 'WED123');
+insert into subject values('DES304', 'À¥¾Ö´Ï¸ŞÀÌ¼Ç', '3', '°­ÇÏ´Ã', 'MON567');
+insert into subject values('DES305', 'Àü½Ã°ø°£µğÀÚÀÎ', '3', 'ÃÖ¿©Áø', 'TUE567');
+insert into subject values('DES306', '¿µ»óÁ¦ÀÛÇÁ·ÎÁ§Æ®', '3', 'ÀÌ¼º°æ', 'WED567');
+insert into subject values('DES307', 'ÇÁ·¹Á¨Å×ÀÌ¼Ç±â¹ı', '3', 'ÃÖ¿©Áø', 'THU567');
+insert into subject values('DES308', 'È¯°æµğÀÚÀÎ', '3', 'ÀÌ¼º°æ', 'FRI567');
+--//////////////////////////// 4ÇĞ³â °ú¸ñ //////////////////
+insert into subject values('DES401', 'Æ÷Æ®Æú¸®¿À', '3', '°­ÇÏ´Ã', 'MON123');
+insert into subject values('DES402', 'ÇöÀå½Ç½À', '3', 'ÃÖ¿©Áø', 'TUE123');
+insert into subject values('DES403', '¾Ö´Ï¸ŞÀÌ¼ÇÁ¦ÀÛ', '3', 'ÀÌ¼º°æ', 'WED123');
+insert into subject values('DES404', 'Å¸ÀÌÆ÷±×·¡ÇÇ', '3', '°­ÇÏ´Ã', 'MON567');
+insert into subject values('DES405', 'Á¹¾÷ÇÁ·ÎÁ§Æ®', '3', 'ÃÖ¿©Áø', 'TUE567');
+insert into subject values('DES406', '¸ğµ¨¸µ±â¹ı', '3', 'ÀÌ¼º°æ', 'WED567');
+insert into subject values('DES407', 'º¹ÇÕ°ø°£µğÀÚÀÎ', '3', 'ÃÖ¿©Áø', 'THU567');
+insert into subject values('DES408', '»ç¿îµåµğÀÚÀÎ', '3', 'ÀÌ¼º°æ', 'FRI567');
+
+
+--//////////////////// 5. ±³¾ç°ú¸ñ  /////////
+--//////////////////////////// ±³¾ç 1¹ø Ã¼À° //////////////////
+insert into subject values('KYO101', 'Å×´Ï½ºÀÇÀÌÇØ', '2', '¹Úº¸°Ë', 'THU012');
+insert into subject values('KYO102', '°ñÇÁÀÇÀÌÇØ', '2', '°­ÇÏ´Ã', 'THU034');
+insert into subject values('KYO103', '¹èµå¹ÎÅÏÀÇÀÌÇØ', '2', 'ÀÌÁØ±â', 'FRI012');
+insert into subject values('KYO104', '¼ö¿µÀÇÀÌÇØ', '2', '°æ¸®', 'FRI034');
+insert into subject values('KYO105', '¿ä°¡ÀÇ¼¼°è', '2', 'ÃÖ¿©Áø', 'THU012');
+insert into subject values('KYO106', '¿À¸®¿£Æ¼¾î¸µ', '2', '¾ÆÀÌÀ¯', 'THU034');
+insert into subject values('KYO107', '´ç±¸ÀÇÀÌÇØ', '2', '¹Úº¸°Ë', 'FRI012');
+insert into subject values('KYO108', 'ÇÊ¶óÅ×½º', '2', 'ÀÌµµ¿¬', 'FRI034');
+--//////////////////////////// ±³¾ç 2¹ø ¿µ¾î //////////////////
+insert into subject values('KYO201', 'Ãë¾÷¿µ¾î700', '2', '±è¾Æ¶û', 'THU012');
+insert into subject values('KYO202', 'Travel English', '2', '¹Úº¸°Ë', 'THU034');
+insert into subject values('KYO203', 'Job Interview Success', '2', '¾ÆÀÌÀ¯', 'FRI012');
+insert into subject values('KYO204', 'Ãë¾÷¿µ¾î850', '2', 'ÀÌ¼º°æ', 'FRI034');
+insert into subject values('KYO205', '¿µ±¹¹®ÇĞ°³°ü', '2', 'ÀÌµµ¿¬', 'THU012');
+insert into subject values('KYO206', '¿µ¾î·Î¼¼»óÀĞ±â', '2', '±è¾Æ¶û', 'THU034');
+insert into subject values('KYO207', '¹Ì±¹Çö´ë½Ã', '2', '°æ¸®', 'FRI012');
+insert into subject values('KYO208', '±âº»¿µ¾îÈ¸È­', '2', 'ÀÌµµ¿¬', 'FRI034');
+--//////////////////////////// ±³¾ç 2¹ø Ãë¾÷ //////////////////
+insert into subject values('KYO301', 'Ã¢¾÷À¸·Î¼¼»óÀĞ±â', '2', '¹Úº¸°Ë', 'THU012');
+insert into subject values('KYO302', 'Ãë¾÷¼º°øÀü·«', '2', 'ÀÌµµ¿¬', 'THU034');
+insert into subject values('KYO303', 'ÇÁ¸®Á¨Å×ÀÌ¼Ç±â¹ı', '2', '±è¾Æ¶û', 'FRI012');
+insert into subject values('KYO304', 'Ãë¾÷»ó½ÄÅ×¸¶', '2', '°­ÇÏ´Ã', 'FRI034');
+insert into subject values('KYO305', 'Ãë¾÷Àü·«±Û¾²±â', '2', '¾ÆÀÌÀ¯', 'THU012');
+insert into subject values('KYO306', 'ÀÎ¼º¼Ò¾ç±³À°', '2', '°æ¸®', 'THU034');
+insert into subject values('KYO307', '´ëÇĞ°úÁö¼º', '2', 'ÀÌ¼º°æ', 'FRI012');
+insert into subject values('KYO308', '½ÇÀü¸éÁ¢ÁØºñ', '2', 'ÃÖ¿©Áø', 'FRI034');
 
 

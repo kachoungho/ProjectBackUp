@@ -28,59 +28,7 @@ public class Team2DAO {
 	public static Team2DAO getInstance() {
 		return instance;
 	}
-/* Table 변경전 loginDB
-	public int loginDB(String stu_num, String stu_pwd) throws Exception {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int result = 0;
 
-		String sql = "select * from students where stu_num=? and stu_pwd = ?";
-		Team2VO vo = new Team2VO();
-
-		try {
-			conn = getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, stu_num);
-			pstmt.setString(2, stu_pwd);
-			rs = pstmt.executeQuery();
-			
-
-			if (rs.next()) {
-				String DBnum = rs.getString("stu_num");
-				String DBpwd = rs.getString("stu_pwd");
-
-				if (DBnum.equals(stu_num) && DBpwd.equals(stu_pwd)) {
-					if(stu_num.equals("admin") && stu_pwd.equals("admin")) {
-						result = 2;
-						System.out.println("���� �α��� result : " + result);
-					} else {
-						result = 1;
-						System.out.println("���� �α��� result : " + result);
-					}					
-				} else {
-					result = 5;
-					System.out.println("�α��� ���� result : " + result);
-				}
-
-			} else {
-				vo = null;
-			}
-			
-
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			CloseUtil.close(rs);
-			CloseUtil.close(pstmt);
-			CloseUtil.close(conn);
-		}
-		return result;
-	}
-	*/
-	
-	// Table 변경후 loginDB
 	public int loginDB(String mem_num, String mem_pwd) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -98,9 +46,9 @@ public class Team2DAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				String DBnum = rs.getString("mem_num");
-				String DBname = rs.getString("mem_name");
-				String DBpwd = rs.getString("mem_pwd");
+				String DBnum = rs.getString("mem_num");		//090001
+				String DBname = rs.getString("mem_name");	//이종상
+				String DBpwd = rs.getString("mem_pwd");	//1234
 				
 				if (DBnum.equals(mem_num) && DBpwd.equals(mem_pwd)) {
 					if(mem_num.length() == 5) {//
@@ -143,9 +91,54 @@ public class Team2DAO {
 				
 				do {
 					
-					vo.setMem_num(rs.getString("mem_num"));
-					vo.setMem_name(rs.getString("mem_name"));
-					vo.setMem_pwd(rs.getString("mem_pwd"));
+					vo.setMem_num(rs.getString("mem_num")); // vo 학번
+					vo.setMem_name(rs.getString("mem_name")); // 이종상
+					vo.setMem_pwd(rs.getString("mem_pwd"));	// 1234
+					
+					list.add(vo);
+				} while(rs.next());
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);		}
+		return list;
+	}
+	
+	
+	public List<membersVO> ListBasicDB(String mem_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = null;
+		StudentVO vo = new StudentVO();
+		
+		try {
+			conn = getConnection();
+			String sql = "select * from students where stu_num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, mem_num);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				list = new ArrayList();
+				
+				do {
+					
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setStu_name(rs.getString("stu_name"));
+					vo.setStu_pwd(rs.getString("stu_pwd"));
+					vo.setStu_sex(rs.getString("stu_sex"));
+					vo.setStu_birthday(rs.getString("stu_birthday"));
+					vo.setStu_state(rs.getString("stu_state"));
+					vo.setStu_professor(rs.getString("stu_professor"));
+					vo.setStu_email(rs.getString("stu_email"));
+					vo.setMajor(rs.getString("major"));
+					vo.setSubmajor(rs.getString("submajor"));
+					vo.setGrade(rs.getString("grade"));
+					vo.setAddress(rs.getString("address"));
+					vo.setTel(rs.getString("tel"));
+					vo.setHome_tel(rs.getString("home_tel"));
 					
 					list.add(vo);
 				} while(rs.next());

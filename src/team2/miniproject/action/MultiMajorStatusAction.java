@@ -7,7 +7,9 @@ public class MultiMajorStatusAction implements CommandAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+		String mem_num = request.getParameter("mem_num");
+		
+		request.setAttribute("mem_num", mem_num);
 		return "/jsp/multiMajorStatusForm.jsp";
 	}
 

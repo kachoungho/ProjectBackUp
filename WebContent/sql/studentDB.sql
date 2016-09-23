@@ -1,26 +1,39 @@
-drop table student;
-select * from student;
+drop table students;
+select * from students;
 
-create table student(
+create table students(
 	stu_num  varchar(10) not null,
 	stu_name varchar(10) not null,
 	stu_pwd varchar(15) not null,
 	stu_sex char(3) not null,
 	stu_birthday varchar(15) not null,
-	stu_state varchar(10) not null,	-- íœ´ë³µí•™ ê´€ë ¨
-	stu_professor varchar(10) not null,						--êµìˆ˜ì´ë¦„
+	stu_state varchar(10) not null,	-- ÈŞº¹ÇĞ °ü·Ã
+	stu_professor varchar(10) not null,						--±³¼öÀÌ¸§
 	stu_email varchar(30),
 	major varchar(30) not null,
 	subMajor varchar(30),
 	grade char(5) default '1',
-	address varchar(50),
+	address varchar(100),
 	tel varchar(15),
 	home_tel varchar(15),
 	
 
-	constraint student_pk primary key (stu_num)
+	constraint students_pk primary key (stu_num)
 );
 
-insert into STUDENT
-values('090001', 'ì´ì¢…ìƒ', '1234', 'ë‚¨', '1989-04-18', 'ì¬í•™', 'ì•„ì´ìœ ', 'spurs89@naver.com', 'ì»´í“¨í„°ê³µí•™', 'none', '4', 'ê²½ê¸°ë„ ìš©ì¸ì‹œ ìˆ˜ì§€êµ¬ ê¿ˆì—ê·¸ë¦°ë¹Œ', '031-534-3991', '010-2678-8904');
 
+
+insert into STUDENTS
+values('090001', 'ÀÌÁ¾»ó', '1234', '³²', '1989-04-18', 'ÀçÇĞ', '¾ÆÀÌÀ¯', 'spurs89@naver.com', 'ÄÄÇ»ÅÍ°øÇĞ', 'none', '4', '°æ±âµµ ¿ëÀÎ½Ã ¼öÁö±¸ ²Ş¿¡±×¸°ºô', '010-2678-8904', '031-534-3991');
+
+insert into STUDENTS
+values('110001', '°¡ÃæÈ£', '1234', '³²', '1992-07-18', 'ÀçÇĞ', '°æ¸®', 'kachounghoa@naver.com', 'ÄÄÇ»ÅÍ°øÇĞ', 'ÀÎ¹®ÇĞ', '4', '°³¹Ìµµ °¡´Ã±º ¸¸Áö¸é ºÎ·¯Áö¸®', '010-6666-8345', '032-833-3177');
+
+insert into STUDENTS 
+values('040001', '±Ç¿Á°æ', '1234', '¿©', '1985-05-09', 'ÀçÇĞ', '±è¾Æ¶û', 'okmove_85@naver.com', 'ÀÎ¹®ÇĞ°ú', 'none', '4', '°æ»óºÏµµ ºÀÈ­±º ¸íÈ£¸é', '010-5548-4716', '054-672-4567' );
+
+insert into STUDENTS 
+values('116035', 'ÃÖ»ó°æ', '1234', '³²', '1992-02-25', 'ÀçÇĞ', '°æ¸®', 'skch0122@naver.com', '½Ã°¢µğÀÚÀÎÇĞ°ú', 'ÀÎ¹®ÇĞ°ú', '4', '¿ëÀÎ½Ã ¼öÁö±¸ Á×Àüµ¿', '010-6665-6373', '031-885-3177' );
+
+insert into STUDENTS
+values('030001', '±è¼¼Á¾', '1234', '³²', '1984-05-07', 'ÀçÇĞ', 'ÀÌ¼º°æ', 'tpwhd84@naver.com', '½Ã°¢µğÀÚÀÎÇĞ°ú', 'none', '4', '°æ±âµµ ¿ëÀÎ½Ã ¼öÁö±¸ ¼ºº¹µ¿ ¹öµéÄ¡¸¶À»', '010-5013-4292', '031-8405-8405');

@@ -15,18 +15,9 @@ public class LoginSucAction implements CommandAction {
 		String mem_name = request.getParameter("mem_name");
 		String mem_pwd = request.getParameter("mem_pwd");
 		String client = request.getParameter("client");
-		/*
-		Team2DAO dao = Team2DAO.getInstance();
-		Team2VO vo = new Team2VO();
-		dao.loginDB(stu_num, stu_pwd);*/
-		
-		
-	/*	Team2DAO dao = Team2DAO.getInstance();
-		membersVO vo = new membersVO();
-		dao.loginDB(mem_num, mem_pwd);*/
 		
 		request.setAttribute("mem_num", mem_num);
-		//request.setAttribute("mem_name", vo.getMem_name());
+		request.setAttribute("mem_name",mem_name);
 		request.setAttribute("mem_pwd", mem_pwd);
 		request.setAttribute("client", client);
 		

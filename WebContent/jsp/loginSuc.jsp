@@ -12,6 +12,7 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	
 }
 
 #main {
@@ -33,7 +34,8 @@ html, body {
 	margin-top: -120px;
 	font-family: 'Montserrat', 'Noto-Sans', sans-serif;
 	/*padding: 160px 0 20px 0;*/
-	color: white;
+	/* color: white; */
+	color: black;
 	font-size: 46px;
 	font-weight: 600;
 	z-index: 20;
@@ -42,12 +44,14 @@ html, body {
 .btn-default {
 	display: block;
 	margin: 0 auto;
-	width: 100px;
+	width: 150px;
 	height: 20px;
 	line-height: 20px;
 	/* font-family: 'Montserrat', 'Noto-Sans', sans-serif; */
+	/* border: 3px solid white; */
+	border: 2px solid #1E3449;
+	/* color: #fff; */
 	font-family: '1훈고딕굴림';'
-	border: 3px solid white;
 	color: black;
 	font-size: 20px;
 	padding: 12px 18px;
@@ -62,10 +66,16 @@ html, body {
 	height: 100%;
 	z-index: 5;
 	background-image: url(jsp/images/background.png);
-	background-size: cover;
+	background-size: cover;	
 	font-family: '1훈고딕굴림';'
 }
+.m-t-10 {
+	display:block;
+	margin-top:15px; 
+}
 </style>
+
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
@@ -74,9 +84,9 @@ html, body {
 	<div class="main-overlay">
 		<form name="mainForm2" action="" method="post">
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			<table id="table1" align="center">
-				<tr>
-					<td align="left" font="30px"><font color="black">${ mem_name } 님 접속중</font></td>
+			<table  align="center">
+				<tr align="center">
+					<td align="center" font="30px"><font color="black">${ mem_name } 님 접속중</font></td>
 				</tr>
 			</table>
 
@@ -87,7 +97,7 @@ html, body {
 						<a class="btn btn-default" href="#" >홈페이지</a>	
 					</td>
 					<td width="200">
-						<a class="btn btn-default" href="" onclick="javascript:alert('\n권한이 없습니다\n\n로그인 후 사용해주세요\n')">종합 정보 시스템</a>
+						<a class="btn btn-default" href="info.do?mem_num=${mem_num}&mem_name=${mem_name}">종합 정보 시스템</a>
 					</td>
 				</tr>
 			</table>

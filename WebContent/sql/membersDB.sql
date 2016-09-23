@@ -14,6 +14,8 @@ create table members(
 
 --//////////////////  1. 교수 DB /////////////////////////////////////////////////////////
 
+
+
 insert into members 
 values('30001', '아이유', '1234');
 
@@ -59,3 +61,6 @@ values('090001','이종상','1234');
 
 insert into MEMBERS
 values('110001','가충호','1234');
+
+insert into MEMBERS
+values('110002','USER','1234');

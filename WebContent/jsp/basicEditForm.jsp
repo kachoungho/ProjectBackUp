@@ -58,8 +58,7 @@
 		</tr>
 	
 	</table>
-	</td>
-		</tr>
+	<table>
 	<tr>
 		<td>
 		<input type="submit" value="수정"  > <!-- 수정하세여~  -->
