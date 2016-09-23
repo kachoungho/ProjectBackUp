@@ -22,10 +22,10 @@ html, body {
 <a class="btn btn-default" href=#none onclick=this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';>
 학 적 관 리
 </a><DIV style='display:none'>
-├ <a class="btn btn-default" href="/FirstProject/basic.do?mem_num=${mem_num}&mem_name=${mem_name}" >
+├ <a class="btn btn-default" href="/FirstProject/basic.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}" >
 학 적 조 회
 </a><br>
-└ <a class="btn btn-default" href="/FirstProject/basicEdit.do?mem_num=${mem_num}&mem_name=${mem_name}">
+└ <a class="btn btn-default" href="/FirstProject/basicEdit.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">
 정 보 수 정
 </a>
 </div>
@@ -36,10 +36,10 @@ html, body {
 <a class="btn btn-default" href=#none onclick=this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';>
 성 적 관 리
 </a><DIV style='display:none'>
-├ <a class="btn btn-default" href="/FirstProject/currentGrade.do?mem_num=${mem_num}&mem_name=${mem_name}">
+├ <a class="btn btn-default" href="/FirstProject/currentGrade.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">
 성 적 조 회(금학기)
 </a><br>
-└ <a class="btn btn-default" href="/FirstProject/gradeView.do?mem_num=${mem_num}&mem_name=${mem_name}" >
+└ <a class="btn btn-default" href="/FirstProject/gradeView.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}" >
 성 적 조 회(누 적)
 </a>
 </div>
@@ -47,7 +47,7 @@ html, body {
 
 
 
-<a class="btn btn-default" href="/FirstProject/pickSubject.do?mem_num=${mem_num}" >
+<a class="btn btn-default" href="/FirstProject/pickSubject.do?mem_num=${mem_num}&result=${result}" >
 수 강 신 청
 </a><DIV style='display:none'>
 </div>
@@ -58,13 +58,13 @@ html, body {
 <a class="btn btn-default" href=#none onclick=this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';>
 신 청 서 비 스
 </a><DIV style='display:none'>
-├ <a class="btn btn-default" href="/FirstProject/i_o_Absence.do?mem_num=${mem_num}&mem_name=${mem_name}" >
+├ <a class="btn btn-default" href="/FirstProject/i_o_Absence.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}" >
 휴 학 신 청
 </a><br>
-├ <a class="btn btn-default" href="/FirstProject/g_b_School.do?mem_num=${mem_num}&mem_name=${mem_name}" >
+├ <a class="btn btn-default" href="/FirstProject/g_b_School.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}" >
 복 학 신 청
 </a><br>
-└ <a class="btn btn-default" href="/FirstProject/c_Major.do?mem_num=${mem_num}&mem_name=${mem_name}">
+└ <a class="btn btn-default" href="/FirstProject/c_Major.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">
 전 과 신 청
 </a>
 </div>
@@ -75,13 +75,13 @@ html, body {
 <a class="btn btn-default" href=#none onclick=this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';>
 강 의 자 료 실
 </a><DIV style='display:none'>
-├ <a class="btn btn-default" href="/FirstProject/lectureDate.do?mem_num=${mem_num}&mem_name=${mem_name}" >
+├ <a class="btn btn-default" href="/FirstProject/lectureDate.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}" >
 강 의 계 획 서
 </a><br>
-├ <a class="btn btn-default" href="/FirstProject/program_Select.do?mem_num=${mem_num}&mem_name=${mem_name}" >
+├ <a class="btn btn-default" href="/FirstProject/program_Select.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}" >
 강 의 자 료
 </a><br>
-└ <a class="btn btn-default" href="/FirstProject/submit.do?mem_num=${mem_num}&mem_name=${mem_name}" >
+└ <a class="btn btn-default" href="/FirstProject/submit.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}" >
 과 제 물 제 출
 </a>
 </div>
@@ -92,10 +92,10 @@ html, body {
 <a class="btn btn-default" href=#none onclick=this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';>
 계 절 학 기
 </a><DIV style='display:none'>
-├ <a class="btn btn-default" href="/FirstProject/seasonSubjcet.do?mem_num=${mem_num}&mem_name=${mem_name}">
+├ <a class="btn btn-default" href="/FirstProject/seasonSubjcet.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">
 계절학기수강신청
 </a><br>
-└ <a class="btn btn-default" href="/FirstProject/seasonGrade.do?mem_num=${mem_num}&mem_name=${mem_name}">
+└ <a class="btn btn-default" href="/FirstProject/seasonGrade.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">
 계절학기성적조회
 </a>
 </div>

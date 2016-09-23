@@ -85,7 +85,6 @@ public class team2Controller extends HttpServlet {
 			System.out.println("ca : " + ca);
 			view = ca.process(request, response);
 			System.out.println("view : " + view + "\n\n");
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

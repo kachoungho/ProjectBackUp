@@ -8,6 +8,7 @@
 <title>템플릿 페이지를 사용한 웹어플리케이션</title>
 </head>
 <body>
+
 	<center>
 		<table width="100%" height="100%" border="1" cellpading="2" cellspacing="0">
 			<tr height="20%">
@@ -17,7 +18,12 @@
 			</tr>
 			<tr>
 				<td height="500px" width="15%" valign="top">
-					<jsp:include page="../module/left.jsp"  flush="false"/>
+					<c:if test="${ result == 1 }">
+						<jsp:include page="../module/left.jsp"  flush="false"/>
+					</c:if>
+					<c:if test="${ result == 2 }">
+						<jsp:include page="../module/adminleft.jsp"  flush="false"/>
+					</c:if>
 				</td>
 				<td width="85%" height="60%"valign="top">
 					<jsp:include page="${ CONTENT }"/>

@@ -1,7 +1,7 @@
 package team2.miniproject.DAO_VO;
 
 public class employeeVO {
-	String emp_num, emp_name, emp_pwd, major, 
+	String emp_num, emp_name, emp_pwd, major, emp_grade, money, mon_lev,
 			emp_email, tel;
 
 	public String getEmp_num() {
@@ -36,6 +36,30 @@ public class employeeVO {
 		this.major = major;
 	}
 
+	public String getEmp_grade() {
+		return emp_grade;
+	}
+
+	public void setEmp_grade(String emp_grade) {
+		this.emp_grade = emp_grade;
+	}
+
+	public String getMoney() {
+		return money;
+	}
+
+	public void setMoney(String money) {
+		this.money = money;
+	}
+
+	public String getMon_lev() {
+		return mon_lev;
+	}
+
+	public void setMon_lev(String mon_lev) {
+		this.mon_lev = mon_lev;
+	}
+
 	public String getEmp_email() {
 		return emp_email;
 	}
@@ -51,6 +75,8 @@ public class employeeVO {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+
+	
 	
 	
 }

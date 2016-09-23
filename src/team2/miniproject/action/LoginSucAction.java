@@ -15,11 +15,13 @@ public class LoginSucAction implements CommandAction {
 		String mem_name = request.getParameter("mem_name");
 		String mem_pwd = request.getParameter("mem_pwd");
 		String client = request.getParameter("client");
+		String result = request.getParameter("result");
 		
 		request.setAttribute("mem_num", mem_num);
 		request.setAttribute("mem_name",mem_name);
 		request.setAttribute("mem_pwd", mem_pwd);
 		request.setAttribute("client", client);
+		request.setAttribute("result", result);
 		
 		return "/jsp/loginSuc.jsp";
 	}

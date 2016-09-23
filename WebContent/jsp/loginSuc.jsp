@@ -98,7 +98,13 @@ html, body {
 						<a class="btn btn-default" href="#" >홈페이지</a>	
 					</td>
 					<td width="200">
-						<a class="btn btn-default" href="info.do?mem_num=${mem_num}&mem_name=${mem_name}">종합 정보 시스템</a>
+						<c:if test="${result == 1}">
+							<a class="btn btn-default" href="info.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">종합 정보 시스템</a>
+						</c:if>
+						<c:if test="${result == 2}">
+							<a class="btn btn-default" href="adminInfo.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">종합 정보 시스템</a>
+						</c:if>
+						
 					</td>
 				</tr>
 			</table>

@@ -15,6 +15,7 @@ public class BasicAction implements CommandAction {
 		// TODO Auto-generated method stub
 		String mem_num = request.getParameter("mem_num");
 		String mem_name = request.getParameter("mem_name");
+		String result = request.getParameter("result");
 		List list = null;
 		
 		Team2DAO dao = Team2DAO.getInstance();
@@ -25,6 +26,7 @@ public class BasicAction implements CommandAction {
 		request.setAttribute("list", list);
 		request.setAttribute("mem_num", mem_num);
 		request.setAttribute("mem_name", mem_name);
+		request.setAttribute("result", result);
 		return "/jsp/basicForm.jsp";
 	}
 

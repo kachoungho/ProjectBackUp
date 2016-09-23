@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import team2.miniproject.DAO_VO.StudentVO;
 import team2.miniproject.DAO_VO.Team2DAO;
+import team2.miniproject.DAO_VO.employeeVO;
 
-public class AdviserAction implements CommandAction {
+public class AdminBasicAction implements CommandAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -17,18 +18,16 @@ public class AdviserAction implements CommandAction {
 		String result = request.getParameter("result");
 		List list = null;
 		
-
 		Team2DAO dao = Team2DAO.getInstance();
-		StudentVO vo = new StudentVO();
+		employeeVO vo = new employeeVO(); 
 		
-		list=dao.ListAdviserDB(mem_num);
+		list=dao.ListAdminBasicDB(mem_num);
 		
 		request.setAttribute("list", list);
-		
 		request.setAttribute("mem_num", mem_num);
 		request.setAttribute("mem_name", mem_name);
 		request.setAttribute("result", result);
-		return "/jsp/adviserForm.jsp";
+		return "/jsp/adminBasicForm.jsp";
 	}
 
 }

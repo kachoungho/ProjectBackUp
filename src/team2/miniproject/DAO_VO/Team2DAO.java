@@ -192,4 +192,43 @@ public class Team2DAO {
 		} finally {			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);		}
 		return list;
 	}
+	
+	public List<membersVO> ListAdminBasicDB(String mem_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = null;
+		employeeVO vo = new employeeVO();
+		
+		try {
+			conn = getConnection();
+			String sql = "select * from employee where emp_num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, mem_num);
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				list = new ArrayList();
+				
+				do {
+					
+					vo.setEmp_num(rs.getString("emp_num"));
+					vo.setEmp_name(rs.getString("emp_name"));
+					vo.setEmp_pwd(rs.getString("emp_pwd"));
+					vo.setMajor(rs.getString("major"));
+					vo.setEmp_grade(rs.getString("emp_grade"));
+					vo.setMoney(rs.getString("money"));
+					vo.setMon_lev(rs.getString("mon_lev"));
+					vo.setEmp_email(rs.getString("emp_email"));
+					vo.setTel(rs.getString("tel"));
+					
+					list.add(vo);
+				} while(rs.next());
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {			CloseUtil.close(rs);			CloseUtil.close(pstmt);			CloseUtil.close(conn);		}
+		return list;
+	}
 }

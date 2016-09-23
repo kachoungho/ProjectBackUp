@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,6 @@
 <title>th125 JSP Template</title>
 </head>
 <body>
-
 	<table width="670" border="0" cellspacing="0" cellpadding="0">
 		<tr>
 			<td>&nbsp;</td>
@@ -25,9 +25,9 @@
 			</td>
 
 			<td width="100" bgcolor="#D0D8FF" height="20">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명</td>
-			<td width="171" align="left">이종상</td> <!-- 데이터 얻어 와야할 곳 -->
+			<td width="171" align="left"></td> <!-- 데이터 얻어 와야할 곳 -->
 			<td width="120" bgcolor="#D0D8FF">전공명</td>
-			<td width="250" colspan="3" align="left">&nbsp;멀티미디어공학과&nbsp;
+			<td width="250" colspan="3" align="left">&nbsp;
 			</td><!-- {데이터 얻어 와야할 곳 -->
 		</tr>
 

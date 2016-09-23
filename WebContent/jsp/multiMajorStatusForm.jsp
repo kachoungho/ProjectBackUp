@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style type="text/css">
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.btn-default {
+	text-align: center;
+	font-family: '1훈고딕굴림';'
+	color: black;
+	font-size: 20px;
+	margin-top: 10px;
+}
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,17 +24,31 @@
 <title>th125 JSP Template</title>
 </head>
 <body>
-	<table width="670" border="1" cellspacing="0" cellpadding="0">
+	<table  class="btn btn-default"  width="670" border="1" cellspacing="0" cellpadding="0">
 		<tr align="center">
-		<td width="90" ><a href="/FirstProject/basic.do?mem_num=${mem_num}&mem_name=${mem_name}">기본 사항</a></td>
-		<td width="90" ><a href="/FirstProject/registerChange.do?mem_num=${mem_num}&mem_name=${mem_name}">학적 변동</a></td>
-		<td width="130" ><a href="/FirstProject/multiMajorStatus.do?mem_num=${mem_num}&mem_name=${mem_name}">다전공 이수 현황</a></td>
-		<td width="90" ><a href="/FirstProject/scholarship.do?mem_num=${mem_num}&mem_name=${mem_name}">장학 사항</a></td>
-		<td width="90" ><a href="/FirstProject/adviser.do?mem_num=${mem_num}&mem_name=${mem_name}">지도 교수</a></td>
-		<td width="90" ><a href="/FirstProject/registerStatus.do?mem_num=${mem_num}&mem_name=${mem_name}">등록 사항</a></td>
+			<td width="90"><a
+				href="/FirstProject/basic.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">기본
+					사항</a></td>
+			<td width="90"><a
+				href="/FirstProject/registerChange.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">학적
+					변동</a></td>
+			<td width="130"><a
+				href="/FirstProject/multiMajorStatus.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">다전공
+					이수 현황</a></td>
+			<td width="90"><a
+				href="/FirstProject/scholarship.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">장학
+					사항</a></td>
+			<td width="90"><a
+				href="/FirstProject/adviser.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">지도
+					교수</a></td>
+			<td width="90"><a
+				href="/FirstProject/registerStatus.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">등록
+					사항</a></td>
 		</tr>
 	</table>
-	<br><br><br>
+	<br>
+	<br>
+	<br>
 	
 	<table border="0" width="95%" cellspacing="0" cellpadding="0" valign="top">
 		<tr>

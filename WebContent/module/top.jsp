@@ -28,7 +28,7 @@ html, body {
 		<td><font color="red">일단은 빈공간이고 나중에 이미지 파일들 들어갈 자리입니다.</font></td>
 	</tr>
 	<tr>
-		<td class="td">${mem_name}님접속중</td>
+		<td class="td">${mem_name}님 접속중</td>
 	</tr>
 	<tr>
 		<td class="td"><input type="button" value="로그아웃" onclick="document.location.href='/FirstProject/logout.do'"></td>
