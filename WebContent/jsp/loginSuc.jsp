@@ -75,18 +75,32 @@ html, body {
 }
 </style>
 
+<script language="JavaScript">
+	function pagestart() {
+		window.setTimeout("pagereload()", 1800000); /* 60000 이 1분  */
+	}
+	function pagereload() {
+		location.reload();
+		alert("로그인 시간이 만료되어 로그아웃 되었습니다.");
+		history.go(1);
+	}
+</script>
 
+
+<c:if test="${sessionScope.mem_name == null}">
+	<meta http-equiv="Refresh" content="0; url=/FirstProject/jsp/main.jsp">
+</c:if>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 </head>
-<body><!-- background="images/gr18.jpg" -->
+<body  onLoad="pagestart()"><!-- background="images/gr18.jpg" -->
 	<div class="main-overlay">
 		<form name="mainForm2" action="" method="post">
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			<table  align="center">
 				<tr align="center">
-					<td align="center" font="30px"><font color="black">${ mem_name } 님 접속중</font></td>
+					<td align="center" font="30px"><font color="black">${sessionScope.mem_name} 님 접속중</font></td>
 					<td><input type="button" value="로그아웃" onclick="document.location.href='/FirstProject/logout.do'"></td>
 				</tr>
 			</table>
@@ -99,10 +113,11 @@ html, body {
 					</td>
 					<td width="200">
 						<c:if test="${result == 1}">
-							<a class="btn btn-default" href="info.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">종합 정보 시스템</a>
+							<a class="btn btn-default" href="info.do">종합 정보 시스템</a>
 						</c:if>
 						<c:if test="${result == 2}">
-							<a class="btn btn-default" href="adminInfo.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">종합 정보 시스템</a>
+							<%-- <a class="btn btn-default" href="adminInfo.do?mem_num=${mem_num}&mem_name=${sessionScope.mem_name}&result=${sessionScope.result}">종합 정보 시스템</a> --%>
+							<a class="btn btn-default" href="adminInfo.do">종합 정보 시스템</a>
 						</c:if>
 						
 					</td>

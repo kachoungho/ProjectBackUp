@@ -80,11 +80,8 @@
 </head>
 <body>
 
-	<form name=pickForm action="/FirstProject/pickSubject.do" method="get"
+	<form name=pickForm action="/FirstProject/pickSubject.do" method="post"
 		accept-charset="">
-		<input type="hidden" name="mem_num" value="${mem_num}">
-		<input type="hidden" name="mem_name" value="${mem_name}"> 
-		<input type="hidden" name="result" value="${result}">
 		<fieldset>
 			<legend>학 년 구 분</legend>
 			<table border="1">
@@ -110,11 +107,8 @@
 		</fieldset>
 	</form>
 
-	<form name=pickForm1 action="/FirstProject/pickSubject.do" method="get"
+	<form name=pickForm1 action="/FirstProject/pickSubject.do" method="post"
 		accept-charset="">
-		<input type="hidden" name="mem_num" value="${mem_num}">
-		<input type="hidden" name="mem_name" value="${mem_name}"> 
-		<input type="hidden" name="result" value="${result}">
 		<input type="hidden" name="grade" value="${grade}">
 		<input type="hidden" name="major_sel" value="${major_sel}">
 		
@@ -149,11 +143,8 @@
 		</fieldset>
 	</form>
 	
-	<form name=pickForm2 action="/FirstProject/pickSubject.do" method="get"
+	<form name=pickForm2 action="/FirstProject/pickSubject.do" method="post"
 		accept-charset="">
-		<input type="hidden" name="mem_num" value="${mem_num}">
-		<input type="hidden" name="mem_name" value="${mem_name}"> 
-		<input type="hidden" name="result" value="${result}">
 		<input type="hidden"  name="grade" value="${grade}">
 		<input type="hidden" name="major_sel" value="${major_sel}">
 		<fieldset>

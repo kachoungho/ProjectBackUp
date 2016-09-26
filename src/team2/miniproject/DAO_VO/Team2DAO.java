@@ -74,11 +74,11 @@ public class Team2DAO {
 		return result;
 	}
 
-	public List<membersVO> ListloginDB(String mem_num, String mem_pwd) throws Exception {
+	public String ListloginDB(String mem_num, String mem_pwd) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List list = null;
+		String name = null;
 		membersVO vo = new membersVO();
 
 		try {
@@ -90,16 +90,7 @@ public class Team2DAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				list = new ArrayList(3);
-
-				do {
-
-					vo.setMem_num(rs.getString("mem_num")); // vo 학번
-					vo.setMem_name(rs.getString("mem_name")); // 이종상
-					vo.setMem_pwd(rs.getString("mem_pwd")); // 1234
-
-					list.add(vo);
-				} while (rs.next());
+				name = rs.getString("mem_name");
 			}
 
 		} catch (SQLException e) {
@@ -109,7 +100,7 @@ public class Team2DAO {
 			CloseUtil.close(pstmt);
 			CloseUtil.close(conn);
 		}
-		return list;
+		return name;
 	}
 
 	public List<membersVO> ListBasicDB(String mem_num) throws Exception {

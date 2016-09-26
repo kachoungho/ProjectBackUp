@@ -11,8 +11,9 @@
 <body>
 <c:if test="${result == 1 }">
 	<% System.out.println("유저 로그인 성공");%>
-	<c:forEach var="list" items="${ list }">
-		<meta http-equiv="Refresh" content="0; url=/FirstProject/loginSuc.do?mem_num=${mem_num}&mem_pwd=${mem_pwd}&mem_name=${list.mem_name}&client=${client}&result=${result}">
+	<c:forEach var="mem_name" items="${ mem_name }">
+	<% System.out.println("가능?");%>
+		<meta http-equiv="Refresh" content="0; url=/FirstProject/loginSuc.do?result=${result}">
 	</c:forEach>
 	<script type="text/javascript">
 		alert("로그인 성공");
@@ -22,8 +23,8 @@
 
 <c:if test="${result == 2}">
 	<% System.out.println("관리자 로그인 성공");  %>
-	<c:forEach var="list" items="${ list }">
-		<meta http-equiv="Refresh" content="0; url=/FirstProject/loginSuc.do?mem_num=${mem_num}&mem_pwd=${mem_pwd}&mem_name=${list.mem_name}&client=${client}&result=${result}">
+	<c:forEach var="mem_name" items="${ mem_name }">
+		<meta http-equiv="Refresh" content="0; url=/FirstProject/loginSuc.do?result=${result}">
 	</c:forEach>
 	<script type="text/javascript">
 		alert("관리자 로그인 성공");

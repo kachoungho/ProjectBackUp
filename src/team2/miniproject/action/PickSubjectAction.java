@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import team2.miniproject.DAO_VO.PickSubjectVO;
 import team2.miniproject.DAO_VO.StudentVO;
@@ -14,9 +15,12 @@ public class PickSubjectAction implements CommandAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String mem_num = request.getParameter("mem_num");
-		String mem_name = request.getParameter("mem_name");
-		String result = request.getParameter("result");
+		HttpSession session = request.getSession();
+		String mem_num = (String)session.getAttribute("mem_num"); 
+		String mem_name = (String)session.getAttribute("mem_name"); 
+		String result = (String)session.getAttribute("result"); 
+		
+		
 		String grade = request.getParameter("grade");
 		String major_sel = request.getParameter("major_sel");
 		String check = request.getParameter("check");		//신청할때 과목 코드값
@@ -29,12 +33,6 @@ public class PickSubjectAction implements CommandAction {
 		ArrayList picklist = null;
 		String rt = null;
 		String pick = null;
-
-		System.out.println("\n\nmem_num" + mem_num);
-		System.out.println("mem_name" + mem_name);
-		System.out.println("result" + result);
-		System.out.println("grade" + grade);
-		System.out.println("major_sel" + major_sel + "\n\n");
 
 		Team2DAO dao = Team2DAO.getInstance();
 		
@@ -197,9 +195,6 @@ public class PickSubjectAction implements CommandAction {
 
 		request.setAttribute("grade", grade);
 		request.setAttribute("major_sel", major_sel);
-		request.setAttribute("mem_num", mem_num);
-		request.setAttribute("mem_name", mem_name);
-		request.setAttribute("result", result);
 		return rt;
 	}
 

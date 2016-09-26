@@ -73,9 +73,6 @@ html, body {
 
 	<form  name="stuBasicForm" action="/FirstProject/stuBasic.do"
 		method="get" accept-charset="">
-		<input type="hidden" name="mem_num" value="${mem_num}"> <input
-			type="hidden" name="mem_name" value="${mem_name}"> <input
-			type="hidden" name="result" value="${result}">
 		<table  id="table2"  border="1">
 			<td id="td" ><select name="major">
 					<option value="default">학 과 선 택</option>
