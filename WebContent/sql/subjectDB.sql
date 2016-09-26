@@ -15,7 +15,6 @@ select * from subject;
 drop table subject;
 
 코드 과목명 학점. 교수이름 시간.
-
 create table subject(
 	sub_code  varchar(10) not null,
 	sub_name varchar(50) not null,

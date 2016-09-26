@@ -47,7 +47,7 @@ html, body {
 
 
 
-<a class="btn btn-default" href="/FirstProject/pickSubject.do?mem_num=${mem_num}&result=${result}" >
+<a class="btn btn-default" href="/FirstProject/pickSubject.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}&grade=1&major_sel=default">
 수 강 신 청
 </a><DIV style='display:none'>
 </div>

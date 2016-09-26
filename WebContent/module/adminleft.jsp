@@ -35,13 +35,13 @@ html, body {
 <a class="btn btn-default" href=#none onclick=this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';>
 학 생 정 보
 </a><DIV style='display:none'>
-├ <a class="btn btn-default" href="/FirstProject/stuBasic.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}" >
+├ <a class="btn btn-default" href="/FirstProject/stuBasic.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}&major=default">
 학생 정보 보기
 </a><br>
 ├ <a class="btn btn-default" href="/FirstProject/stuGrade.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}" >
 학생 성적 보기	
 </a><br>
-└ <a class="btn btn-default" href="/FirstProject/stuPickSubject.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}">
+└ <a class="btn btn-default" href="/FirstProject/stuPickSubject.do?mem_num=${mem_num}&mem_name=${mem_name}&result=${result}&major=default">
 학생 수강신청 내역
 </a>
 </div>
