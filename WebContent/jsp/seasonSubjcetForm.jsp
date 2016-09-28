@@ -1,154 +1,178 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>종합정보시스템</title>
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+<meta http-equiv="Refresh" >
+<title>계절학기 수강신청 페이지 입니다.</title>
+
+<script LANGUAGE="JavaScript">
+	/* function gradeList() {
+		gradeform = document.pickForm;
+		if (gradeform.grade.value == '1') {
+			gradeform.major_sel.length = 5;
+			gradeform.major_sel.options[0].text = '학 과 선 택';
+			gradeform.major_sel.options[0].value = 'default';
+			gradeform.major_sel.options[1].text = '컴퓨터공학';
+			gradeform.major_sel.options[1].value = 'com';
+			gradeform.major_sel.options[2].text = '인 문 학 과';
+			gradeform.major_sel.options[2].value = 'human';
+			gradeform.major_sel.options[3].text = '시각디자인학과';
+			gradeform.major_sel.options[3].value = 'vision';
+			gradeform.major_sel.options[4].text = '교  양';
+			gradeform.major_sel.options[4].value = 'kyo';
+
+		} else if (gradeform.grade.value == '2') {
+			gradeform.major_sel.length = 5;
+			gradeform.major_sel.options[0].text = '학 과 선 택';
+			gradeform.major_sel.options[0].value = 'default';
+			gradeform.major_sel.options[1].text = '컴퓨터공학';
+			gradeform.major_sel.options[1].value = 'com';
+			gradeform.major_sel.options[2].text = '인 문 학 과';
+			gradeform.major_sel.options[2].value = 'human';
+			gradeform.major_sel.options[3].text = '시각디자인학과';
+			gradeform.major_sel.options[3].value = 'vision';
+			gradeform.major_sel.options[4].text = '교  양';
+			gradeform.major_sel.options[4].value = 'kyo';
+
+		} else if (gradeform.grade.value == '3') {
+			gradeform.major_sel.length = 4;
+			gradeform.major_sel.options[0].text = '학 과 선 택';
+			gradeform.major_sel.options[0].value = 'default';
+			gradeform.major_sel.options[1].text = '컴퓨터공학';
+			gradeform.major_sel.options[1].value = 'com';
+			gradeform.major_sel.options[2].text = '인 문 학 과';
+			gradeform.major_sel.options[2].value = 'human';
+			gradeform.major_sel.options[3].text = '시각디자인학과';
+			gradeform.major_sel.options[3].value = 'vision';
+
+		} else if (gradeform.grade.value == '4') {
+			gradeform.major_sel.length = 4;
+			gradeform.major_sel.options[0].text = '학 과 선 택';
+			gradeform.major_sel.options[0].value = 'default';
+			gradeform.major_sel.options[1].text = '컴퓨터공학';
+			gradeform.major_sel.options[1].value = 'com';
+			gradeform.major_sel.options[2].text = '인 문 학 과';
+			gradeform.major_sel.options[2].value = 'human';
+			gradeform.major_sel.options[3].text = '시각디자인학과';
+			gradeform.major_sel.options[3].value = 'vision';
+		}
+	} */
+
+	function go() {
+		var frm1 = document.pickForm1;
+		frm1.acceptCharset = 'utf-8';
+		if (document.all)
+			document.charset = 'utf-8';
+		frm1.submit();
+
+		frm1.acceptCharset = 'euc-kr';
+		if (document.all)
+			document.charset = 'euc-kr';
+	}
+</script>
+
+
+
+
 </head>
 <body>
-	<b>계절학기 수강신청</b>
-	<br>
-	<table width="900" align=center>
-		<tr>
-			<td align="center"><b><Font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016학년도 여름 계절학기 수강신청</Font></b></td>
-		</tr>
-	</table>
-	<table width="900">
-		<tr>
-			<td>
-				<table width="430" border="0" cellspacing="0" cellpadding="0">
-					<tr>
-						<td align=center>
-							<table width="430" border="1" cellpadding="0" cellspacing="0" bordercolordark="white" bordercolorlight="#086E35"><!-- bordercolor="#D0D8FF"  -->
-								<tr height="20" align="center" bgcolor="#D0D8FF">
-									<td>학번</td>
-									<td>학년</td>
-									<td>이름</td>
-									<td>연락처</td>
-								</tr>
+<!-- 
+	<form name=pickForm action="/FirstProject/pickSubject.do" method="post"
+		accept-charset="">
+		<fieldset>
+			<legend>학 년 구 분</legend>
+			<table border="1">
+				<tr>
+					<td bgcolor=skyblue>학 년</td>
+					<td><select name="grade" onchange="gradeList()">
+							<option value="1">1학년</option>
+							<option value="2">2학년</option>
+							<option value="3">3학년</option>
+							<option value="4">4학년</option>
+					</select></td>
+					<td bgcolor=skyblue>학 과</td>
+					<td><select name="major_sel">
+							<option value="default">학 과 선 택</option>
+							<option value="com">컴퓨터공학</option>
+							<option value="human">인 문 학 과</option>
+							<option value="vision">시각디자인학과</option>
+							<option value="kyo">교  양</option>
+					</select></td>
+					<td><input type="submit" value="선택"></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form> -->
 
-								<tr height="20" align="center">
-									<td>0991068</td>
-									<td>0</td>
-									<td>홍길동</td>
-									<td>010-1234-5678</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-			</td>
-			<td width=70></td>
-			<td><table width="400" border="0" cellpadding="0" cellspacing="0" bordercolordark="white"><!-- bordercolor="#D0D8FF"  -->
+	<form name=pickForm1 action="/FirstProject/seasonSubjcet.do" method="post"
+		accept-charset="">
+		<%-- <input type="hidden" name="grade" value="${grade}">
+		<input type="hidden" name="major_sel" value="${major_sel}"> --%>
+		
+		<fieldset>
+			<legend>수 업 목 록</legend>
+
+			<table border="1">
+				<tr>
+					<td bgcolor="skyblue" width="100">체  크</td>
+					<td bgcolor="skyblue" width="100">수강 코드</td>
+					<td bgcolor="skyblue" width="200">과 목 명</td>
+					<td bgcolor="skyblue" width="100">학 점</td>
+					<td bgcolor="skyblue" width="100">담당 교수</td>
+					<td bgcolor="skyblue" width="100">강의 시간</td>
+					
+				</tr>
+				<c:forEach var="list" items="${ list }">
 					<tr>
-						<td><table width="400" border="1" cellpadding="0" cellspacing="0" bordercolordark="white" bordercolorlight="#086E35">
-								<tr height="20" align="center" bgcolor="#D0D8FF">
-									<td width="100">신청학점</td>
-								</tr>
-								<tr height="20" align="center">
-									<td>0</td>
-								</tr>
-							</table></td>
+						<td><input type="checkbox" name="check" value="${list.sub_code}"></td>
+						<td>${list.sub_code}</td>
+						<td>${list.sub_name}</td>
+						<td>${list.sub_hakjum}</td>
+						<td>${list.emp_name}</td>
+						<td>${list.sub_time}</td>
 					</tr>
-				</table></td>
-		</tr>
-	</table>
-	<table width=900 border=1 cellpadding="0" cellspacing="0" bordercolordark="white" bordercolorlight="#086E35"><!-- bordercolor="#D0D8FF"  -->
-		<tr bgcolor="#D0D8FF" align="center">
-			<td width=25 rowspan="2">No</td>
-			<td width=70 rowspan="2">과목코드</td>
-			<td width=200 rowspan="2">교과목명<br></td>
-			<td width=55 rowspan="2">이수<BR>구분</td>
-			<td width=40 rowspan="2">분반</td>
-			<td width=40 rowspan="2">학점</td>
-			<td width=65 rowspan="2">담당<BR>교수</td>
-			<td colspan="4">재수강내역1</td>
-			<td colspan="4">재수강내역2</td>
-			<td width=50 rowspan="2">비고</font></td>
-		</tr>
-		<tr bgcolor="#D0D8FF" align="center">
-			<td width="40">학년</td>
-			<td width="35">학기</td>
-			<td width="65">과목</td>
-			<td width="35">평점</td>
-			<td width="40">학년</td>
-			<td width="35">학기</td>
-			<td width="65">과목</td>
-			<td width="35">평점</td>
-		</tr>
-		<tr>
-			<td colspan="16" height="30" align="center">해당 자료가 존재하지 않습니다. 과목을 선택해주세요</td>
-		</tr>	
-	</table>
-	<br>
-	<table>
-		<p align="center">
-		<input type="text">
-		<input type="button" value=" 과목 검색 ">
-		&nbsp;&nbsp;&nbsp;
-		학과 선택 : <select name="학과 선택">
-				<option value="선택">선택</option>
-				<option value="공과">공과</option>
-				<option value="중국어과">중국어과</option>
-				<option value="디자인과">디자인과</option>
-				<option value="경영과">경영과</option>
-				<option value="etc">etc</option>
-			</select>
-		</p>	
-	</table>
-	<table width=900 border=1 cellpadding="0" cellspacing="0"  bordercolordark="white" bordercolorlight="#086E35">
-		<tr bgcolor="#D0D8FF" align="center">
-			<td width="100">수강코드</td>
-			<td width="300">과 목 명</td>
-			<td width="100">학   점</td>
-			<td width="100">이수구분</td>
-			<td width="100">등   급</td>
-		</tr>
-		<tr align="center">
-			<td>CEO11001</td>
-			<td>과목1</td>
-			<td>3</td>
-			<td>전공</td>
-			<td>B</td>
-		</tr>
-		<tr align="center">
-			<td>CEO11002</td>
-			<td>과목2</td>
-			<td>2</td>
-			<td>교양</td>
-			<td>B</td>
-		</tr>
-		<tr align="center">
-			<td>CEO11003</td>
-			<td>과목3</td>
-			<td>3</td>
-			<td>전공</td>
-			<td>B</td>
-		</tr>
-		<tr align="center">
-			<td>CEO11004</td>
-			<td>과목4</td>
-			<td>2</td>
-			<td>교양</td>
-			<td>B</td>
-		</tr>
-		<tr align="center">
-			<td>CEO11005</td>
-			<td>과목5</td>
-			<td>1</td>
-			<td>교양</td>
-			<td>A</td>
-		</tr>
-		<tr align="center">
-			<td>CEO11006</td>
-			<td>과목6</td>
-			<td>1</td>
-			<td>교양</td>
-			<td>A</td>
-		</tr>
-	</table>
+				</c:forEach>
+				<tr>
+					<td colspan="6" ><input type="submit" value="추가"></td>
+				</tr>				
+			</table>
+
+		</fieldset>
+	</form>
+	
+	<form name=pickForm2 action="/FirstProject/seasonSubjcet.do" method="post"
+		accept-charset="">
+		<%-- <input type="hidden"  name="grade" value="${grade}">
+		<input type="hidden" name="major_sel" value="${major_sel}"> --%>
+		<fieldset>
+			<legend>신 청 목 록</legend>
+			<table border="1">
+				<tr>
+					<td bgcolor="skyblue" width="100">체  크</td>
+					<td bgcolor="skyblue" width="100">수강 코드</td>
+					<td bgcolor="skyblue" width="200">과 목 명</td>
+					<td bgcolor="skyblue" width="100">학 점</td>
+					<td bgcolor="skyblue" width="100">담당 교수</td>
+					<td bgcolor="skyblue" width="100">강의 시간</td>
+				</tr>
+				<c:forEach var="picklist" items="${ picklist }">
+					<tr>
+						<td><input type="checkbox" name="check2" value="${picklist.sub_code}"></td>
+						<td>${picklist.sub_code}</td>
+						<td>${picklist.sub_name}</td>
+						<td>${picklist.sub_hakjum}</td>
+						<td>${picklist.emp_name}</td>
+						<td>${picklist.sub_time}</td>
+					</tr>
+				</c:forEach>
+				<tr>
+					<td colspan="6" ><input type="submit" value="삭제"></td>
+				</tr>	
+			</table>
+		</fieldset>
+	</form>
 </body>
 </html>

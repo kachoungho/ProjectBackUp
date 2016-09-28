@@ -39,7 +39,7 @@ html, body {
 ├ <a class="btn btn-default" href="/FirstProject/currentGrade.do">
 성 적 조 회(금학기)
 </a><br>
-└ <a class="btn btn-default" href="/FirstProject/gradeView.do" >
+└ <a class="btn btn-default" href="/FirstProject/gradeView.do?sj_grade=3&sj_term=2" >
 성 적 조 회(누 적)
 </a>
 </div>
@@ -95,7 +95,7 @@ html, body {
 ├ <a class="btn btn-default" href="/FirstProject/seasonSubjcet.do">
 계절학기수강신청
 </a><br>
-└ <a class="btn btn-default" href="/FirstProject/seasonGrade.do">
+└ <a class="btn btn-default" href="/FirstProject/seasonGrade.do?sj_grade=3&sj_term=3">
 계절학기성적조회
 </a>
 </div>

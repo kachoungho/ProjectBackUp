@@ -9,52 +9,54 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 style="text-align: center">휴학신청서</h1>
-	<table border="1px" border-collapse="collapse" border-style="solid"
-		border-spacing="0" align="center">
-		<tr>
-			<td>학번/학년</td>
-			<td>${"학번"}</td>
-			<td>${"학년"}</td>
-			<td>성명</td>
-			<td>${"성명"}</td>
-		</tr>
-		<tr>
-			<td>소 속</td>
-			<td colspan="2">${"소속"}</td>
-			<td>전공</td>
-			<td>${"전공"}</td>
-		</tr>
-		<tr>
-			<td>주민등록번호</td>
-			<td colspan="2">${"주민등록번호"}</td>
-			<td>휴학구분</td>
-			<td><input type="radio" name="휴학구분" value="일반휴학"
-				checked="checked">일반휴학 <input type="radio" name="휴학구분"
-				value="군휴학">군휴학</td>
-		</tr>
-		<tr>
-			<td>복학예정학기</td>
-			<td colspan="2"><input type="text" name="복학 예정 학기"></td>
-			<td>이수학기</td>
-			<td>${"이수학기"}</td>
-		</tr>
-		<tr>
-			<td>이동전화번호</td>
-			<td colspan="2">${"이동전화번호" }</td>
-			<td>국적</td>
-			<td>${"국적" }</td>
-		</tr>
-	</table>
-
-	<table align="center" border="0">
-		<tr>
-			<td height="25"></td>
-		</tr>
-		<tr>
-			<td align="left" width="75"><input type="image"
-				src="../images/btnRequest.gif"></td>
-		</tr>
-	</table>
+	<form action="i_o_AbsencePro.do" method="post">
+		
+		<b>※ 휴학 신청은 확실히 결정 후 신청하시길 바랍니다. 신청 취소는 학과 사무실에 문의하세요!</b>
+		<p>
+			<c:forEach var="list" items="${ list }">
+				<input type="hidden" name="mem_num" value="${mem_num}">
+				<table width="950" border="0" cellspacing="1" cellpadding="2"
+					bgcolor="#737373">
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF" width="220">전공</td>
+						<td>${ list.major }</td>
+						<td bgcolor="#D0D8FF" width="220">성명</td>
+						<td>${ list.stu_name }</td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF">학년</td>
+						<td>${ list.grade }</td>
+						<td bgcolor="#D0D8FF">학번</td>
+						<td>${ list.stu_num }</td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF">생년월일</td>
+						<td>${ list.stu_birthday }</td>
+						<td bgcolor="#D0D8FF">지도교수</td>
+						<td>${ list.stu_professor }</td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF">이메일</td>
+						<td><input type="text" name="editEmail"
+							value="${ list.stu_email }" style="width:90%;"></td>
+						<td bgcolor="#D0D8FF">주소</td>
+						<td><input type="text" name="editAddress"
+							value="${ list.address }" style="width:90%;"></td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF">휴학구분<br><font size="2">(일반휴학 or 군휴학)</font></td>
+						<td><input type="text" name="editAbsence" value=" " style="width:90%;"></td>
+						<td bgcolor="#D0D8FF">휴대전화</td>
+						<td><input type="text" name="editTel" value="${ list.tel }" style="width:90%;"></td>
+					</tr>
+				</table>
+				<table align="center">
+					<tr>
+						<td><input type="submit" value="신청"> <!-- 수정하세여~  -->
+							<input type="reset" value="취소"> <!-- 수정하세여~  --></td>
+					</tr>
+				</table>
+			</c:forEach>
+	</form>
 </body>
 </html>

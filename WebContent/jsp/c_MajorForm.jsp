@@ -9,49 +9,54 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 style="text-align: center">전과 지원서</h1>
-	<table border="1px" border-collapse="collapse" border-style="solid"
-		border-spacing="0" align="center">
-		<tr>
-			<td rowspan="2">전과 지원자</td>
-			<td>성명</td>
-			<td>생년월일</td>
-			<td>학번</td>
-			<td>연락처</td>
-			<td>현소속 학과</td>
-			<td>주‧야</td>
-			<td>총힉점</td>
-		</tr>
-		<tr>
-			<td>${"성명"}</td>
-			<td>${"생년월일"}</td>
-			<td>${"학번"}</td>
-			<td>${"연락처"}</td>
-			<td>${"현소속 학과"}</td>
-			<td>${"주‧야"}</td>
-			<td>${"총학점"}</td>
-		</tr>
-		<tr>
-			<td>변경사유</td>
-			<td colspan="7"><textarea rows="5" cols="30" name="contents"></textarea></td>
-		</tr>
-		<tr>
-			<td>전과 희망 학과명</td>
-			<td colspan="4"><input type="text" name="전과 희망 학과명"> 
-				<input type="radio" name="주야구분" value="주" checked="checked">주 
-				<input type="radio" name="주야구분" value="야">야</td>
-			<td colspan="3">※ 주‧야간 해당란에 체크</td>
-		</tr>
-	</table>
-
-	<table align="center" border="0">
-		<tr>
-			<td height="25"></td>
-		</tr>
-		<tr>
-			<td align="left" width="75"><input type="image"
-				src="../images/btnRequest.gif"></td>
-		</tr>
-	</table>
+	<form action="c_MajorPro.do" method="post">
+		
+		<b>※ 전과 신청은 지도교수님과 상담후 신청하시길 바랍니다. </b>
+		<p>
+			<c:forEach var="list" items="${ list }">
+				<input type="hidden" name="mem_num" value="${mem_num}">
+				<table width="950" border="0" cellspacing="1" cellpadding="2"
+					bgcolor="#737373">
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF" width="220">전공</td>
+						<td>${ list.major }</td>
+						<td bgcolor="#D0D8FF" width="220">성명</td>
+						<td>${ list.stu_name }</td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF" width="220">학년</td>
+						<td>${ list.grade }</td>
+						<td bgcolor="#D0D8FF" width="220">학번</td>
+						<td>${ list.stu_num }</td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF" width="220">생년월일</td>
+						<td>${ list.major }</td>
+						<td bgcolor="#D0D8FF" width="220">지도교수</td>
+						<td>${ list.stu_professor }</td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF" width="220">이메일</td>
+						<td><input type="text" name="editEmail" value="${ list.stu_email }" style="width:94%;"></td>
+						<td bgcolor="#D0D8FF" width="220">휴대전화</td>
+						<td><input type="text" name="editTel" value="${ list.tel }" style="width:94%;"></td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF" width="220">전과 희망학과</td>
+						<td colspan="3"><input type="text" name="editChangeMajor" value=" " style="width:98%;"></td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF" width="220" height="150">변경사유</td>
+						<td colspan="3"><input type="text" name="editReasonWhy"  value=" " style="width:98%; height:95%"></td>
+					</tr>
+				</table>
+				<table align="center">
+					<tr>
+						<td><input type="submit" value="신청"> <!-- 수정하세여~  -->
+							<input type="reset" value="취소"> <!-- 수정하세여~  --></td>
+					</tr>
+				</table>
+			</c:forEach>
+	</form>
 </body>
 </html>

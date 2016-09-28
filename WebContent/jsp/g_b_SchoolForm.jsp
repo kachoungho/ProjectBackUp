@@ -9,66 +9,56 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table width="900" valign="middle" border="0" cellspacing="0"
-		cellpadding="0">
-		<tr>
-			<td width="900"><img src="../images/dot_2.gif">&nbsp;<strong>학적기본정보</strong></td>
-		</tr>
-		<tr>
-			<td height="10"></td>
-		</tr>
-	</table>
+	<form action="g_b_SchoolPro.do" method="post">
 
-	<table width="900" border="1" cellspacing="1" cellpadding="2"  style="text-align:center">
-		<tr >
-			<td width="100"  height="30">학부(과)</td>
-			<td width="200" >${"학과"}</td>
-			<td width="100" >전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</td>
-			<td width="200" >${"전공" }</td>
-			<td width="100" >주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;야</td>
-			<td width="200" >${"주 야"}</td>
-		</tr>
+		<b>※ 복학 신청은 확실히 결정 후 신청하시길 바랍니다. 신청 취소는 학과 사무실에 문의하세요!</b>
+		<p>
+			<c:forEach var="list" items="${ list }">
+				<input type="hidden" name="mem_num" value="${mem_num}">
+				<table width="950" border="0" cellspacing="1" cellpadding="2"
+					bgcolor="#737373">
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF" width="220">전공</td>
+						<td>${ list.major }</td>
+						<td bgcolor="#D0D8FF" width="220">성명</td>
+						<td>${ list.stu_name }</td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF">학년</td>
+						<td>${ list.grade }</td>
+						<td bgcolor="#D0D8FF">학번</td>
+						<td>${ list.stu_num }</td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF">생년월일</td>
+						<td>${ list.stu_birthday }</td>
+						<td bgcolor="#D0D8FF">지도교수</td>
+						<td>${ list.stu_professor }</td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF">이메일</td>
+						<td><input type="text" name="editEmail"
+							value="${ list.stu_email }"></td>
+						<td bgcolor="#D0D8FF">주소</td>
+						<td><input type="text" name="editAddress"
+							value="${ list.address }"></td>
+					</tr>
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF">복학학기</td>
+						<td><input type="text" name="editRreturn_semster"
+							value=" "></td>
+						<td bgcolor="#D0D8FF">휴대전화</td>
+						<td><input type="text" name="editTel" value="${ list.tel }"></td>
+					</tr>
 
-		<tr >
-			<td width="100" height="30">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년</td>
-			<td width="200">${"학년" }</td>
-			<td width="100" >학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;번</td>
-			<td width="200" >${"학번" }</td>
-			<td width="100" >이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
-			<td width="200" >${"이름" }</td>
-		</tr>
-				<tr >
-			<td width="100" height="30">휴학&nbsp;일자</td>
-			<td width="200">${"휴학일자" }</td>
-			<td width="100" >복학&nbsp;학기</td>
-			<td width="200" >${"복학학기" }</td>
-			<td width="100" >복학&nbsp;사유</td>
-			<td width="200" >
-				<input type="radio" name="복학사유" value="입대휴학 만료" checked="checked">입대휴학 만료<br>
-				<input type="radio" name="복학사유" value="가사휴학 만료">가사휴학 만료</td>
-			</td>
-		</tr>
-
-	</table>
-	<table width="900" valign="middle" border="0" cellspacing="0"
-		cellpadding="0">
-		<tr>
-			<td height="25"></td>
-		</tr>
-
-		<tr>
-			<td width="200"><img src="../images/dot_2.gif">&nbsp;<strong>복학 신청</strong></td>
-			<td align="left" width="75"><input type="image"src="../images/btnRequest.gif"></td>
-			<td align="left" width="75"><input type="image"src="../images/btnPrint2.gif"></td>
-			<td align="right"><strong>${"복학신청기간" }
-						</strong></font></td>
-		</tr>
-		<tr>
-			<td height="10"></td>
-		</tr>
-	</table>
-
-
-
+				</table>
+				<table align="center">
+					<tr>
+						<td><input type="submit" value="신청"> <!-- 수정하세여~  -->
+							<input type="reset" value="취소"> <!-- 수정하세여~  --></td>
+					</tr>
+				</table>
+			</c:forEach>
+	</form>
 </body>
 </html>

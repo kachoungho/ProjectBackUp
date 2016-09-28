@@ -54,7 +54,7 @@ html, body {
 
 <script type="text/javascript">
 	// 한글 깨짐 처리 해결
-	function gogogo2() {
+	function go() {
 		var frm = document.stuBasicForm;
 		frm.acceptCharset = 'utf-8';
 		if (document.all)
@@ -80,7 +80,7 @@ html, body {
 					<option value="human">인 문 학 과</option>
 					<option value="vision">시각디자인학과</option>
 			</select></td>
-			<td ><input type="button" value=" 선택 " onclick="gogogo2()">
+			<td ><input type="button" value=" 선택 " onclick="go()">
 			</td>
 		</table>
 		<br>

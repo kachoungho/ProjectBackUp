@@ -63,4 +63,10 @@ insert into MEMBERS
 values('110001','가충호','1234');
 
 insert into MEMBERS
-values('110002','USER','1234');
+values('040001','권옥경','1234');
+
+insert into MEMBERS
+values('030001','김세종','1234');
+
+insert into MEMBERS
+values('116035','최상경','1234');

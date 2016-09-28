@@ -24,7 +24,7 @@ html, body {
 ├ <a class="btn btn-default" href="/FirstProject/adminBasic.do">
 개인 정보 보기
 </a><br>
-└ <a class="btn btn-default" href="/FirstProject/adminEdit.do">
+└ <a class="btn btn-default" href="/FirstProject/adminBasicEdit.do">
 개인 정보 수정
 </a>
 </div>
@@ -43,6 +43,21 @@ html, body {
 </a><br>
 └ <a class="btn btn-default" href="/FirstProject/stuPickSubject.do?major=default">
 학생 수강신청 내역
+</a>
+</div>
+</div><br>
+
+<a class="btn btn-default" href=#none onclick=this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';>
+승인 페이지
+</a><DIV style='display:none'>
+├ <a class="btn btn-default" href="/FirstProject/absenceApprove.do">
+휴 학 승 인
+</a><br>
+├ <a class="btn btn-default" href="/FirstProject/returnApprove.do" >
+복 학 승 인	
+</a><br>
+└ <a class="btn btn-default" href="/FirstProject/majorApprove.do">
+전 과 승 인
 </a>
 </div>
 </div><br>

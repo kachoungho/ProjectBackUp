@@ -2,17 +2,17 @@ drop table employee;
 select * from employee; 
 
 create table employee(
-	emp_num  varchar(10) not null,
-	emp_name varchar(10) not null,
-	emp_pwd varchar(15) not null,
-	major varchar(30) not null,
-	emp_grade varchar(10) not null,
-	money varchar(30) not null,
-	mon_lev varchar(10),
-	emp_email varchar(30),
-	tel varchar(15),
-		
-	constraint employee_pk primary key (emp_num)
+   emp_num  varchar(10) not null,
+   emp_name varchar(50) not null,
+   emp_pwd varchar(15) not null,
+   major varchar(50) not null,
+   emp_grade varchar(50) not null,
+   money varchar(30) not null,
+   mon_lev varchar(30),
+   emp_email varchar(30),
+   tel varchar(15),
+      
+   constraint employee_pk primary key (emp_num)
 );
 
 --//////////////////  1. ±³¼ö DB /////////////////////////////////////////////////////////

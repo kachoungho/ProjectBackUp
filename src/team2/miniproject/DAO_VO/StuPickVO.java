@@ -66,6 +66,4 @@ public class StuPickVO {
 	public void setSub_time(String sub_time) {
 		this.sub_time = sub_time;
 	}
-	
-	
 }

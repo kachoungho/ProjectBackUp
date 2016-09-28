@@ -1,8 +1,5 @@
 package team2.miniproject.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,10 +7,9 @@ import javax.servlet.http.HttpSession;
 import team2.miniproject.DAO_VO.StudentVO;
 import team2.miniproject.DAO_VO.Team2DAO;
 import team2.miniproject.DAO_VO.temporary_absenceReturnVO;
-import team2.miniproject.DAO_VO.employeeVO;
 import team2.miniproject.DAO_VO.temporary_absenceReturnVO;
 
-public class G_b_SchoolAction implements CommandAction {
+public class G_b_SchoolProAction implements CommandAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -24,20 +20,23 @@ public class G_b_SchoolAction implements CommandAction {
 		String mem_name = (String)session.getAttribute("mem_name"); 
 		String result = (String)session.getAttribute("result"); 
 		
-		try {
-			
-			Team2DAO dao = Team2DAO.getInstance();
-			temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
-			List list = null;
-		      
-		    list=dao.ListReturnSemester(mem_num);
-			
-			request.setAttribute("list", list);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "/jsp/g_b_SchoolForm.jsp";
+		
+		
+		Team2DAO dao = Team2DAO.getInstance();
+		temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
+		
+		
+		vo.setStu_email(request.getParameter("editEmail"));
+		vo.setAddress(request.getParameter("editAddress"));
+		vo.setReturn_semester(request.getParameter("editRreturn_semster"));
+		vo.setTel(request.getParameter("editTel"));
+				
+		
+		
+		int check = dao.G_b_SchoolPro(vo, mem_num );
+		request.setAttribute("check", check);
+		
+		return "/jsp/g_b_SchoolPro.jsp";
 	}
 
 }
