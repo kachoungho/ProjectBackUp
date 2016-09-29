@@ -14,6 +14,9 @@
 select * from subject;
 drop table subject;
 
+update subject set sub_code = '2', sub_name = '2', sub_hakjum = ?, emp_name=?, sub_time=? where sub_code='1';
+
+
 코드 과목명 학점. 교수이름 시간.
 create table subject(
 	sub_code  varchar(10) not null,

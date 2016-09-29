@@ -63,9 +63,13 @@ html, body {
 </div><br>
 
 <a class="btn btn-default" href=#none onclick=this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';>
-수 업 정 보
+강 의 설 정
 </a><DIV style='display:none'>
-└ <a class="btn btn-default" href="/FirstProject/adminLectureDateForm.do">
-강의 목록 보기
+├ <a class="btn btn-default" href="/FirstProject/lectureCreate.do">
+강 의 개 설
 </a><br>
-</DIV>
+└ <a class="btn btn-default" href="/FirstProject/lectureUpdate.do">
+강 의 수 정
+</a>
+</div>
+</div><br>

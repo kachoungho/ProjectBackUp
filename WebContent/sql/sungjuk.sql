@@ -3,6 +3,9 @@ select * from sungjuk;
 
 select sub_gradeValue from sungjuk where stu_num= '110001';
 
+update sungjuk set sub_grade = ?, sub_gradevalue = ? "
+					+ "where sub_code = ? and stu_num = ? and sj_grade = ? and sj_term = ?
+
 
 create table sungjuk(
 	stu_num  varchar(10) not null,

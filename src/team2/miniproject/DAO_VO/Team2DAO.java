@@ -51,9 +51,14 @@ public class Team2DAO {
 				String DBpwd = rs.getString("mem_pwd"); // 1234
 
 				if (DBnum.equals(mem_num) && DBpwd.equals(mem_pwd)) {
-					if (mem_num.length() == 5) {//
-						result = 2;
-						System.out.println("admin로그인 result : " + result);
+					if (mem_num.length() == 5) {
+						if (DBnum.equals("40001") || DBnum.equals("40002") || DBnum.equals("40003")) {
+							result = 3;
+							System.out.println("Main admin로그인 result : " + result);
+						} else {
+							result = 2;
+							System.out.println("admin로그인 result : " + result);
+						}
 					} else {
 						result = 1;
 						System.out.println("user로그인 result : " + result);
@@ -369,11 +374,9 @@ public class Team2DAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		/* String sql = ; */
 
 		try {
 			conn = getConnection();
-			/* System.out.println("DAO에 sub_code 가 왓나 : " + sub_code); */
 			pstmt = conn.prepareStatement("delete from picksubject where sub_code = ?");
 
 			pstmt.setString(1, sub_code);
@@ -591,7 +594,6 @@ public class Team2DAO {
 
 		try {
 			conn = getConnection();
-			/* System.out.println("DAO에 sub_code 가 왓나 : " + sub_code); */
 			pstmt = conn.prepareStatement("delete from pickseason where sub_code = ?");
 
 			pstmt.setString(1, sub_code);
@@ -785,7 +787,6 @@ public class Team2DAO {
 		}
 
 		return check;
-
 	}
 
 	// 성적조회(금학기) method
@@ -806,7 +807,6 @@ public class Team2DAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				System.out.println("rs있음");
 				String sql2 = "select * from sungjuk where stu_num = ? and sj_grade = ? and sj_term = ?";
 				pstmt2 = conn.prepareStatement(sql2);
 				pstmt2.setString(1, mem_num);
@@ -815,8 +815,6 @@ public class Team2DAO {
 				rs2 = pstmt2.executeQuery();
 
 				if (rs2.next()) {
-
-					System.out.println("rs2 값 있음");
 					do {
 						CurrentSungJukVO vo = new CurrentSungJukVO();
 						vo.setStu_num(rs2.getString("stu_num"));
@@ -863,7 +861,6 @@ public class Team2DAO {
 			if (rs.next()) {
 
 				sb.append("update students set Tel=?, stu_email=?, Address=?, Home_Tel=? where stu_num =?");
-				System.out.println("여기까지넘어옴");
 				pstmt = conn.prepareStatement(sb.toString());
 
 				pstmt.setString(1, vo.getTel());
@@ -1293,11 +1290,9 @@ public class Team2DAO {
 			pstmt = conn.prepareStatement("select * from students where stu_num = ? ");
 			pstmt.setString(1, mem_num);
 			rs = pstmt.executeQuery();
-			System.out.println("이건되네?");
 			if (rs.next()) {
 				String sql2 = "insert into changeMajor(stu_num, stu_name, stu_grade, major, stu_birthday, stu_professor, stu_email, tel, change_major, reason_why)"
 						+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
-				System.out.println("이건되네1?");
 
 				pstmt = conn.prepareStatement(sql2);
 				pstmt.setString(1, mem_num);
@@ -1310,7 +1305,6 @@ public class Team2DAO {
 				pstmt.setString(8, vo.getTel());
 				pstmt.setString(9, vo.getChange_major());
 				pstmt.setString(10, vo.getReason_why());
-				System.out.println("이건되네222?");
 
 				pstmt.executeUpdate();
 
@@ -1333,15 +1327,13 @@ public class Team2DAO {
 		return result;
 	}
 
-	//계절학기 성적출력 method
+	// 계절학기 성적출력 method
 	public ArrayList<SungjukVO> ListSeasonGradeDB(String mem_num, String sj_grade, String sj_term) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<SungjukVO> list = new ArrayList<SungjukVO>();
-		System.out.println("여기까지왔니?0");
 		try {
-			System.out.println("여기까지왔니?1");
 			conn = getConnection();
 			pstmt = conn.prepareStatement("select * from sungjuk where stu_num= ? and sj_grade = ? and sj_term = ?");
 			pstmt.setString(1, mem_num);
@@ -1371,8 +1363,6 @@ public class Team2DAO {
 			CloseUtil.close(rs);
 			CloseUtil.close(conn);
 		}
-
-		System.out.println("여기까지왔니?2");
 		return list;
 	}
 
@@ -1405,4 +1395,533 @@ public class Team2DAO {
 
 		return list;
 	}
+
+	// 강의 개설 method
+	public int CreateLecture(SubjectVO vo) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = -1;
+
+		try {
+			String sql = "insert into subject(sub_code, sub_name, sub_hakjum, emp_name, sub_time)"
+					+ " values(?, ?, ?, ?, ?) ";
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getSub_code());
+			pstmt.setString(2, vo.getSub_name());
+			pstmt.setString(3, vo.getSub_hakjum());
+			pstmt.setString(4, vo.getEmp_name());
+			pstmt.setString(5, vo.getSub_time());
+			pstmt.executeUpdate();
+
+			result = 1;
+			System.out.println("신청 성공");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(conn);
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+		}
+
+		return result;
+	}
+
+	// 개설과목 전체 불러오기
+	public ArrayList<SubjectVO> SubjectList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<SubjectVO> list = new ArrayList<SubjectVO>();
+
+		try {
+			String sql = "select * from subject";
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				SubjectVO vo = new SubjectVO();
+				vo.setSub_code(rs.getString("sub_code"));
+				vo.setSub_name(rs.getString("sub_name"));
+				vo.setSub_hakjum(rs.getString("sub_hakjum"));
+				vo.setEmp_name(rs.getString("emp_name"));
+				vo.setSub_time(rs.getString("sub_time"));
+
+				list.add(vo);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+
+	// 개설과목 중 수정할 데이터 불러오기
+	public ArrayList<SubjectVO> SubjectUpdateList(String sub_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<SubjectVO> list = new ArrayList<SubjectVO>();
+
+		try {
+			String sql = "select * from subject where sub_code = ?";
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sub_code);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				SubjectVO vo = new SubjectVO();
+				vo.setSub_code(rs.getString("sub_code"));
+				vo.setSub_name(rs.getString("sub_name"));
+				vo.setSub_hakjum(rs.getString("sub_hakjum"));
+				vo.setEmp_name(rs.getString("emp_name"));
+				vo.setSub_time(rs.getString("sub_time"));
+
+				list.add(vo);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+
+	// 강의 수정 update method
+	public int UpdateLecture(SubjectVO vo, String sub_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int check = -1;
+
+		try {
+			conn = getConnection();
+			String sql = "update subject set sub_code = ?, sub_name = ?, sub_hakjum = ?, emp_name=?, sub_time=? where sub_code=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getSub_code());
+			pstmt.setString(2, vo.getSub_name());
+			pstmt.setString(3, vo.getSub_hakjum());
+			pstmt.setString(4, vo.getEmp_name());
+			pstmt.setString(5, vo.getSub_time());
+			pstmt.setString(6, sub_code);
+			pstmt.executeUpdate();
+
+			check = 1;
+			System.out.println("업데이트 성공");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return check;
+	}
+
+	// DeleteLecture
+	public int DeleteLecture(String sub_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("delete from subject where sub_code = ?");
+			pstmt.setString(1, sub_code);
+			pstmt.executeUpdate();
+
+			check = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return check;
+	}
+
+	// 강의계획서 조회 (학생) method
+	public List<Sub_detailVO> getSelectAll(String mem_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		List list = null;
+
+		try {
+			conn = getConnection();
+			String sql1 = "select grade, term from students where stu_num=?";
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setString(1, mem_num);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String sql2 = "select * from sungjuk where stu_num=? and sj_grade = ? and sj_term = ? ";
+				pstmt2 = conn.prepareStatement(sql2);
+				pstmt2.setString(1, mem_num);
+				pstmt2.setString(2, rs.getString("grade"));
+				pstmt2.setString(3, rs.getString("term"));
+				rs2 = pstmt2.executeQuery();
+				/// 과목코드 찾기........
+				if (rs2.next()) {
+					list = new ArrayList();
+
+					do {
+						SungjukVO vo = new SungjukVO();
+						vo.setEmp_name(rs2.getString("emp_name"));
+						vo.setSj_grade(rs2.getString("sj_grade"));
+						vo.setSub_code(rs2.getString("sub_code"));
+						vo.setSub_hakjum(rs2.getInt("sub_hakjum"));
+						vo.setSub_name(rs2.getString("sub_name"));
+						list.add(vo);
+
+					} while (rs2.next());
+
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+
+	// 강의계획서 콘텐츠 조회 (학생) method
+	public Sub_detailVO getDataDetail(String sub_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Sub_detailVO vo = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from sub_detail where sub_code = ? ");
+			pstmt.setString(1, sub_code);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				vo = new Sub_detailVO();
+				vo.setEmp_name(rs.getString("emp_name"));
+				vo.setSub_code(rs.getString("sub_code"));
+				vo.setSub_hakjum(rs.getString("sub_hakjum"));
+				vo.setSub_name(rs.getString("sub_name"));
+				vo.setLec_exam(rs.getString("lec_exam"));
+				vo.setLec_purpose(rs.getString("lec_purpose"));
+				vo.setSub_time(rs.getString("sub_time"));
+				vo.setLec_detail(rs.getString("lec_detail"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return vo;
+	}
+
+	// 강의계획서 조회(관리자) method
+	public List<Sub_detailVO> adminGetSelectAll(String mem_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		List list = null;
+		String emp_name = null;
+		try {
+			conn = getConnection();
+			String sql2 = "select * from members where mem_num=? ";
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, mem_num);
+			rs2 = pstmt.executeQuery();
+			if (rs2.next())
+				emp_name = rs2.getString("mem_name");
+
+			String sql1 = "select * from sub_detail where emp_name=?";
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setString(1, emp_name);
+			rs = pstmt.executeQuery();
+
+			list = new ArrayList();
+
+			while (rs.next()) {
+				Sub_detailVO vo = new Sub_detailVO();
+				vo.setEmp_name(rs.getString("emp_name"));
+				vo.setSub_time(rs.getString("sub_time"));
+				vo.setSub_code(rs.getString("sub_code"));
+				vo.setSub_hakjum(rs.getString("sub_hakjum"));
+				vo.setSub_name(rs.getString("sub_name"));
+				list.add(vo);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+
+	// 강의계획서 콘텐츠 조회(관리자) method
+	public Sub_detailVO adminGetDataDetail(String sub_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Sub_detailVO vo = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from sub_detail where sub_code = ? ");
+			pstmt.setString(1, sub_code);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				vo = new Sub_detailVO();
+				vo.setEmp_name(rs.getString("emp_name"));
+				vo.setSub_code(rs.getString("sub_code"));
+				vo.setSub_hakjum(rs.getString("sub_hakjum"));
+				vo.setSub_name(rs.getString("sub_name"));
+				vo.setLec_exam(rs.getString("lec_exam"));
+				vo.setLec_purpose(rs.getString("lec_purpose"));
+				vo.setSub_time(rs.getString("sub_time"));
+				vo.setLec_detail(rs.getString("lec_detail"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return vo;
+	}
+
+	// 강의 계획서 수정(관리자) method
+	public void updateLectureDate(Sub_detailVO vo) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "";
+
+		try {
+			conn = getConnection();
+
+			sql = "update sub_detail set lec_purpose = ?, lec_exam = ? , lec_detail = ? where sub_code = ? ";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getLec_purpose());
+			pstmt.setString(2, vo.getLec_exam());
+			pstmt.setString(3, vo.getLec_detail());
+			pstmt.setString(4, vo.getSub_code());
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+	}
+
+	// 학생성적보기(관리자) 교수별 과목 불러오기
+	public ArrayList<SubjectVO> SubjectList2(String emp_name) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<SubjectVO> list = new ArrayList<SubjectVO>();
+
+		try {
+			String sql = "select * from subject where emp_name = ?";
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, emp_name);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				SubjectVO vo = new SubjectVO();
+				vo.setSub_code(rs.getString("sub_code"));
+				vo.setSub_name(rs.getString("sub_name"));
+				vo.setSub_hakjum(rs.getString("sub_hakjum"));
+				vo.setEmp_name(rs.getString("emp_name"));
+				vo.setSub_time(rs.getString("sub_time"));
+
+				list.add(vo);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+
+	// 학생성적보기(관리자) 교수별 과목 클릭하면 수강중인 학생들 목록 나옴
+	public ArrayList<SungjukVO> SubjectListDetail(String sub_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		ResultSet rs3 = null;
+		ArrayList<SungjukVO> list = new ArrayList<SungjukVO>();
+
+		try {
+			conn = getConnection();
+			String sql = "select stu_name, grade, term from students";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){	
+				String sql2 = "select * from sungjuk where sub_code = ? order by sj_grade, sj_term asc ";
+				pstmt2 = conn.prepareStatement(sql2);
+				pstmt2.setString(1, sub_code);	
+				rs2 = pstmt2.executeQuery();
+				
+				while(rs2.next()){
+					String sql3 = "select stu_name from students where stu_num = ? ";
+					pstmt3 = conn.prepareStatement(sql3);
+					pstmt3.setString(1, rs2.getString("stu_num"));
+					rs3 = pstmt3.executeQuery();
+					
+					if(rs3.next()){
+						
+						SungjukVO vo = new SungjukVO();
+						
+						vo.setStu_num(rs2.getString("stu_num"));
+						vo.setSj_year(rs2.getString("sj_year"));
+						vo.setSj_grade(rs2.getString("sj_grade"));
+						vo.setSj_term(rs2.getString("sj_term"));
+						vo.setSub_grade(rs2.getString("sub_grade"));
+						vo.setSub_gradevalue(rs2.getFloat("sub_gradevalue"));
+						vo.setSub_code(rs2.getString("sub_code"));
+						vo.setSub_name(rs2.getString("sub_name"));
+						vo.setSub_hakjum(rs2.getInt("sub_hakjum"));
+						vo.setEmp_name(rs2.getString("emp_name"));
+						vo.setStu_name(rs3.getString("stu_name"));
+						
+						list.add(vo);
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+
+		return list;
+	}
+	
+	//학생 성적 업데이트(교수) method
+	public ArrayList<SungjukVO> StuGradeList(String check, String stu_num, String sj_grade, String sj_term) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		ArrayList<SungjukVO> list = new ArrayList<SungjukVO>();
+
+		try {
+			conn = getConnection();
+			String sql = "select * from sungjuk where sub_code = ? and stu_num = ? and sj_grade = ? and sj_term = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, check);
+			pstmt.setString(2, stu_num);
+			pstmt.setString(3, sj_grade);
+			pstmt.setString(4, sj_term);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String sql2 = "select stu_name from students where stu_num = ? ";
+				pstmt2 = conn.prepareStatement(sql2);
+				pstmt2.setString(1, rs.getString("stu_num"));
+				rs2 = pstmt2.executeQuery();	
+				
+				if(rs2.next()){
+					SungjukVO vo = new SungjukVO();
+
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setSj_year(rs.getString("sj_year"));
+					vo.setSj_grade(rs.getString("sj_grade"));
+					vo.setSj_term(rs.getString("sj_term"));
+					vo.setSub_grade(rs.getString("sub_grade"));
+					vo.setSub_gradevalue(rs.getFloat("sub_gradevalue"));
+					vo.setSub_code(rs.getString("sub_code"));
+					vo.setSub_name(rs.getString("sub_name"));
+					vo.setSub_hakjum(rs.getInt("sub_hakjum"));
+					vo.setEmp_name(rs.getString("emp_name"));
+					vo.setStu_name(rs2.getString("stu_name"));
+					
+					list.add(vo);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(rs2);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+	
+	// 학생 성적 update method
+	public int StuGradeUpdate(String mem_num, SungjukVO vo){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 0;
+		
+		try {
+			conn = getConnection();
+			String sql = "update sungjuk set sub_grade = ?, sub_gradevalue = ? "
+					+ "where sub_code = ? and stu_num = ? and sj_grade = ? and sj_term = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getSub_grade());
+			pstmt.setFloat(2, vo.getSub_gradevalue());
+			pstmt.setString(3, vo.getSub_code());
+			pstmt.setString(4, vo.getStu_num());
+			pstmt.setString(5, vo.getSj_grade());
+			pstmt.setString(6, vo.getSj_term());
+			pstmt.executeUpdate();
+			
+			check = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return check;
+	}
+	
 }

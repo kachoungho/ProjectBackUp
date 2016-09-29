@@ -27,12 +27,17 @@
 				<td colspan="2"><jsp:include page="../module/top.jsp" /></td>
 			</tr>
 			<tr>
-				<td height="500px" width="15%" valign="top"><c:if
-						test="${ result == 1 }">
+				<td height="500px" width="15%" valign="top">
+					<c:if test="${ result == 1 }">
 						<jsp:include page="../module/left.jsp" flush="false" />
-					</c:if> <c:if test="${ result == 2 }">
+					</c:if> 
+					<c:if test="${ result == 2 }">
 						<jsp:include page="../module/adminleft.jsp" flush="false" />
-					</c:if></td>
+					</c:if>
+					<c:if test="${ result == 3 }">
+						<jsp:include page="../module/mainadminleft.jsp" flush="false" />
+					</c:if>
+				</td>					
 				<td width="85%" height="60%" valign="top">
 				<jsp:include page="${ CONTENT }" /> <br> <br></td>
 			</tr>

@@ -91,18 +91,17 @@ public class team2Controller extends HttpServlet {
 		
 		request.setAttribute("CONTENT", view);
 		
-		if(view.equals("/jsp/logincheck.jsp")){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/logincheck.jsp");
+		if(view.equals("/jsp/login/logincheck.jsp")){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login/logincheck.jsp");
 			dispatcher.forward(request, response);
-		} else if(view.equals("/jsp/loginSuc.jsp")){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/loginSuc.jsp");
+		} else if(view.equals("/jsp/login/loginSuc.jsp")){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login/loginSuc.jsp");
 			dispatcher.forward(request, response);
 		}  else if(view.equals("/jsp/main.jsp")){
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/main.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template.jsp");
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("/template.jsp");
 			dispatcher.forward(request, response);
 		}
 		

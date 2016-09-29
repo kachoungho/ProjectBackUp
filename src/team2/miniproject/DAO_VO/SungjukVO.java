@@ -1,7 +1,7 @@
 package team2.miniproject.DAO_VO;
 
 public class SungjukVO {
-	String stu_num, sj_year, sj_grade, sj_term, sub_grade, sub_code, sub_name, emp_name;
+	String stu_num, sj_year, sj_grade, sj_term, sub_grade, sub_code, sub_name, emp_name , stu_name;
 	float sub_gradevalue;
 	int sub_hakjum;
 
@@ -85,4 +85,13 @@ public class SungjukVO {
 		this.sub_hakjum = sub_hakjum;
 	}
 
+	public String getStu_name() {
+		return stu_name;
+	}
+
+	public void setStu_name(String stu_name) {
+		this.stu_name = stu_name;
+	}
+
+	
 }
