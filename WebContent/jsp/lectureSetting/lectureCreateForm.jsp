@@ -3,12 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-#td{
-	border: 2px solid #1E3449;
-}
-</style>
-
+<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
 <script>
  
           function changeImg() 

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
 <meta http-equiv="Refresh" >
 <title>계절학기 수강신청 페이지 입니다.</title>
 

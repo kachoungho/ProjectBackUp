@@ -7,6 +7,7 @@
 
 <html>
 <head>
+<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
 <title>강의계획서</title>
 </head>
 <body>

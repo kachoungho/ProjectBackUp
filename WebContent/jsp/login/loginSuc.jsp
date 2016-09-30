@@ -5,75 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<style type="text/css">
-html, body {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	
-}
-
-#main {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	background-image: url(images/gr18.jpg) no-repeat center center fixed;
-	background-size: cover;
-}
-
-#main .main-letter {
-	position: relative;
-	width: auto;
-	height: 120px;
-	top: 50%;
-	margin-top: -120px;
-	font-family: 'Montserrat', 'Noto-Sans', sans-serif;
-	/*padding: 160px 0 20px 0;*/
-	/* color: white; */
-	color: black;
-	font-size: 46px;
-	font-weight: 600;
-	z-index: 20;
-}
-
-.btn-default {
-	display: block;
-	margin: 0 auto;
-	width: 150px;
-	height: 20px;
-	line-height: 20px;
-	/* font-family: 'Montserrat', 'Noto-Sans', sans-serif; */
-	/* border: 3px solid white; */
-	border: 2px solid #1E3449;
-	/* color: #fff; */
-	font-family: '1훈고딕굴림';'
-	color: black;
-	font-size: 20px;
-	padding: 12px 18px;
-	text-decoration: none;
-	margin-top: 10px;
-	z-index: 10;
-}
-
-.main-overlay {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: 5;
-	background-image: url(jsp/images/background.png);
-	background-size: cover;	
-	font-family: '1훈고딕굴림';'
-}
-.m-t-10 {
-	display:block;
-	margin-top:15px; 
-}
-</style>
+<link rel="stylesheet" type="text/css" href="/FirstProject/css/style.css">
 
 <script language="JavaScript">
 	function pagestart() {
@@ -94,19 +26,17 @@ html, body {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 </head>
-<body  onLoad="pagestart()"><!-- background="images/gr18.jpg" -->
-	<div class="main-overlay">
+<body  onLoad="pagestart()">
+	<div class="main-overlay2">
 		<form name="mainForm2" action="" method="post">
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			<table  align="center">
+		<br><br><br><br>
+			<table align="center">
 				<tr align="center">
-					<td align="center" font="30px"><font color="black">${sessionScope.mem_name} 님 접속중</font></td>
-					<td><input type="button" value="로그아웃" onclick="document.location.href='/FirstProject/logout.do'"></td>
+					<td id="font" align="center">${sessionScope.mem_name} 님 접속중&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="font" type="button" value="로그아웃" onclick="document.location.href='/FirstProject/logout.do'"></td>
+					
 				</tr>
 			</table>
-
 			<table align="center">
-			<br>
 				<tr align="center" >
 					<td>
 						<a class="btn btn-default" href="#" >홈페이지</a>	

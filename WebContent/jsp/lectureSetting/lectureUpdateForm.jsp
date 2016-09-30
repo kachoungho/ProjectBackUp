@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
 <script LANGUAGE="JavaScript">
 	function go() {
 		var frm1 = document.pickForm1;

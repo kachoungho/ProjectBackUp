@@ -1794,23 +1794,23 @@ public class Team2DAO {
 			String sql = "select stu_name, grade, term from students";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()){	
+
+			if (rs.next()) {
 				String sql2 = "select * from sungjuk where sub_code = ? order by sj_grade, sj_term asc ";
 				pstmt2 = conn.prepareStatement(sql2);
-				pstmt2.setString(1, sub_code);	
+				pstmt2.setString(1, sub_code);
 				rs2 = pstmt2.executeQuery();
-				
-				while(rs2.next()){
+
+				while (rs2.next()) {
 					String sql3 = "select stu_name from students where stu_num = ? ";
 					pstmt3 = conn.prepareStatement(sql3);
 					pstmt3.setString(1, rs2.getString("stu_num"));
 					rs3 = pstmt3.executeQuery();
-					
-					if(rs3.next()){
-						
+
+					if (rs3.next()) {
+
 						SungjukVO vo = new SungjukVO();
-						
+
 						vo.setStu_num(rs2.getString("stu_num"));
 						vo.setSj_year(rs2.getString("sj_year"));
 						vo.setSj_grade(rs2.getString("sj_grade"));
@@ -1822,7 +1822,7 @@ public class Team2DAO {
 						vo.setSub_hakjum(rs2.getInt("sub_hakjum"));
 						vo.setEmp_name(rs2.getString("emp_name"));
 						vo.setStu_name(rs3.getString("stu_name"));
-						
+
 						list.add(vo);
 					}
 				}
@@ -1838,8 +1838,8 @@ public class Team2DAO {
 
 		return list;
 	}
-	
-	//학생 성적 업데이트(교수) method
+
+	// 학생 성적 업데이트(교수) method
 	public ArrayList<SungjukVO> StuGradeList(String check, String stu_num, String sj_grade, String sj_term) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -1862,9 +1862,9 @@ public class Team2DAO {
 				String sql2 = "select stu_name from students where stu_num = ? ";
 				pstmt2 = conn.prepareStatement(sql2);
 				pstmt2.setString(1, rs.getString("stu_num"));
-				rs2 = pstmt2.executeQuery();	
-				
-				if(rs2.next()){
+				rs2 = pstmt2.executeQuery();
+
+				if (rs2.next()) {
 					SungjukVO vo = new SungjukVO();
 
 					vo.setStu_num(rs.getString("stu_num"));
@@ -1878,7 +1878,7 @@ public class Team2DAO {
 					vo.setSub_hakjum(rs.getInt("sub_hakjum"));
 					vo.setEmp_name(rs.getString("emp_name"));
 					vo.setStu_name(rs2.getString("stu_name"));
-					
+
 					list.add(vo);
 				}
 			}
@@ -1892,14 +1892,14 @@ public class Team2DAO {
 		}
 		return list;
 	}
-	
+
 	// 학생 성적 update method
-	public int StuGradeUpdate(String mem_num, SungjukVO vo){
+	public int StuGradeUpdate(String mem_num, SungjukVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int check = 0;
-		
+
 		try {
 			conn = getConnection();
 			String sql = "update sungjuk set sub_grade = ?, sub_gradevalue = ? "
@@ -1912,7 +1912,7 @@ public class Team2DAO {
 			pstmt.setString(5, vo.getSj_grade());
 			pstmt.setString(6, vo.getSj_term());
 			pstmt.executeUpdate();
-			
+
 			check = 1;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1923,5 +1923,428 @@ public class Team2DAO {
 		}
 		return check;
 	}
-	
+
+	// 관리자측 휴학승인Form부분
+	public List ListadminAbsence(String mem_num) throws Exception {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = null;
+
+		try {
+			conn = getConnection();
+			String sql = "select * from temporary_absenceReturn ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList();
+				do {
+					temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setStu_name(rs.getString("stu_name"));
+					vo.setStu_birthday(rs.getString("stu_birthday"));
+					vo.setStu_professor(rs.getString("stu_professor"));
+					vo.setStu_email(rs.getString("stu_email"));
+					vo.setMajor(rs.getString("major"));
+					vo.setAddress(rs.getString("address"));
+					vo.setStu_grade(rs.getString("stu_grade"));
+					vo.setTel(rs.getString("tel"));
+					vo.setAbsence(rs.getString("absence"));
+					vo.setReturn_semester(rs.getString("return_semester"));
+					list.add(vo);
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}// 관리자측 휴학승인Form부분 end
+
+	// 관리자측휴학승인update부분
+	public List ListadminAbsencePro(String mem_num, String checkbox) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		List list = null;
+		
+		try {
+			conn = getConnection();
+			String sql = "select * from temporary_absenceReturn where stu_num =?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, checkbox);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList();
+				do {
+					temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setStu_name(rs.getString("stu_name"));
+					vo.setStu_birthday(rs.getString("stu_birthday"));
+					vo.setStu_professor(rs.getString("stu_professor"));
+					vo.setStu_email(rs.getString("stu_email"));
+					vo.setMajor(rs.getString("major"));
+					vo.setAddress(rs.getString("address"));
+					vo.setStu_grade(rs.getString("stu_grade"));
+					vo.setTel(rs.getString("tel"));
+					vo.setAbsence(rs.getString("absence"));
+					vo.setReturn_semester(rs.getString("return_semester"));
+					if (vo.getAbsence() != null) {
+						if (checkbox != null) {
+							String sql2 = "update students set stu_state=? where stu_num=?";
+							pstmt2 = conn.prepareStatement(sql2);
+							pstmt2.setString(1, rs.getString("absence"));
+							pstmt2.setString(2, rs.getString("stu_num"));
+							pstmt2.executeUpdate();
+							list.add(vo);
+						} // checkbox 체크여부 if end
+						list.add(vo);
+					}
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+
+		return list;
+	}// 관리자측휴학승인update부분
+
+	// 관리자측휴학승인delete부분
+	public List ListadminAbsenceDel(String mem_num, String checkbox) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		List list2 = null;
+		
+		try {
+			conn = getConnection();
+			String sql = "select * from temporary_absenceReturn where stu_num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, checkbox);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list2 = new ArrayList();
+				temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
+				vo.setStu_num(rs.getString("stu_num"));
+				vo.setStu_name(rs.getString("stu_name"));
+				vo.setStu_birthday(rs.getString("stu_birthday"));
+				vo.setStu_professor(rs.getString("stu_professor"));
+				vo.setStu_email(rs.getString("stu_email"));
+				vo.setMajor(rs.getString("major"));
+				vo.setAddress(rs.getString("address"));
+				vo.setStu_grade(rs.getString("stu_grade"));
+				vo.setTel(rs.getString("tel"));
+				vo.setAbsence(rs.getString("absence"));
+				vo.setReturn_semester(rs.getString("return_semester"));
+				
+				if (vo.getAbsence() != null) {
+					if (checkbox != null) {
+						String sql2 = "delete from temporary_absenceReturn where stu_num=?";
+						pstmt2 = conn.prepareStatement(sql2);
+						pstmt2.setString(1, rs.getString("stu_num"));
+						pstmt2.executeUpdate();
+						list2.add(vo);
+					} // checkbox 체크여부 if end
+					list2.add(vo);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list2;
+	}// 관리자측휴학승인update부분
+
+	// 관리자측 복학승인 Form부분
+	public List ListReturnadminSemester(String stu_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = null;
+		
+		try {
+			conn = getConnection();
+			String sql = "select * from temporary_absenceReturn ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList();
+				do {
+					temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setStu_name(rs.getString("stu_name"));
+					vo.setStu_birthday(rs.getString("stu_birthday"));
+					vo.setStu_professor(rs.getString("stu_professor"));
+					vo.setStu_email(rs.getString("stu_email"));
+					vo.setMajor(rs.getString("major"));
+					vo.setAddress(rs.getString("address"));
+					vo.setStu_grade(rs.getString("stu_grade"));
+					vo.setTel(rs.getString("tel"));
+					vo.setAbsence(rs.getString("absence"));
+					vo.setReturn_semester(rs.getString("return_semester"));
+					list.add(vo);
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}// 관리자측 복학승인 Form부분
+
+	// 관리자측 복학승인 Update부분
+	public List ListadminReturnPro(String mem_num, String checkbox) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		List list = null;
+
+		try {
+			conn = getConnection();
+			String sql = "select * from temporary_absenceReturn where stu_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, checkbox);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList();
+				do {
+					temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setStu_name(rs.getString("stu_name"));
+					vo.setStu_birthday(rs.getString("stu_birthday"));
+					vo.setStu_professor(rs.getString("stu_professor"));
+					vo.setStu_email(rs.getString("stu_email"));
+					vo.setMajor(rs.getString("major"));
+					vo.setAddress(rs.getString("address"));
+					vo.setStu_grade(rs.getString("stu_grade"));
+					vo.setTel(rs.getString("tel"));
+					vo.setAbsence(rs.getString("absence"));
+					vo.setReturn_semester(rs.getString("return_semester"));
+					if (vo.getReturn_semester() != null) {
+						if (checkbox != null) {
+							String sql2 = "update students set stu_state=? where stu_num=?";
+							pstmt2 = conn.prepareStatement(sql2);
+							pstmt2.setString(1, "재학");
+							pstmt2.setString(2, rs.getString("stu_num"));
+							pstmt2.executeUpdate();
+							list.add(vo);
+						} // checkbox 체크여부 if end
+						list.add(vo);
+					}
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+
+		return list;
+	}/// 관리자측 복학승인 Update부분
+
+	// 관리자측 복학승인 delte부분
+	public List ListadminReturnDel(String mem_num, String checkbox) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		List list2 = null;
+		try {
+			conn = getConnection();
+			String sql = "select * from temporary_absenceReturn where stu_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, checkbox);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list2 = new ArrayList();
+				do {
+					temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setStu_name(rs.getString("stu_name"));
+					vo.setStu_birthday(rs.getString("stu_birthday"));
+					vo.setStu_professor(rs.getString("stu_professor"));
+					vo.setStu_email(rs.getString("stu_email"));
+					vo.setMajor(rs.getString("major"));
+					vo.setAddress(rs.getString("address"));
+					vo.setStu_grade(rs.getString("stu_grade"));
+					vo.setTel(rs.getString("tel"));
+					vo.setAbsence(rs.getString("absence"));
+					vo.setReturn_semester(rs.getString("return_semester"));
+					if (vo.getReturn_semester() != null) {
+						if (checkbox != null) {
+							String sql2 = "delete from temporary_absenceReturn where stu_num=?";
+							pstmt2 = conn.prepareStatement(sql2);
+							pstmt2.setString(1, rs.getString("stu_num"));
+							pstmt2.executeUpdate();
+							list2.add(vo);
+						} // checkbox 체크여부 if end
+						list2.add(vo);
+					}
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list2;
+	}// 관리자측 복학승인 delte부분
+
+	// 관리자측 전과승인 Form부분
+	public List ListAdminChangeMajor(String stu_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = null;
+
+		try {
+			conn = getConnection();
+			String sql = "select * from changeMajor";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList();
+				do {
+					changeMajorVO vo = new changeMajorVO();
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setStu_name(rs.getString("stu_name"));
+					vo.setStu_grade(rs.getString("stu_grade"));
+					vo.setMajor(rs.getString("major"));
+					vo.setStu_birthday(rs.getString("stu_birthday"));
+					vo.setStu_professor(rs.getString("stu_professor"));
+					vo.setStu_email(rs.getString("stu_email"));
+					vo.setTel(rs.getString("tel"));
+					vo.setChange_major(rs.getString("change_major"));
+					vo.setReason_why(rs.getString("reason_why"));
+					list.add(vo);
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}// 관리자측 전과승인 Form부분
+
+	// 관리자측 전과승인 Update부분
+	public List ListadminMajorPro(String mem_num, String checkbox) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		List list = null;
+
+		try {
+			conn = getConnection();
+			String sql = "select * from changeMajor where stu_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, checkbox);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList();
+				do {
+					changeMajorVO vo = new changeMajorVO();
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setStu_name(rs.getString("stu_name"));
+					vo.setStu_grade(rs.getString("stu_grade"));
+					vo.setMajor(rs.getString("change_major"));
+					vo.setStu_birthday(rs.getString("stu_birthday"));
+					vo.setStu_professor(rs.getString("stu_professor"));
+					vo.setStu_email(rs.getString("stu_email"));
+					vo.setTel(rs.getString("tel"));
+					vo.setChange_major(rs.getString("change_major"));
+					vo.setReason_why(rs.getString("reason_why"));
+					if (checkbox != null) {
+						String sql2 = "update students set major=? where stu_num=?";
+						pstmt2 = conn.prepareStatement(sql2);
+						pstmt2.setString(1, vo.getMajor());
+						pstmt2.setString(2, rs.getString("stu_num"));
+						pstmt2.executeUpdate();
+						list.add(vo);
+					} // checkbox 체크여부 if end
+					list.add(vo);
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}// 관리자측 전과승인 Update부분
+
+	// 관리자측 전과승인 delete부분
+	public List ListadminMajorDel(String mem_num, String checkbox) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		List list2 = null;
+
+		try {
+			conn = getConnection();
+			String sql = "select * from changeMajor where stu_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, checkbox);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list2 = new ArrayList();
+				do {
+					changeMajorVO vo = new changeMajorVO();
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setStu_name(rs.getString("stu_name"));
+					vo.setStu_grade(rs.getString("stu_grade"));
+					vo.setMajor(rs.getString("change_major"));
+					vo.setStu_birthday(rs.getString("stu_birthday"));
+					vo.setStu_professor(rs.getString("stu_professor"));
+					vo.setStu_email(rs.getString("stu_email"));
+					vo.setTel(rs.getString("tel"));
+					vo.setChange_major(rs.getString("change_major"));
+					vo.setReason_why(rs.getString("reason_why"));
+					if (checkbox != null) {
+						String sql2 = "delete from changeMajor where stu_num=?";
+						pstmt2 = conn.prepareStatement(sql2);
+						pstmt2.setString(1, rs.getString("stu_num"));
+						pstmt2.executeUpdate();
+						list2.add(vo);
+					} // checkbox 체크여부 if end
+					list2.add(vo);
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list2;
+	}/// 관리자측 전과승인 delete부분
+
 }

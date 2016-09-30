@@ -28,6 +28,7 @@
 			</tr>
 			<tr>
 				<td height="500px" width="15%" valign="top">
+				<br><br>
 					<c:if test="${ result == 1 }">
 						<jsp:include page="../module/left.jsp" flush="false" />
 					</c:if> 

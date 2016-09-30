@@ -20,16 +20,17 @@ html, body {
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>th125 JSP Template</title>
 </head>
 <body>
-	<table class="btn btn-default" width="670" border="1" cellspacing="0"
+	<table class="btn btn-default3" width="670" cellspacing="0"
 		cellpadding="0">
 		<tr align="center">
-			<td width="90"><a href="/FirstProject/basic.do">기본 사항</a></td>
-			<td width="90"><a href="/FirstProject/scholarship.do">장학 사항</a></td>
-			<td width="90"><a href="/FirstProject/adviser.do">지도 교수</a></td>
+			<td width="200"><a href="/FirstProject/basic.do">기본 사항</a></td>
+			<td width="200"><a href="/FirstProject/scholarship.do">장학 사항</a></td>
+			<td width="200"><a href="/FirstProject/adviser.do">지도 교수</a></td>
 		</tr>
 	</table>
 	<br>
@@ -41,7 +42,7 @@ html, body {
 
 		<tr>
 			<td width="30">&nbsp;</td>
-			<td align="left">0
+			<td align="left">
 				<table width="70%" border="0" cellspacing="1" cellpadding="2"
 					bgcolor="#737373">
 					<c:forEach var="list" items="${ list }">

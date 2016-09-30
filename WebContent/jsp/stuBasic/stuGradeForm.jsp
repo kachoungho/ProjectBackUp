@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<link href="../view/mystyle.css" rel="stylesheet" type=text/css">
+<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
 <title>게시판</title>
 </head>
 <body>

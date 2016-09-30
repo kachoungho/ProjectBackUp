@@ -4,53 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<style type="text/css">
-
-html, body {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	font-family: '1훈고딕굴림';'
-	
-}
-
-#td{
-	display: block;
-	margin: 0 auto;
-	width: 100%;
-	height: 100%;
-	line-height: 20px;
-	border: 2px solid #1E3449;
-}
-
-#td2{/* 
-	display: block;
-	margin: 0 auto; */
-	line-height: 20px;
-	border: 2px solid #1E3449;
-	text-align: center;
-}
-
-#table1 {
-	display: block;
-	margin: 0 auto;
-	width: 100%;
-	height: 100%;
-	line-height: 20px;
-	border: 2px solid #1E3449;
-}
-
-#table2 {
-	display: block;
-	margin: 0 auto;
-	width: 200px;
-	height: 100%;
-	line-height: 20px;
-	border: 2px solid #1E3449;
-}
-</style>
+<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
 
 <script type="text/javascript">
 	// 한글 깨짐 처리 해결

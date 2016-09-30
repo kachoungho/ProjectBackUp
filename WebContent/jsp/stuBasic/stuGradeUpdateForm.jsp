@@ -4,28 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<style type="text/css">
-.center {
-	text-align: center;
-}
-
-html, body {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
-.
-btn-default {
-	text-align: center;
-	font-family: '1훈고딕굴림'; '
-	color: black;
-	font-size: 20px;
-	margin-top: 10px;
-}
-</style>
+<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
