@@ -14,15 +14,17 @@
 	<br>
 	<br>
 	<form action = "adminSubmitWritePro.do" method="post" name = "adminSubmitWriteForm" onsubmit="return writeSave()">
+		<input type="hidden" name="sub_code" value="${sub_code}">
+		<input type="hidden" name="sub_name" value="${sub_name}">
 		<table id="th" align="center">
 			<td id="th2"><b>[ <c:out value="${sub_name}" /> ] 과목의 과제 작성
 			</b></td>
 		</table>
 		<table align="right">
 			<td id="td">
-				<input type = "submit" value = "과제 등록">
-				<input type= "reset" value = "다시 작성">
-				<input type = "button" value = "과제 목록보기" 
+				<input type = "submit" class="css_btn_class" value = "과제 등록">
+				<input type= "reset" class="css_btn_class"  value = "다시 작성">
+				<input type = "button" class="css_btn_class"  value = "과제 목록보기" 
 				onclick="document.location.href='adminSubmitListForm.do?sub_code=${sub_code}&sub_name=${sub_name}'">				
 			</td>							
 		</table>
@@ -67,7 +69,7 @@
 			</tr>
 		</table>
 		<br> <br>
-		<input type="hidden" name="sub_code" value="${sub_code}">
+		
 	</form>
 </body>
 </html>

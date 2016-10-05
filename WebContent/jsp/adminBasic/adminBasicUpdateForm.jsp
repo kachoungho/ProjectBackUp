@@ -10,9 +10,7 @@
 
 <c:if test="${ check == 1 }">
    <script type="text/javascript">
-   <!--
          alert("수정 실패!!");
          history.go(-1);
-   -->      
    </script>
 </c:if>

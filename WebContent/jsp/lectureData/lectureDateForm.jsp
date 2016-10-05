@@ -12,20 +12,19 @@
 <body >
    <center>
    <br>
-        <table id="th" align="center">
+        <table align="center">
    		  <td id="th2" >현 학기 강의 계획서(수강과목  :  ${ count } 과목 ) </td><!-- 현학기 듣는 과목숫자. -->
       	</table>
 		<br>
 		<br>
  
       <c:if test="${ count  == 0 } ">
-         <table id="th" align="center">
+         <table align="center">
                <td id="th2" >이번 학기에 수강중인 과목이 없습니다.</td>
          </table>
       </c:if>
       <c:if test="${count>0}">
-         <table width="700" border="1" cellpadding="0" cellspacing="0"
-            align="center">
+         <table width="700" align="center">
             <tr height="30" >
                <td id="th" align="center" width="50">번 호</td>
                <td id="th" align="center" width="50">제 목</td>

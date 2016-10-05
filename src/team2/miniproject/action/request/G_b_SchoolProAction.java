@@ -19,15 +19,12 @@ public class G_b_SchoolProAction implements CommandAction {
 		String mem_name = (String)session.getAttribute("mem_name"); 
 		String result = (String)session.getAttribute("result"); 
 		
+		Team2DAO dao = Team2DAO.getInstance();		
 		
-		
-		Team2DAO dao = Team2DAO.getInstance();
-		temporary_absenceReturnVO vo = new temporary_absenceReturnVO();				
-		
-		
-		int check = dao.G_b_SchoolPro(vo, mem_num );
+		int check = dao.G_b_SchoolPro(mem_num );
 		request.setAttribute("check", check);
 		request.setAttribute("mem_num", mem_num);
+		
 		return "/jsp/request/g_b_SchoolPro.jsp";
 	}
 

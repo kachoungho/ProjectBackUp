@@ -51,7 +51,7 @@
 				
 				<tr>
 					<td id="th2" colspan="8">
-						<input type="submit" value="수정"> 
+						<input type="submit" class="css_btn_class" value="수정"> 
 						<input type="reset" value="재입력">
 					</td>
 				</tr>

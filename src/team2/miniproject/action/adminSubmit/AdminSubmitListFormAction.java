@@ -22,25 +22,34 @@ public class AdminSubmitListFormAction implements CommandAction {
 		String mem_name = (String)session.getAttribute("mem_name");
 		String sub_code = request.getParameter("sub_code");
 		String sub_name = request.getParameter("sub_name");
-	    
-		Team2DAO dao = Team2DAO.getInstance();
-		System.out.println(mem_num);
-		System.out.println(mem_name);
-		System.out.println(sub_code);
-		System.out.println(sub_name);
-
+		String week = request.getParameter("week");
 		List list = null;
-		list = dao.adminSubmitGetSelectAll(mem_num, sub_code);
-		int count = list.size();
+		List list2 = null;
+		String rt = null;
+		int count = 0;
+		Team2DAO dao = Team2DAO.getInstance();
+		
+		if(week.equals("default")){
+			rt = "/jsp/adminSubmit/adminSubmitListForm.jsp";
+		} else {
+			list = dao.adminSubmitGetSelectAll(mem_num, sub_code, week);
+			list2 = dao.adminSubmitGetSelect(mem_num, sub_code, week);
+			count = list.size();
+			request.setAttribute("count",count);
+			request.setAttribute("list",list);
+			request.setAttribute("list2",list2);
+			rt = "/jsp/adminSubmit/adminSubmitListForm.jsp";
+		}
 
-		request.setAttribute("count",count);
-		request.setAttribute("list",list);
+		
+		
+		
 		request.setAttribute("emp_name",mem_name);
 		request.setAttribute("sub_name",sub_name);
 		request.setAttribute("sub_code",sub_code);
 
 		
-		return "/jsp/adminSubmit/adminSubmitListForm.jsp";
+		return rt;
 	}
 
 }

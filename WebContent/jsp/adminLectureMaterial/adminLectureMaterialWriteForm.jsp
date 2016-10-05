@@ -21,7 +21,7 @@
 			</b></td>
 		</table>
 		<table align="right">
-			<td id="td"><input type="button" value="자료 목록보기"
+			<td id="td"><input type="button" class="css_btn_class"  value="자료 목록보기"
 				onclick="document.location.href='adminLectureMaterialListForm.do?sub_code=${sub_code}&sub_name=${sub_name}'">
 			</td>
 		</table>
@@ -74,7 +74,7 @@
 				</tr>
 			<tr>
 
-				<td id="th2" colspan="2"><input type="submit" value="자료 등록"><input
+				<td id="th2" colspan="2"><input type="submit" class="css_btn_class" value="자료 등록"><input
 					type="reset" value="다시 작성"></td>
 			</tr>
 		</table>

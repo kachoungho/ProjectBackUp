@@ -10,7 +10,8 @@
 <title>th125 JSP Template</title>
 </head>
 <body>
-	<table>
+<br><br>
+	<table align="center">
 		<c:forEach var="list2" items="${list2}">
 			<c:if test="${list2.sj_grade==3}">
 				<c:if test="${list2.sj_term==3}">
@@ -67,8 +68,8 @@
 			</c:if>
 		</c:forEach>
 	</table>
-
-	<table>
+<br>
+	<table align="center">
 		<tr>
 			<td id="th" width="100">수강코드</td>
 			<td id="th" width="300">과 목 명</td>

@@ -21,12 +21,12 @@ public class StuGradeUpdateAction implements CommandAction {
 		String check = request.getParameter("check");
 		String sj_grade = request.getParameter("sj_grade");
 		String sj_term = request.getParameter("sj_term");
-		String stu_num = request.getParameter("stu_num");
+		String sub_code = request.getParameter("sub_code");
 
 		ArrayList<SungjukVO> list = null;
 		Team2DAO dao = Team2DAO.getInstance();
 		
-		list = dao.StuGradeList(check, stu_num, sj_grade, sj_term);
+		list = dao.StuGradeList(check, sub_code, sj_grade, sj_term);
 		
 		request.setAttribute("list", list);		
 		

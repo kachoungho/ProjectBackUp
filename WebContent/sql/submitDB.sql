@@ -1,5 +1,7 @@
 drop table submit;
 select * from submit;
+
+delete from submit where description='iu';
 create table submit(
 	submit_week varchar(5) not null,
 	sub_code  varchar(10) not null,

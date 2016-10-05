@@ -9,7 +9,8 @@
 <title>th125 JSP Template</title>
 </head>
 <body>
-	<table>
+<br>
+	<table width="95%" align="center">
 		<tr id="info">
 			<th id="info"width="100">구 분</th>
 			<th id="info" width="400">세 부 메 뉴</th>

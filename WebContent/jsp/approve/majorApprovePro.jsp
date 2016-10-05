@@ -3,6 +3,6 @@
 			<meta  http-equiv="Refresh"  content="0; url=/FirstProject/info.do?mem_num=${mem_num}">
 
 <script type="text/javascript">
-
-		alert("승인되었습니다.");
-		</script>
+	alert("전과 처리가 완료되었습니다.");
+	history.go(1);
+</script>

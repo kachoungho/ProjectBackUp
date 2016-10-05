@@ -11,11 +11,17 @@
 	<c:if test="${ check == 1 }">
 		<meta http-equiv="Refresh"
 			content="0; url=/FirstProject/basicEditSuc.do?mem_num=${mem_num}">
+		<script type="text/javascript">
+			alert("회원정보 수정이 완료되었습니다.");
+			history.go(1);
+		</script>
+
 	</c:if>
 
 	<c:if test="${ check == 0 }">
 		<script type="text/javascript">
-			
+		alert("회원정보 수정에 실패했습니다.");
+		history.go(-1);
 		</script>
 	</c:if>
 

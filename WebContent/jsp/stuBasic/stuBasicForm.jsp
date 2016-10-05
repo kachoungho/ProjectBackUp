@@ -27,7 +27,7 @@
 <body>
 <br><br>
 	<form name="stuBasicForm" action="/FirstProject/stuBasic.do" method="get" accept-charset="">
-		<table id="th">
+		<table id="th" align="center">
 			<td width="100" >
 				<select height="30" name="major">
 					<option value="default">학 과 선 택</option>
@@ -37,14 +37,14 @@
 				</select>
 			</td>
 			<td>
-				<input type="button" value=" 선택 " onclick="gogogo2()">
+				<input type="button" class="css_btn_class"  value=" 선택 " onclick="gogogo2()">
 			</td>
 		</table>
 		
 		<br>
 		<br>
 		<c:forEach var="list" items="${ list }">
-			<table id="th">
+			<table align="center">
 				<tr>
 					<td id="th" width="100">학 번</td>
 					<td id="th" width="100">이 름</td>

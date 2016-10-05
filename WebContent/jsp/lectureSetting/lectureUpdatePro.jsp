@@ -13,7 +13,7 @@
 		<form name="createForm" action="/FirstProject/lectureUpdateProc.do" method="post">
 			<input type="hidden" name="sub_code1" value="${list.sub_code}">
 			<br> <br>
-			<table id="th">
+			<table align="center">
 				<tr>
 					<td id="th" colspan="2" width="300" height="30">강 의 수 정</td>
 				</tr>
@@ -54,8 +54,8 @@
 				</tr>
 				
 				<tr>
-					<td id="th" colspan="2" height="30">
-						<input type="submit" value="수정완료">
+					<td id="th2" colspan="2" height="30">
+						<input type="submit" class="css_btn_class" value="수정완료">
 						<input type="reset" value="다시입력">
 					</td>
 				</tr>

@@ -21,7 +21,7 @@
 
 
 <c:if test="${sessionScope.mem_name == null}">
-	<meta http-equiv="Refresh" content="0; url=/FirstProject/jsp/main.jsp">
+	<meta http-equiv="Refresh" content="0; url=/FirstProject/main.do">
 </c:if>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,7 +34,7 @@
 			<tr align="center">
 				<td id="font" align="center">${sessionScope.mem_name}님
 					접속중&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="font"
-					type="button" value="로그아웃"
+					type="button" class="css_btn_class"  value="로그아웃"
 					onclick="document.location.href='/FirstProject/logout.do'">
 				</td>
 
@@ -42,7 +42,7 @@
 		</table>
 		<table align="center">
 			<tr align="center">
-				<td><a class="btn btn-default" href="#">홈페이지</a></td>
+				<!-- <td><a class="btn btn-default" href="#">홈페이지</a></td> -->
 				<td width="200"><c:if test="${result == 1}">
 						<a class="btn btn-default" href="info.do">종합 정보 시스템</a>
 					</c:if> <c:if test="${result == 2}">

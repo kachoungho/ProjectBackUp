@@ -13,16 +13,16 @@
 </head>
 <body>
 <br><br>
-	<table id="th" cellspacing="1" cellpadding="2">
+	<table align="center">
 		<c:forEach var="list" items="${ list }">
 			<tr>
 				<td width="100" colspan="2" rowspan="9">
 					<img name="sajin" width="150" height="170" 	src="/FirstProject/jsp/images/${list.emp_num}.jpg">
 				</td>
 				<td id="th" width="100" height="20">성  명</td>
-				<td id="th2">${list.emp_name}</td>
+				<td id="th2" width="150">${list.emp_name}</td>
 				<td id="th" width="100">소 속</td>
-				<td id="th2" colspan="3">${list.major}</td>
+				<td id="th2" width="150" >${list.major}</td>
 			</tr>
 
 			<tr>
@@ -36,12 +36,12 @@
 				<td id="th" height="20">휴 대 폰</td>
 				<td id="th2">${list.tel}</td>
 				<td id="th" >이 메 일</td>
-				<td id="th2" colspan="3">${list.emp_email}</td>
+				<td id="th2">${list.emp_email}</td>
 			</tr>
 			
 			<tr>
 				<td id="th" height="20">월 급</td>
-				<td id="th2" colspan="6">${list.money}</td>
+				<td id="th2" colspan="3">${list.money}</td>
 			</tr>
 		</c:forEach>
 	</table>

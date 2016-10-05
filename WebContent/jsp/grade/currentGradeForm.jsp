@@ -10,7 +10,8 @@
 <title>th125 JSP Template</title>
 </head>
 <body>
-	<table>
+<br><br>
+	<table align="center">
 		<tr>
 			<td id="th"width="100">수강코드</td>
 			<td id="th" width="300">과 목 명</td>

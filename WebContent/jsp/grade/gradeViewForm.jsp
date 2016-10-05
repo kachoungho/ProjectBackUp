@@ -11,31 +11,32 @@
 <title>th125 JSP Template</title>
 </head>
 <body>
-	<table>
+<br><br>
+	<table width="80%" align="center">
 		<tr>
-			<td id="th" rowspan="3" width="60">종 합</td>
-			<td id="th" width="150">총신청학점</td>
-			<td id="th2" width="150">${ totalhakjum }</td>
-			<td id="th" width="150">총취득학점</td>
-			<td id="th2" width="150">${ totalhakjum }</td>
+			<td id="th" rowspan="3" width="20%">종 합</td>
+			<td id="th" width="10%">총신청학점</td>
+			<td id="th2" width="30%">${ totalhakjum }</td>
+			<td id="th" width="10%">총취득학점</td>
+			<td id="th2" width="30%">${ totalhakjum }</td>
 		</tr>
 		<tr>
-			<td id="th" width="150">평 점 계</td>
-			<td id="th2" width="150">${ totalavg }</td>
-			<td id="th" width="150">총평점평균</td>
-			<td id="th2" width="150">${ totalavg }</td>
+			<td id="th">평 점 계</td>
+			<td id="th2">${ totalavg }</td>
+			<td id="th">총평점평균</td>
+			<td id="th2">${ totalavg }</td>
 		</tr>
 		<tr>
-			<td id="th" width="150">교양 총 학점</td>
-			<td id="th2" width="150">${ totalkyo }</td>
-			<td id="th" width="150">전공 총 학점</td>
-			<td id="th2" width="150">${ totalnotkyo }</td>
+			<td id="th">교양 총 학점</td>
+			<td id="th2" >${ totalkyo }</td>
+			<td id="th" >전공 총 학점</td>
+			<td id="th2" >${ totalnotkyo }</td>
 		</tr>
 	</table>
 	<br>
 	<br>
 
-	<table>
+	<table align="center">
 		<tr>
 			<c:forEach var="list2" items="${list2}">
 				<!-- 1학년 부분 -->
@@ -177,7 +178,7 @@
 	<br>
 
 
-	<table>
+	<table align="center" width="700">
 		<tr>
 			<td id="th" rowspan="2" width="200">${sj_grade}학년 ${sj_term}학기</td>
 			<td id="th" width="100">신청학점</td>
@@ -194,7 +195,7 @@
 	</table>
 	<br>
 
-	<table>
+	<table align="center" width="700">
 		<tr>
 			<td id="th" width="100">수강코드</td>
 			<td id="th" width="300">과 목 명</td>

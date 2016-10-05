@@ -25,9 +25,8 @@
 </head>
 <body>
 	<form name=pickForm1 action="/FirstProject/seasonSubjcet.do" method="post" accept-charset="">
-		<fieldset>
-			<legend id="th2">수 업 목 록</legend>
-
+		<fieldset style="width: 750px">
+			<legend>수 업 목 록</legend>
 			<table>
 				<tr>
 					<td id="th" width="100">체  크</td>
@@ -48,7 +47,7 @@
 					</tr>
 				</c:forEach>
 				<tr>
-					<td id="th2" colspan="6" ><input type="submit" value="추가"></td>
+					<td id="th2" colspan="6" ><input type="submit" class="css_btn_class" value="추가"></td>
 				</tr>				
 			</table>
 
@@ -57,11 +56,9 @@
 	
 	<form name=pickForm2 action="/FirstProject/seasonSubjcet.do" method="post"
 		accept-charset="">
-		<%-- <input type="hidden"  name="grade" value="${grade}">
-		<input type="hidden" name="major_sel" value="${major_sel}"> --%>
-		<fieldset>
-			<legend id="th2">신 청 목 록</legend>
-			<table border="1">
+		<fieldset style="width: 750px">
+			<legend>신 청 목 록</legend>
+			<table>
 				<tr>
 					<td id="th" width="100">체  크</td>
 					<td id="th" width="100">수강 코드</td>
@@ -81,7 +78,7 @@
 					</tr>
 				</c:forEach>
 				<tr>
-					<td id="th2" colspan="6" ><input type="submit" value="삭제"></td>
+					<td id="th2" colspan="6" ><input type="submit" class="css_btn_class" value="삭제"></td>
 				</tr>	
 			</table>
 		</fieldset>

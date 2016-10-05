@@ -9,14 +9,15 @@
 <title>th125 JSP Template</title>
 </head>
 <body>
-	<table>
+<br>
+	<table width="95%" align="center">
 		<tr id="info">
 			<th id="info" width="100">구   분</th>
 			<th id="info" width="400">세 부 메 뉴</th>
 			<th id="info" width="200">주 요 기 능</th>
 			<th id="info" width="200">전 화 번 호</th>
 		</tr>
-		<tr align="center">
+		<tr id="info">
 			<td id="info" rowspan="2">학 적 관 리</td>
 			<td id="info">학 적 조 회</td>
 			<td id="info">개인정보확인</td>

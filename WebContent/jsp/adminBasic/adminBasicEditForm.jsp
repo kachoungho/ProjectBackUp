@@ -30,7 +30,7 @@
 	<!-- 학생정보 테이블 -->
 	<form name="adminUpdateform" action="/FirstProject/adminBasicUpdate.do" method="post">
 		<input type="hidden" name="mem_num" value="${mem_num}">
-		<table id="th" cellspacing="1" cellpadding="2">
+		<table align="center">
 			<c:forEach var="list" items="${ list }">
 				<tr>
 					<td width="100" colspan="2" rowspan="9">
@@ -79,8 +79,8 @@
 				
 				<tr>
 					<td id="th2" colspan="4" height="30">
-						<input type="button" value="수정" onclick="go()">
-						<input type="reset" value="취소">
+						<input class="css_btn_class" type="button" value="수정" onclick="go()">
+						<input class="css_btn_class" type="reset" value="취소">
 					</td>
 				</tr>
 				

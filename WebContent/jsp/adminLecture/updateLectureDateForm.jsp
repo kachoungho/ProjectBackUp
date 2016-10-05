@@ -18,11 +18,11 @@
 		<br>
 		<form action="updateLectureDatePro.do?sub_code=${vo.sub_code}"
 			method="post" name="updateLectureDateForm" onsubmit="return writeSave()">
-			<table id="th" cellspacing="2" cellpadding="0">
+			<table>
 				<tr height="30">
 					<td colspan="4" align="right">
-						<input type="submit" value="수정 완료">
-						<input type="button" value="강의 목록 보기"
+						<input type="submit" class="css_btn_class" value="수정 완료">
+						<input type="button" class="css_btn_class" value="강의 목록 보기"
 							onclick="document.location.href='adminLectureDateForm.do'">
 					</td>
 				</tr>

@@ -25,7 +25,7 @@
       <th >jsp파일</th>
       <th >최상경</th>
       <th >2016.09.21</th>
-      <th ><input type="button" onclick=""></th>
+      <th ><input type="button" class="css_btn_class"  onclick=""></th>
       <th name="">0</th>
     </tr>
  
@@ -35,7 +35,7 @@
       <th >xml파일</th>
       <th >최상경</th>
       <th >2016.09.21</th>
-      <th ><input type="button" onclick=""></th>
+      <th ><input type="button" class="css_btn_class"  onclick=""></th>
       <th name="">0</th>
     </tr>
  
@@ -45,7 +45,7 @@
       <th >java파일</th>
       <th >최상경</th>
       <th >2016.09.21</th>
-      <th ><input type="button" onclick=""></th>
+      <th ><input type="button" class="css_btn_class"  onclick=""></th>
       <th name="">0</th>
     </tr>
  
@@ -71,7 +71,7 @@
    </td>
    <td>
    <input type="text" name="">
-   <input type="submit" name="">
+   <input type="submit" class="css_btn_class" name="">
    </td>
    </tr>
    </table>

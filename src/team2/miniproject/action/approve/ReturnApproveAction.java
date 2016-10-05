@@ -23,7 +23,7 @@ public class ReturnApproveAction implements CommandAction {
 		temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
 		List list = null;
 		
-		list=dao.ListReturnadminSemester(mem_num);
+		list=dao.ListReturnadminSemester();
 		
 		request.setAttribute("mem_num", mem_num);
 		request.setAttribute("list", list);

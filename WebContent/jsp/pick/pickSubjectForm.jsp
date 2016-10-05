@@ -78,10 +78,9 @@
 
 </head>
 <body>
-
 	<form name=pickForm action="/FirstProject/pickSubject.do" method="post"
 		accept-charset="">
-		<fieldset>
+		<fieldset style="width: 750px">
 			<legend>학 년 구 분</legend>
 			<table>
 				<tr>
@@ -101,7 +100,7 @@
 							<option value="vision">시각디자인학과</option>
 							<option value="kyo">교 양</option>
 					</select></td>
-					<td id="th"><input type="submit" value="선택"></td>
+					<td id="th"><input type="submit" class="css_btn_class" value="선택"></td>
 				</tr>
 			</table>
 		</fieldset>
@@ -111,7 +110,7 @@
 		method="post" accept-charset="">
 		<input type="hidden" name="grade" value="${grade}"> <input
 			type="hidden" name="major_sel" value="${major_sel}">
-		<fieldset>
+		<fieldset style="width: 750px">
 			<legend>수 업 목 록</legend>
 			<table>
 				<tr>
@@ -134,7 +133,7 @@
 					</tr>
 				</c:forEach>
 				<tr>
-					<td id="th2" colspan="6"><input type="submit" value="추가"></td>
+					<td id="th2" colspan="6"><input type="submit" class="css_btn_class" value="추가"></td>
 				</tr>
 			</table>
 
@@ -145,7 +144,7 @@
 		method="post" accept-charset="">
 		<input type="hidden" name="grade" value="${grade}"> <input
 			type="hidden" name="major_sel" value="${major_sel}">
-		<fieldset>
+		<fieldset style="width: 750px">
 			<legend>신 청 목 록</legend>
 			<table>
 				<tr>
@@ -168,11 +167,13 @@
 					</tr>
 				</c:forEach>
 				<tr>
-					<td id="th2" colspan="6"><input type="submit" value="삭제">
+					<td id="th2" colspan="6"><input type="submit" class="css_btn_class" value="삭제">
 					</td>
 				</tr>
 			</table>
 		</fieldset>
+
 	</form>
+
 </body>
 </html>

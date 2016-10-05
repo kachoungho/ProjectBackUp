@@ -14,10 +14,14 @@
 	<br>
 	<form action="/FirstProject/basicEditPro.do">
 		<c:forEach var="list" items="${list}">
-			<table width="800" border="0" cellspacing="1" cellpadding="2">
+			<table width="800" align="center">
 				<input type="hidden" name="mem_num" value="${mem_num}">
 				<tr>
-					<td width="90" colspan="2" rowspan="10" ><img name="sajin"
+					<td id="th2" height="10" valign="middle" colspan="8"
+						bgcolor="white"><strong>개인 정보 수정</strong></td>
+				</tr>
+				<tr>
+					<td width="90" colspan="2" rowspan="10"><img name="sajin"
 						width="150" height="170"
 						src="/FirstProject/jsp/images/${list.stu_num}.jpg">
 					<td id="th" width="250" height="30">성 명</td>
@@ -47,11 +51,11 @@
 
 				<tr>
 					<td id="th" width="120" height="30">유선전화</td>
-					<td id="th2" width="171">
-						<input type="text" name="editHomeTel" value="${list.home_tel }"></td>
+					<td id="th2" width="171"><input type="text" name="editHomeTel"
+						value="${list.home_tel }"></td>
 					<td id="th" width="120" height="20">비밀번호</td>
-					<td id="th2" width="171" colspan="3">
-						<input type="text" name="editPwd" value="${list.stu_pwd }"></td>
+					<td id="th2" width="171" colspan="3"><input type="text"
+						name="editPwd" value="${list.stu_pwd }"></td>
 				</tr>
 
 				<tr>
@@ -62,8 +66,8 @@
 				</tr>
 
 				<tr>
-					<td colspan="6"><input type="submit" value="수정"> <input
-						type="reset" value="취소"></td>
+					<td colspan="6"><input type="submit" class="css_btn_class" value="수정"> <input
+						type="reset"  class="css_btn_class" value="취소"></td>
 				</tr>
 			</table>
 		</c:forEach>

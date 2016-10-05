@@ -22,8 +22,8 @@ public class AbsenceApproveAction implements CommandAction {
 		temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
 		List list = null;
 		
-		list=dao.ListadminAbsence(mem_num);
-		
+		list=dao.ListadminAbsence();
+		System.out.println("list size : " + list.size());
 		request.setAttribute("mem_num", mem_num);
 		request.setAttribute("list", list);
 		

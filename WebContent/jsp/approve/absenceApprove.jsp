@@ -5,61 +5,70 @@
 <!DOCTYPE html >
 <html>
 <head>
+<link rel="stylesheet" type="text/css"
+	href="/FirstProject/css/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<form action="/FirstProject/absenceApprovePro.do" method="post">
 		<p>
-			<c:forEach var="list" items="${ list }">
+			<input type="hidden" name="mem_num" value="${mem_num}">
+		<table align="center">
+			<tr>
+				<td class="font2"><b>휴학 승인 페이지</b></td>
+			</tr>
+		</table>
+		<br><br>
+		<c:forEach var="list" items="${ list }">
+			<table align="center">
+				<tr>
+					<td id="th" width="50">선택</td>
+					<td id="th" width="100">전공</td>
+					<td id="th2" width="250">${ list.major }</td>
+					<td id="th" width="100">성명</td>
+					<td id="th2" width="250">${ list.stu_name }</td>
+				</tr>
 
-				<input type="hidden" name="mem_num" value="${mem_num}">
-				<table width="950" border="0" cellspacing="1" cellpadding="2"
-					bgcolor="#737373">
+				<tr>
+					<td id="th2" rowspan="4"><input type="checkbox"
+						name="checkbox" value="${list.stu_num}"></td>
+					<td id="th">학년</td>
+					<td id="th2">${ list.stu_grade }</td>
+					<td id="th">학번</td>
+					<td id="th2">${ list.stu_num }</td>
+				</tr>
 
-					<tr>
-						<td>선택<input type="checkbox" name="checkbox"
-							value="${list.stu_num}"></td>
-					</tr>
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF" width="220">전공</td>
-						<td>${ list.major }</td>
-						<td bgcolor="#D0D8FF" width="220">성명</td>
-						<td>${ list.stu_name }</td>
-					</tr>
+				<tr>
+					<td id="th">생년월일</td>
+					<td id="th2">${ list.stu_birthday }</td>
+					<td id="th">지도교수</td>
+					<td id="th2">${ list.stu_professor }</td>
+				</tr>
 
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF">학년</td>
-						<td>${ list.stu_grade }</td>
-						<td bgcolor="#D0D8FF">학번</td>
-						<td>${ list.stu_num }</td>
-					</tr>
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF">생년월일</td>
-						<td>${ list.stu_birthday }</td>
-						<td bgcolor="#D0D8FF">지도교수</td>
-						<td>${ list.stu_professor }</td>
-					</tr>
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF">이메일</td>
-						<td>${ list.stu_email }</td>
-						<td bgcolor="#D0D8FF">주소</td>
-						<td>${ list.address }</td>
-					</tr>
+				<tr>
+					<td id="th">이메일</td>
+					<td id="th2">${ list.stu_email }</td>
+					<td id="th">주소</td>
+					<td id="th2">${ list.address }</td>
+				</tr>
 
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF">휴학구분<br>
-						<td><font size="2">${ list.absence }</font></td>
-						<td bgcolor="#D0D8FF">휴대전화</td>
-						<td>${ list.tel }</td>
-					</tr>
-				</table>
+				<tr>
+					<td id="th">휴학구분<br>
+					<td id="th2"><font size="2">${ list.absence }</font></td>
+					<td id="th">휴대전화</td>
+					<td id="th2">${ list.tel }</td>
+				</tr>
+			</table>
+		</c:forEach>
+		<table align="center">
+			<tr>
+				<td id="th2" colspan="5"><input type="submit" class="css_btn_class" value="승인">
+				</td>
+			</tr>
+		</table>
 
-			</c:forEach>
-			<br>
-			<br>
-			<br>
-			<br> <input type="submit" value="승인">
+
 	</form>
 </body>
 </html>

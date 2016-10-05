@@ -10,20 +10,20 @@
 <body>
 <br><br>
 	<form>
-		<table id="th" align="center">
+		<table align="center">
 			<td id="th2"><b>과목 리스트 : ${ count } 과목 </b></td>
 		</table>
 		<br> <br>
 
 		<c:if test="${ count  == 0 } ">
-			<table id="th" width="700" border="1" cellpadding="0" cellspacing="0">
+			<table width="700" align="center">
 				<tr>
 					<td id="th2">이번 학기에 수강중인 과목이 없습니다.</td>
 				</tr>
 			</table>
 		</c:if>
 		<c:if test="${count>0}">
-			<table id="th" width="700" cellpadding="0" cellspacing="0" align="center">
+			<table width="700" align="center">
 				<tr height="30">
 					<td id="th">과목코드</td>
 					<td id="th">과목명</td>

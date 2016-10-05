@@ -92,21 +92,29 @@ public class team2Controller extends HttpServlet {
 		request.setAttribute("CONTENT", view);
 		
 		if(view.equals("/jsp/login/logincheck.jsp")){
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login/logincheck.jsp");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template2.jsp");
-			dispatcher.forward(request, response);
-		} else if(view.equals("/jsp/login/loginSuc.jsp")){
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login/loginSuc.jsp");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template2.jsp");
-			dispatcher.forward(request, response);
-		}  else if(view.equals("/jsp/main.jsp")){
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/main.jsp");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template2.jsp");
-			dispatcher.forward(request, response);
-		} else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template.jsp");
-			dispatcher.forward(request, response);
-		}
+	         //RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login/logincheck.jsp");
+	         RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template2.jsp");
+	         dispatcher.forward(request, response);
+	      } else if(view.equals("/jsp/login/loginSuc.jsp")){
+	         //RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/login/loginSuc.jsp");
+	         RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template2.jsp");
+	         dispatcher.forward(request, response);
+	      }  else if(view.equals("/jsp/main.jsp")){
+	         //RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/main.jsp");
+	         RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template2.jsp");
+	         dispatcher.forward(request, response);
+	      }  else if(view.equals("/jsp/pwd/pwdFind.jsp")){
+	         //RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/main.jsp");
+	         RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template2.jsp");
+	         dispatcher.forward(request, response);
+	      }  else if(view.equals("/jsp/pwd/pwdFindResult.jsp")){
+	         //RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/main.jsp");
+	         RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template2.jsp");
+	         dispatcher.forward(request, response);
+	      } else {
+	         RequestDispatcher dispatcher = request.getRequestDispatcher("/template/template.jsp");
+	         dispatcher.forward(request, response);
+	      }
 		
 	}
 }

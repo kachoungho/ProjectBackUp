@@ -15,12 +15,12 @@
 		<h2>강의 계획서</h2>
 		<br>
 		<form>
-			<table id="th" cellspacing="2" cellpadding="0">
+			<table>
 				<tr height="50">
-					<td id="th" width="300">담당 교수</td>
-					<td id="th2" width="300">${vo.emp_name }</td>
-					<td id="th" width="300">과목코드</td>
-					<td id="th2" width="300">${vo.sub_code }</td>
+					<td id="th" width="100">담당 교수</td>
+					<td id="th2" width="100">${vo.emp_name }</td>
+					<td id="th" width="100">과목코드</td>
+					<td id="th2" width="100">${vo.sub_code }</td>
 				</tr>
 
 				<tr height="30">
@@ -40,26 +40,25 @@
 
 				<tr>
 					<td id="th">평가 요소</td>
-					<td id="th2" colspan="3" style="word-wrap: break-word"><pre>${vo.lec_exam }</pre>
-					</td>
+					<td id="th2" colspan="3" style="word-wrap: break-word"> ${vo.lec_exam } </td>
 				</tr>
 				<tr>
 					<td id="th">강의 목표</td>
-					<td id="th2" colspan="3" style="word-wrap: break-word"><pre>${vo.lec_purpose }</pre>
+					<td id="th2" colspan="3" style="word-wrap: break-word"><pre id="th3" >${vo.lec_purpose }</pre>
 					</td>
 				</tr>
 				<tr>
 					<td id="th">교과목<br>개요
 					</td>
-					<td id="th2" colspan="3" style="word-wrap: break-word"><pre>${vo.lec_detail }</pre>
+					<td id="th2" colspan="3" style="word-wrap: break-word" id="th3" ><pre id="th3" >${vo.lec_detail }</pre>
 					</td>
 				</tr>
 				
 				<tr height="30">
 					<td id="th2" colspan="4" align="right">
-						<input type="button" value="강의 계획서 수정" 
+						<input type="button" class="css_btn_class" value="강의 계획서 수정" 
 						onclick="document.location.href='updateLectureDateForm.do?sub_code=${vo.sub_code}'">
-						<input type="button" value="강의 목록 보기"
+						<input type="button" class="css_btn_class" value="강의 목록 보기"
 						onclick="document.location.href='adminLectureDateForm.do'">
 					</td>
 				</tr>

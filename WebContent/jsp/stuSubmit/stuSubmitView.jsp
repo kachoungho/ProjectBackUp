@@ -15,11 +15,11 @@
 	<br>
 	<br>
 	<form action="/FirstProject/stuSubmitView.do" method="post">
-		<table id="th" align="center">
+		<table id="th2" align="center">
 			<input type="hidden" name="sub_code" value="${sub_code}">
 			<input type="hidden" name="sub_name" value="${sub_name}">
 			<tr>
-				<td id="th2" colspan="2"><b>[ <c:out value="${sub_name}" />
+				<td id="th3" colspan="2"><b>[ <c:out value="${sub_name}" />
 						] 과목의 각 주차별 과제 목록
 				</b></td>
 			</tr>
@@ -42,11 +42,11 @@
 						<option value="14">14주차</option>
 						<option value="15">15주차</option>
 				</select></td>
-				<td><input type="submit" value="선택" /></td>
+				<td><input type="submit" class="css_btn_class" value="선택" /></td>
 			</tr>
 		</table>
 		<table align="right">
-			<td><input type="button" value="과목 목록보기"
+			<td><input type="button" class="css_btn_class"  value="과목 목록보기"
 				onclick="document.location.href='stuSubmitListForm.do'"></td>
 		</table>
 		<br> <br>
@@ -56,8 +56,7 @@
 	<form action="/FirstProject/upload.do" method="post"
 		enctype="multipart/form-data">
 		<c:if test="${count<1 }">
-			<table id="th" width="700" border="1" cellpadding="0" cellspacing="0"
-				align="center">
+			<table width="700" align="center">
 				<tr height="30">
 					<td id="th" width="100">주 차</td>
 					<td id="th">과 제 명</td>
@@ -79,8 +78,7 @@
 					value="${list.submit_title}">
 				<input type="hidden" name="submit_content"
 					value="${list.submit_content}">
-				<table id="th" width="700" border="1" cellpadding="0"
-					cellspacing="0" align="center">
+				<table width="700" align="center">
 					<tr height="30">
 						<td id="th" width="100">주 차</td>
 						<td id="th">과 제 명</td>
@@ -142,7 +140,7 @@
 					<td id="th2"><input type="text" name="description" /></td>
 				</tr>
 				<tr>
-					<td id="th2" colspan="2"><input type="submit" value="제출" /></td>
+					<td id="th2" colspan="2"><input type="submit" class="css_btn_class" value="제출" /></td>
 				</tr>
 			</table>
 		</c:forEach>

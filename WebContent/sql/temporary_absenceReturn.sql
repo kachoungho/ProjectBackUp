@@ -12,5 +12,7 @@ create table temporary_absenceReturn (
 	stu_email varchar(30) not null,
 	address varchar(100) not null,
 	tel varchar(15) not null,
-	absence varchar(20)
+	absence varchar(20),
+	
+   constraint tm_pk primary key (stu_num)
 );

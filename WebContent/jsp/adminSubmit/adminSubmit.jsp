@@ -14,20 +14,20 @@
 	<br>
 	<br>
 	<form>
-		<table id="th" align="center">
+		<table align="center">
 			<td id="th2"><b>현 학기 강의 중인 과목 ( 강의 수 : ${ count } 과목 )</b></td>
 		</table>
 		<br> <br>
 
 		<c:if test="${ count  == 0 } ">
-			<table width="700" border="1" cellpadding="0" cellspacing="0">
+			<table width="700" align="center">
 				<tr>
 					<td align="center">이번 학기에 수강중인 과목이 없습니다.</td>
 				</tr>
 			</table>
 		</c:if>
 		<c:if test="${count>0}">
-			<table id="th" width="700" border="1" cellpadding="0" cellspacing="0" align="center">
+			<table width="700" align="center">
 				<tr height="30">
 					<td id="th">번 호</td>
 					<td id="th">과 목 명</td>
@@ -39,7 +39,7 @@
 						<tr height="30">
 							<td id="th2">${status.count }</td>
 							<td id="th2">
-								<a href="adminSubmitListForm.do?sub_code=${ list.sub_code }&sub_name=${ list.sub_name }">${ list.sub_name }</a>
+								<a href="adminSubmitListForm.do?sub_code=${ list.sub_code }&sub_name=${ list.sub_name }&week=default">${ list.sub_name }</a>
 							</td>
 							<td id="th2">
 								<c:if test="${list.sub_hakjum<3 }">

@@ -12,10 +12,10 @@
 </head>
 <body>
 	<br>
-	<table cellspacing="0" cellpadding="0">
-		<tr align="center">
+	<table align="center">
+		<tr>
 			<td id="th2" width="150"><a class="btn btn-default3"
-				href="/FirstProject/basic.do">기본 사항</a></td>
+				href="/FirstProject/basic.do">개인 정보</a></td>
 			<td id="th2" width="150"><a class="btn btn-default3"
 				href="/FirstProject/scholarship.do">장학 사항</a></td>
 			<td id="th2" width="150"><a class="btn btn-default3"
@@ -27,7 +27,7 @@
 	<br>
 	
 	<!-- 장학사항 -->
-	<table width="670" cellspacing="1" cellpadding="3" height="20" >
+	<table width="670" align="center">
 		<tr>
 			<td id="th2" height="10" valign="middle" colspan="6" bgcolor="white"><strong>장학사항</strong></td>
 		</tr>

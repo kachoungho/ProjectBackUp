@@ -20,15 +20,11 @@ public class ReturnApproveProAction implements CommandAction {
 		String mem_name = (String) session.getAttribute("mem_name");
 
 		String checkbox = request.getParameter("checkbox");
-		String fullcheckbox = request.getParameter("buttond");
-
-		Team2DAO dao = Team2DAO.getInstance();
-		temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
-		List list = null;
-		List list2 = null;
 		
-		list = dao.ListadminReturnPro(mem_num, checkbox);
-		list2 = dao.ListadminReturnDel(mem_num, checkbox);
+		Team2DAO dao = Team2DAO.getInstance();
+		
+		dao.ListadminReturnPro(checkbox);
+		dao.ListadminReturnDel(mem_num, checkbox);
 
 		return "/jsp/approve/returnApprovePro.jsp";
 	}

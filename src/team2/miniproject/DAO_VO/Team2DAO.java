@@ -692,44 +692,52 @@ public class Team2DAO {
 		return list;
 	}
 
-	public int G_b_SchoolPro(temporary_absenceReturnVO vo, String mem_num) {
+	public int G_b_SchoolPro(String mem_num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
 		ResultSet rs = null;
-		temporary_absenceReturnVO vo2 = new temporary_absenceReturnVO();
+		ResultSet rs2 = null;
 		int result = -1;
-
+		String state = "재학";
+		String state2 = "복학";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("select * from students where stu_num = ? ");
 			pstmt.setString(1, mem_num);
 			rs = pstmt.executeQuery();
-
 			if (rs.next()) {
-				String sql2 = "insert into temporary_absenceReturn(stu_num, stu_name, stu_grade, major, stu_birthday, stu_professor, stu_email, address, tel)"
-						+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				if (rs.getString("stu_state").equals(state)) {
+					result = 1;
+				} else {
+					pstmt2 = conn.prepareStatement("select * from temporary_absenceReturn where stu_num = ? ");
+					pstmt2.setString(1, mem_num);
+					rs2 = pstmt2.executeQuery();
+					if (rs2.next()) {
+						result = 2;
+					} else {
 
-				pstmt = conn.prepareStatement(sql2);
-				pstmt.setString(1, mem_num);
-				pstmt.setString(2, rs.getString("stu_name"));
-				pstmt.setString(3, rs.getString("grade"));
-				pstmt.setString(4, rs.getString("major"));
-				pstmt.setString(5, rs.getString("stu_birthday"));
-				pstmt.setString(6, rs.getString("stu_professor"));
-				pstmt.setString(7, rs.getString("stu_email"));
-				pstmt.setString(8, rs.getString("address"));
-				pstmt.setString(9, rs.getString("tel"));
+						String sql2 = "insert into temporary_absenceReturn values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+						pstmt3 = conn.prepareStatement(sql2);
+						pstmt3.setString(1, mem_num);
+						pstmt3.setString(2, rs.getString("stu_name"));
+						pstmt3.setString(3, rs.getString("grade"));
+						pstmt3.setString(4, rs.getString("major"));
+						pstmt3.setString(5, rs.getString("stu_birthday"));
+						pstmt3.setString(6, rs.getString("stu_professor"));
+						pstmt3.setString(7, rs.getString("stu_email"));
+						pstmt3.setString(8, rs.getString("address"));
+						pstmt3.setString(9, rs.getString("tel"));
+						pstmt3.setString(10, state2);
 
-				pstmt.executeUpdate();
-
-				result = 0;
-				System.out.println("신청 성공");
-
+						pstmt3.executeUpdate();
+						result = 0;
+					}
+				}
 			} else {
 				result = 1;
-				System.out.println("신청 실패");
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -1188,9 +1196,11 @@ public class Team2DAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		ResultSet rs2 = null;
 		temporary_absenceReturnVO vo2 = new temporary_absenceReturnVO();
 		int result = -1;
-
+		String state = "군 휴학";
+		String state2 = "일반휴학";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("select * from students where stu_num = ? ");
@@ -1198,26 +1208,38 @@ public class Team2DAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				String sql2 = "insert into temporary_absenceReturn(stu_num, stu_name, stu_grade, major, stu_birthday, stu_professor, stu_email, address, tel, absence)"
-						+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				if (rs.getString("stu_state").equals((String) state)
+						|| rs.getString("stu_state").equals((String) state2)) {
+					result = 1;
+					System.out.println("dddd");
+				} else {
+					pstmt = conn.prepareStatement("select * from temporary_absenceReturn where stu_num = ? ");
+					pstmt.setString(1, mem_num);
+					rs2 = pstmt.executeQuery();
+					if (rs2.next()) {
+						result = 2;
+					} else {
+						String sql2 = "insert into temporary_absenceReturn(stu_num, stu_name, stu_grade, major, stu_birthday, stu_professor, stu_email, address, tel, absence)"
+								+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
-				pstmt = conn.prepareStatement(sql2);
-				pstmt.setString(1, mem_num);
-				pstmt.setString(2, rs.getString("stu_name"));
-				pstmt.setString(3, rs.getString("grade"));
-				pstmt.setString(4, rs.getString("major"));
-				pstmt.setString(5, rs.getString("stu_birthday"));
-				pstmt.setString(6, rs.getString("stu_professor"));
-				pstmt.setString(7, rs.getString("stu_email"));
-				pstmt.setString(8, rs.getString("address"));
-				pstmt.setString(9, rs.getString("tel"));
-				pstmt.setString(10, vo.getAbsence());
+						pstmt = conn.prepareStatement(sql2);
+						pstmt.setString(1, mem_num);
+						pstmt.setString(2, rs.getString("stu_name"));
+						pstmt.setString(3, rs.getString("grade"));
+						pstmt.setString(4, rs.getString("major"));
+						pstmt.setString(5, rs.getString("stu_birthday"));
+						pstmt.setString(6, rs.getString("stu_professor"));
+						pstmt.setString(7, rs.getString("stu_email"));
+						pstmt.setString(8, rs.getString("address"));
+						pstmt.setString(9, rs.getString("tel"));
+						pstmt.setString(10, vo.getAbsence());
 
-				pstmt.executeUpdate();
+						pstmt.executeUpdate();
 
-				result = 0;
-				System.out.println("신청 성공");
-
+						result = 0;
+						System.out.println("신청 성공");
+					}
+				}
 			} else {
 				result = 1;
 				System.out.println("신청 실패");
@@ -1284,6 +1306,7 @@ public class Team2DAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		ResultSet rs2 = null;
 		temporary_absenceReturnVO vo2 = new temporary_absenceReturnVO();
 		int result = -1;
 
@@ -1293,26 +1316,32 @@ public class Team2DAO {
 			pstmt.setString(1, mem_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				String sql2 = "insert into changeMajor(stu_num, stu_name, stu_grade, major, stu_birthday, stu_professor, stu_email, tel, change_major, reason_why)"
-						+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
-
-				pstmt = conn.prepareStatement(sql2);
+				pstmt = conn.prepareStatement("select * from changeMajor where stu_num = ? ");
 				pstmt.setString(1, mem_num);
-				pstmt.setString(2, rs.getString("stu_name"));
-				pstmt.setString(3, rs.getString("grade"));
-				pstmt.setString(4, rs.getString("major"));
-				pstmt.setString(5, rs.getString("stu_birthday"));
-				pstmt.setString(6, rs.getString("stu_professor"));
-				pstmt.setString(7, rs.getString("stu_email"));
-				pstmt.setString(8, rs.getString("tel"));
-				pstmt.setString(9, vo.getChange_major());
-				pstmt.setString(10, vo.getReason_why());
+				rs2 = pstmt.executeQuery();
+				if (rs2.next()) {
+					result = 2;
+				} else {
+					String sql2 = "insert into changeMajor(stu_num, stu_name, stu_grade, major, stu_birthday, stu_professor, stu_email, tel, change_major, reason_why)"
+							+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
-				pstmt.executeUpdate();
+					pstmt = conn.prepareStatement(sql2);
+					pstmt.setString(1, mem_num);
+					pstmt.setString(2, rs.getString("stu_name"));
+					pstmt.setString(3, rs.getString("grade"));
+					pstmt.setString(4, rs.getString("major"));
+					pstmt.setString(5, rs.getString("stu_birthday"));
+					pstmt.setString(6, rs.getString("stu_professor"));
+					pstmt.setString(7, rs.getString("stu_email"));
+					pstmt.setString(8, rs.getString("tel"));
+					pstmt.setString(9, vo.getChange_major());
+					pstmt.setString(10, vo.getReason_why());
 
-				result = 0;
-				System.out.println("신청 성공");
+					pstmt.executeUpdate();
 
+					result = 0;
+					System.out.println("신청 성공");
+				}
 			} else {
 				result = 1;
 				System.out.println("신청 실패");
@@ -1842,7 +1871,7 @@ public class Team2DAO {
 	}
 
 	// 학생 성적 업데이트(교수) method
-	public ArrayList<SungjukVO> StuGradeList(String check, String stu_num, String sj_grade, String sj_term) {
+	public ArrayList<SungjukVO> StuGradeList(String check, String sub_code, String sj_grade, String sj_term) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
@@ -1854,8 +1883,8 @@ public class Team2DAO {
 			conn = getConnection();
 			String sql = "select * from sungjuk where sub_code = ? and stu_num = ? and sj_grade = ? and sj_term = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, check);
-			pstmt.setString(2, stu_num);
+			pstmt.setString(1, sub_code);
+			pstmt.setString(2, check);
 			pstmt.setString(3, sj_grade);
 			pstmt.setString(4, sj_term);
 			rs = pstmt.executeQuery();
@@ -1927,21 +1956,24 @@ public class Team2DAO {
 	}
 
 	// 관리자측 휴학승인Form부분
-	public List ListadminAbsence(String mem_num) throws Exception {
+	public List ListadminAbsence() throws Exception {
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List list = null;
 
+		String state = "군휴학";
+		String state2 = "일반휴학";
 		try {
 			conn = getConnection();
 			String sql = "select * from temporary_absenceReturn ";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				list = new ArrayList();
-				do {
+
+			list = new ArrayList();
+			while (rs.next()) {
+				if (rs.getString("absence").equals(state) || rs.getString("absence").equals(state2)) {
 					temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
 					vo.setStu_num(rs.getString("stu_num"));
 					vo.setStu_name(rs.getString("stu_name"));
@@ -1954,7 +1986,7 @@ public class Team2DAO {
 					vo.setTel(rs.getString("tel"));
 					vo.setAbsence(rs.getString("absence"));
 					list.add(vo);
-				} while (rs.next());
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -2067,20 +2099,21 @@ public class Team2DAO {
 	}// 관리자측휴학승인update부분
 
 	// 관리자측 복학승인 Form부분
-	public List ListReturnadminSemester(String stu_num) throws Exception {
+	public List ListReturnadminSemester() throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List list = null;
+		List list = new ArrayList();
+		String state = "복학";
 
 		try {
 			conn = getConnection();
 			String sql = "select * from temporary_absenceReturn ";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				list = new ArrayList();
-				do {
+			while (rs.next()) {
+				if (rs.getString("absence").equals(state)) {
+					System.out.println(rs.getString("absence").equals(state));
 					temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
 					vo.setStu_num(rs.getString("stu_num"));
 					vo.setStu_name(rs.getString("stu_name"));
@@ -2093,7 +2126,7 @@ public class Team2DAO {
 					vo.setTel(rs.getString("tel"));
 					vo.setAbsence(rs.getString("absence"));
 					list.add(vo);
-				} while (rs.next());
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -2106,7 +2139,7 @@ public class Team2DAO {
 	}// 관리자측 복학승인 Form부분
 
 	// 관리자측 복학승인 Update부분
-	public List ListadminReturnPro(String mem_num, String checkbox) throws Exception {
+	public void ListadminReturnPro(String checkbox) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
@@ -2119,31 +2152,16 @@ public class Team2DAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, checkbox);
 			rs = pstmt.executeQuery();
+
 			if (rs.next()) {
-				list = new ArrayList();
-				do {
-					temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
-					vo.setStu_num(rs.getString("stu_num"));
-					vo.setStu_name(rs.getString("stu_name"));
-					vo.setStu_birthday(rs.getString("stu_birthday"));
-					vo.setStu_professor(rs.getString("stu_professor"));
-					vo.setStu_email(rs.getString("stu_email"));
-					vo.setMajor(rs.getString("major"));
-					vo.setAddress(rs.getString("address"));
-					vo.setStu_grade(rs.getString("stu_grade"));
-					vo.setTel(rs.getString("tel"));
-					vo.setAbsence(rs.getString("absence"));
-					if (checkbox != null) {
-						String sql2 = "update students set stu_state=? where stu_num=?";
-						pstmt2 = conn.prepareStatement(sql2);
-						pstmt2.setString(1, "재학");
-						pstmt2.setString(2, rs.getString("stu_num"));
-						pstmt2.executeUpdate();
-						list.add(vo);
-					} // checkbox 체크여부 if end
-					list.add(vo);
-				} while (rs.next());
+				String sql2 = "update students set stu_state=? where stu_num=?";
+				pstmt2 = conn.prepareStatement(sql2);
+				pstmt2.setString(1, "재학");
+				pstmt2.setString(2, rs.getString("stu_num"));
+				pstmt2.executeUpdate();
+
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -2151,48 +2169,34 @@ public class Team2DAO {
 			CloseUtil.close(pstmt);
 			CloseUtil.close(conn);
 		}
-		return list;
+		// return list;
 	}/// 관리자측 복학승인 Update부분
 
 	// 관리자측 복학승인 delte부분
-	public List ListadminReturnDel(String mem_num, String checkbox) throws Exception {
+	public void ListadminReturnDel(String mem_num, String checkbox) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
-		List list2 = null;
 		try {
+			System.out.println("delete부분 입니다.");
 			conn = getConnection();
 			String sql = "select * from temporary_absenceReturn where stu_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, checkbox);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				list2 = new ArrayList();
-				do {
-					temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
-					vo.setStu_num(rs.getString("stu_num"));
-					vo.setStu_name(rs.getString("stu_name"));
-					vo.setStu_birthday(rs.getString("stu_birthday"));
-					vo.setStu_professor(rs.getString("stu_professor"));
-					vo.setStu_email(rs.getString("stu_email"));
-					vo.setMajor(rs.getString("major"));
-					vo.setAddress(rs.getString("address"));
-					vo.setStu_grade(rs.getString("stu_grade"));
-					vo.setTel(rs.getString("tel"));
-					vo.setAbsence(rs.getString("absence"));
-					if (vo.getReturn_semester() != null) {
-						if (checkbox != null) {
-							String sql2 = "delete from temporary_absenceReturn where stu_num=?";
-							pstmt2 = conn.prepareStatement(sql2);
-							pstmt2.setString(1, rs.getString("stu_num"));
-							pstmt2.executeUpdate();
-							list2.add(vo);
-						} // checkbox 체크여부 if end
-						list2.add(vo);
-					}
-				} while (rs.next());
+
+			while (rs.next()) {
+				if (rs.getString("absence").equals("복학")) {
+					String sql2 = "delete from temporary_absenceReturn where stu_num=? and absence = ?";
+					pstmt2 = conn.prepareStatement(sql2);
+					pstmt2.setString(1, checkbox);
+					pstmt2.setString(2, rs.getString("absence"));
+					pstmt2.executeUpdate();
+				}
+
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -2200,7 +2204,6 @@ public class Team2DAO {
 			CloseUtil.close(pstmt);
 			CloseUtil.close(conn);
 		}
-		return list2;
 	}// 관리자측 복학승인 delte부분
 
 	// 관리자측 전과승인 Form부분
@@ -2360,6 +2363,10 @@ public class Team2DAO {
 				vo.setSubmit_content(rs.getString("submit_content"));
 				vo.setSubmit_title(rs.getString("submit_title"));
 				vo.setSub_code(rs.getString("sub_code"));
+				vo.setEmp_num(rs.getString("emp_num"));
+				vo.setFilename(rs.getString("filename"));
+				vo.setFilesize(rs.getInt("filesize"));
+				vo.setDescription(rs.getString("description"));
 				list.add(vo);
 
 			}
@@ -2374,7 +2381,7 @@ public class Team2DAO {
 		return list;
 	}
 
-	//강의 자료 생성
+	// 강의 자료 생성
 	public void insertLectureMaterial(Map<String, Object> map) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -2384,14 +2391,14 @@ public class Team2DAO {
 			String sql = "insert into LectureMaterial values(?, ?, ?, ?, ?, ?, ?, ?)";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, (String)map.get("submit_week"));
-			pstmt.setString(2, (String)map.get("sub_code"));
-			pstmt.setString(3, (String)map.get("emp_num"));
-			pstmt.setString(4, (String)map.get("submit_title"));
-			pstmt.setString(5, (String)map.get("submit_content"));
-			pstmt.setString(6, (String)map.get("filename"));
-			pstmt.setInt(7, (Integer)map.get("filesize"));
-			pstmt.setString(8, (String)map.get("description"));
+			pstmt.setString(1, (String) map.get("submit_week"));
+			pstmt.setString(2, (String) map.get("sub_code"));
+			pstmt.setString(3, (String) map.get("emp_num"));
+			pstmt.setString(4, (String) map.get("submit_title"));
+			pstmt.setString(5, (String) map.get("submit_content"));
+			pstmt.setString(6, (String) map.get("filename"));
+			pstmt.setInt(7, (Integer) map.get("filesize"));
+			pstmt.setString(8, (String) map.get("description"));
 
 			pstmt.executeUpdate();
 
@@ -2405,31 +2412,84 @@ public class Team2DAO {
 	}
 
 	////////// 관리자 과제물 제출 - 과목불러오기 adminGetSelectAll() 그대로 사용
-	////////// 관리자 과제물 제출 - 과목에서 과제목록 불러오기.
-	public List<Sub_detailVO> adminSubmitGetSelectAll(String mem_num, String sub_code) {
+	////////// 관리자 과제물 제출 - 과목에서 과제목록 불러오기.(과제정보)
+	public List<SubmitVO> adminSubmitGetSelectAll(String mem_num, String sub_code, String week) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List list = null;
 		String emp_name = null;
+		System.out.println("1");
 		try {
 			conn = getConnection();
-			String sql2 = "select * from submit where emp_num=? and sub_code=? ";
+			String sql2 = "select * from submit where emp_num=? and sub_code=? and submit_week = ?";
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setString(1, mem_num);
 			pstmt.setString(2, sub_code);
+			pstmt.setString(3, week);
+			System.out.println("mem_num : " + mem_num);
+			System.out.println("sub_code : " + sub_code);
+			System.out.println("week : " + week);
 			rs = pstmt.executeQuery();
 			list = new ArrayList();
+			System.out.println("2");
 			while (rs.next()) {
-				SubmitVO vo = new SubmitVO();
-				vo.setSubmit_week(rs.getString("submit_week"));
-				vo.setSubmit_content(rs.getString("submit_content"));
-				vo.setSubmit_title(rs.getString("submit_title"));
-				vo.setSub_code(rs.getString("sub_code"));
-				list.add(vo);
-
+				System.out.println("3");
+				if (rs.getString("submit_content") != null) {
+					System.out.println("4");
+					SubmitVO vo = new SubmitVO();
+					vo.setSubmit_week(rs.getString("submit_week"));
+					vo.setSub_code(rs.getString("sub_code"));
+					vo.setEmp_num(rs.getString("emp_num"));
+					vo.setSubmit_title(rs.getString("submit_title"));
+					vo.setSubmit_content(rs.getString("submit_content"));
+					list.add(vo);
+				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
 
+	////////// 관리자 과제물 제출 - 과목에서 과제목록 불러오기.(과제제출정보)
+	public List<SubmitVO> adminSubmitGetSelect(String mem_num, String sub_code, String week) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = null;
+		String emp_name = null;
+		System.out.println("5");
+		try {
+			conn = getConnection();
+			String sql2 = "select * from submit where emp_num=? and sub_code=? and submit_week = ?";
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, mem_num);
+			pstmt.setString(2, sub_code);
+			pstmt.setString(3, week);
+			System.out.println("mem_num : " + mem_num);
+			System.out.println("sub_code : " + sub_code);
+			System.out.println("week : " + week);
+			rs = pstmt.executeQuery();
+			list = new ArrayList();
+			System.out.println("6");
+			while (rs.next()) {
+				System.out.println("7");
+				if (rs.getString("stu_num") != null) {
+					System.out.println("8");
+					SubmitVO vo = new SubmitVO();
+					vo.setStu_num(rs.getString("stu_num"));
+					vo.setFilename(rs.getString("filename"));
+					vo.setFilesize(rs.getInt("filesize"));
+					vo.setDescription(rs.getString("description"));
+
+					list.add(vo);
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -2534,7 +2594,7 @@ public class Team2DAO {
 				vo.setFilename(rs.getString("filename"));
 				vo.setFilesize(rs.getInt("filesize"));
 				vo.setDescription(rs.getString("description"));
-				
+
 				list.add(vo);
 
 			}
@@ -2556,7 +2616,7 @@ public class Team2DAO {
 		ResultSet rs = null;
 		int result = -1;
 		try {
-			
+
 			String sql = "insert into submit(submit_week, sub_code, emp_num, submit_title, stu_num, filename, filesize, description) values(?, ?, ?, ?, ?, ?, ?, ?)";
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -2598,9 +2658,9 @@ public class Team2DAO {
 			pstmt.setString(2, week);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				Map<String, Object> map = new HashMap<String, Object>();				
-				map.put("sub_code",rs.getString("sub_code"));
-				map.put("stu_num",rs.getString("stu_num"));
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("sub_code", rs.getString("sub_code"));
+				map.put("stu_num", rs.getString("stu_num"));
 				map.put("filename", rs.getString("filename"));
 				map.put("filesize", rs.getInt("filesize"));
 				map.put("description", rs.getString("description"));
@@ -2617,4 +2677,68 @@ public class Team2DAO {
 		}
 		return list;
 	}
+
+	//// 비번 체크~ 본인인증임........
+	public int pwdCheck(int select, String mem_num, String mem_name, String email, String tel) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int result = 0;
+		String sql = null;
+
+		if (select == 1) {
+			sql = "select * from students where stu_num=? and stu_name= ? and " + "stu_email=? and tel = ?";
+		} else {
+			sql = "select * from employee where emp_num=? and emp_name= ? and " + "emp_email=? and tel = ?";
+		}
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_num);
+			pstmt.setString(2, mem_name);
+			pstmt.setString(3, email);
+			pstmt.setString(4, tel);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = 0;
+			} else {
+				result = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return result;
+	}
+
+	//// 비번 넘겨주기~~~~~
+	public String getPwd(String mem_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select mem_pwd from members where mem_num=? ";
+		String mem_pwd = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				mem_pwd = rs.getString("mem_pwd");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return mem_pwd;
+	}
+
 }

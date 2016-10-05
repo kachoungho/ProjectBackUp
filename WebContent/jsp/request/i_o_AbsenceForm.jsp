@@ -16,7 +16,7 @@
 		<p>
 			<c:forEach var="list" items="${ list }">
 				<input type="hidden" name="mem_num" value="${mem_num}">
-				<table width="950" border="0" cellspacing="1" cellpadding="2">
+				<table width="950" align="center">
 					<tr height="30">
 						<td id="th" width="220">전공</td>
 						<td id="th2">${ list.major }</td>
@@ -55,8 +55,8 @@
 					</tr>
 					<tr height="30">
 						<td id="th2" colspan="4">
-							<input type="submit" value="신청">
-							<input type="reset" value="취소">
+							<input type="submit" class="css_btn_class" value="신청">
+							<input type="reset" class="css_btn_class" value="취소">
 						</td>
 					</tr>
 				</table>

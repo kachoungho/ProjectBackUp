@@ -24,9 +24,9 @@
 </head>
 <body>
 	<form name=pickForm1 action="/FirstProject/lectureUpdatePro.do" method="post" accept-charset="">
-		<fieldset>
+		<fieldset style="width: 600px">
 			<legend>수 업 목 록</legend>
-			<table id="th">
+			<table align="center">
 				<tr>
 					<td id="th">체 크</td>
 					<td id="th">수강 코드</td>
@@ -48,8 +48,8 @@
 						<td id="th2">${list.emp_name}</td>
 						<td id="th2">${list.sub_time}</td>
 						<td id="th2">
-							<input type="submit" value="수정"> 
-							<input type="button" value="삭제"
+							<input type="submit" class="css_btn_class" value="수정"> 
+							<input type="button" class="css_btn_class"  value="삭제"
 							onclick="document.location.href='lectureDelete.do?checkbox=${list.sub_code}'">
 						</td>
 					</tr>
