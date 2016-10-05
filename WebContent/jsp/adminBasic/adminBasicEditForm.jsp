@@ -4,6 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css"
+	href="/FirstProject/css/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <script LANGUAGE="JavaScript">
 	function go() {
 		var frm1 = document.adminUpdateform;
@@ -18,89 +22,70 @@
 	}
 </script>
 
-
-</style>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="/FirstProject/css/style.css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>th125 JSP Template</title>
+<title>교수 개인 정보 수정</title>
 </head>
 <body>
-	
-
-	<table width="750" border="0" cellspacing="0" cellpadding="0">
-		<tr>
-			<td>&nbsp;</td>
-		</tr>
-	</table>
+	<br>
+	<br>
 	<!-- 학생정보 테이블 -->
-	<form name="adminUpdateform" action="/FirstProject/adminBasicUpdate.do"
-		method="post">
-	<input type="hidden" name="mem_num" value="${mem_num}">
-	<table width="750" border="0" cellspacing="1" cellpadding="2"
-		bgcolor="#737373">
+	<form name="adminUpdateform" action="/FirstProject/adminBasicUpdate.do" method="post">
+		<input type="hidden" name="mem_num" value="${mem_num}">
+		<table id="th" cellspacing="1" cellpadding="2">
+			<c:forEach var="list" items="${ list }">
+				<tr>
+					<td width="100" colspan="2" rowspan="9">
+						<img name="sajin" width="150" height="170" src="/FirstProject/jsp/images/${list.emp_num}.jpg">
+					</td>
+					<td id="th" height="30">성  명</td>
+					<td id="th2">${list.emp_name}</td>
+					<td id="th">소 속</td>
+					<td id="th2">
+						<input type="text" name="editMajor" value="${ list.major }">
+					</td>
+				</tr>
 
-		<c:forEach var="list" items="${ list }">
+				<tr>
+					<td id="th" height="30">직 책</td>
+					<td id="th2">
+						<input type="text" name="editEmp_grade" value="${ list.emp_grade }">
+					</td>
+					<td id="th">호 봉</td>
+					<td id="th2">
+						<input type="text" name="editMon_lev" value="${ list.mon_lev}">
+					</td>
+				</tr>
 
-			<tr align="center" bgcolor="#F5F5F5" align="center">
-
-				<td width="100" colspan="2" rowspan="9"><img name="sajin"
-					width="150" height="170"
-					src="/FirstProject/jsp/images/${list.emp_num}.jpg"></td>
-				<td width="100" bgcolor="#D0D8FF" height="20">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명</td>
-
-
-				<td align="center" width="210" align="left"><c:out
-						value="${list.emp_name}" /></td>
-
-
-				<td width="120" bgcolor="#D0D8FF">소 속</td>
-
-
-				<td align="center" width="250" colspan="3" align="left">&nbsp;<input
-						type="text" name="editMajor" value="${ list.major }"></td>
-
-			</tr>
-
-			<tr bgcolor="#F5F5F5" align="center">
-
-				<td width="210" bgcolor="#D0D8FF" height="20">직 책</td>
-				<td align="center" width="250">&nbsp;<input
-						type="text" name="editEmp_grade" value="${ list.emp_grade }"></td>
-
-				<td width="210" bgcolor="#D0D8FF">호 봉</td>
-				<td align="center" width="250">&nbsp;<input
-						type="text" name="editMon_lev" value="${ list.mon_lev}"></td>
-			</tr>
-
-			<tr bgcolor="#F5F5F5" align="center">
-				<td width="120" bgcolor="#D0D8FF" height="20">휴 대 폰</td>
-				<td align="center" width="171" align="left">&nbsp;<input
-						type="text" name="editTel" value="${ list.tel }"></td>
-				<td width="210" bgcolor="#D0D8FF">이 메 일</td>
-				<td align="center" width="250" colspan="3" align="left">&nbsp;<input
-						type="text" name="editEmp_email" value="${ list.emp_email }"></td>
-			</tr>
-			<tr bgcolor="#F5F5F5" align="center">
-				<td width="120" bgcolor="#D0D8FF" height="20">월 급</td>
-				<td align="center" width="120" colspan="1" align="left">&nbsp;<input
-						type="text" name="editMoney" value="${ list.money }"></td>
-				<td width="210" bgcolor="#D0D8FF" height="20">비밀번호</td>
-				<td align="center" width="210" colspan="1" align="left">&nbsp;<input
-						type="text" name="editEmp_pwd" value="${ list.emp_pwd }"></td>
-			</tr>
-			
-		</c:forEach>
+				<tr>
+					<td id="th" height="30">휴 대 폰</td>
+					<td id="th2">
+						<input type="text" name="editTel" value="${ list.tel }">
+					</td>
+					<td id="th">이 메 일</td>
+					<td id="th2">
+						<input type="text" name="editEmp_email" value="${ list.emp_email }">
+					</td>
+				</tr>
+				
+				<tr>
+					<td id="th" height="30">월 급</td>
+					<td id="th2">
+						<input type="text" name="editMoney" value="${ list.money }">
+					</td>
+					<td id="th">비밀번호</td>
+					<td id="th2">
+						<input type="text" name="editEmp_pwd" value="${ list.emp_pwd }">
+					</td>
+				</tr>
+				
+				<tr>
+					<td id="th2" colspan="4" height="30">
+						<input type="button" value="수정" onclick="go()">
+						<input type="reset" value="취소">
+					</td>
+				</tr>
+				
+			</c:forEach>
 		</table>
-
-	<table>
-			<tr>
-				<td><input type="button" value="수정" onclick="go()"> <!-- 수정하세여~  -->
-					<input type="reset" value="취소"> <!-- 수정하세여~  --></td>
-			</tr>
-		</table>
-		</form>
+	</form>
 </body>
 </html>

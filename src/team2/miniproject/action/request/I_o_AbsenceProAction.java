@@ -20,10 +20,7 @@ public class I_o_AbsenceProAction implements CommandAction {
 		Team2DAO dao = Team2DAO.getInstance();
 		temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
 		
-		vo.setStu_email(request.getParameter("editEmail"));
-		vo.setAddress(request.getParameter("editAddress"));
 		vo.setAbsence(request.getParameter("editAbsence"));
-		vo.setTel(request.getParameter("editTel"));
 				
 		int check = dao.i_o_AbsencePro(vo, mem_num );
 		request.setAttribute("check", check);

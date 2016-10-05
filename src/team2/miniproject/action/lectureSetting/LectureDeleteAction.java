@@ -17,7 +17,6 @@ public class LectureDeleteAction implements CommandAction {
 		String result = (String) session.getAttribute("result");
 
 		String checklist = request.getParameter("checkbox");
-		System.out.println("checklist : " + checklist);
 		
 		Team2DAO dao = new Team2DAO();
 		

@@ -22,19 +22,12 @@ public class G_b_SchoolProAction implements CommandAction {
 		
 		
 		Team2DAO dao = Team2DAO.getInstance();
-		temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
-		
-		
-		vo.setStu_email(request.getParameter("editEmail"));
-		vo.setAddress(request.getParameter("editAddress"));
-		vo.setReturn_semester(request.getParameter("editRreturn_semster"));
-		vo.setTel(request.getParameter("editTel"));
-				
+		temporary_absenceReturnVO vo = new temporary_absenceReturnVO();				
 		
 		
 		int check = dao.G_b_SchoolPro(vo, mem_num );
 		request.setAttribute("check", check);
-		
+		request.setAttribute("mem_num", mem_num);
 		return "/jsp/request/g_b_SchoolPro.jsp";
 	}
 

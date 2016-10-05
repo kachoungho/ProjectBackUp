@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
-<meta http-equiv="Refresh" >
+<link rel="stylesheet" type="text/css"
+	href="/FirstProject/css/style.css">
+<meta http-equiv="Refresh">
 <title>수강신청 페이지 입니다.</title>
 
 <script LANGUAGE="JavaScript">
@@ -75,8 +76,6 @@
 </script>
 
 
-
-
 </head>
 <body>
 
@@ -84,93 +83,94 @@
 		accept-charset="">
 		<fieldset>
 			<legend>학 년 구 분</legend>
-			<table border="1">
+			<table>
 				<tr>
-					<td bgcolor=skyblue>학 년</td>
-					<td><select name="grade" onchange="gradeList()">
+					<td id="th" width="60">학 년</td>
+					<td id="th2" width="80"><select name="grade"
+						onchange="gradeList()">
 							<option value="1">1학년</option>
 							<option value="2">2학년</option>
 							<option value="3">3학년</option>
 							<option value="4">4학년</option>
 					</select></td>
-					<td bgcolor=skyblue>학 과</td>
-					<td><select name="major_sel">
+					<td id="th" width="60">학 과</td>
+					<td id="th2" width="150"><select name="major_sel">
 							<option value="default">학 과 선 택</option>
 							<option value="com">컴퓨터공학</option>
 							<option value="human">인 문 학 과</option>
 							<option value="vision">시각디자인학과</option>
-							<option value="kyo">교  양</option>
+							<option value="kyo">교 양</option>
 					</select></td>
-					<td><input type="submit" value="선택"></td>
+					<td id="th"><input type="submit" value="선택"></td>
 				</tr>
 			</table>
 		</fieldset>
 	</form>
 
-	<form name=pickForm1 action="/FirstProject/pickSubject.do" method="post"
-		accept-charset="">
-		<input type="hidden" name="grade" value="${grade}">
-		<input type="hidden" name="major_sel" value="${major_sel}">
-		
+	<form name=pickForm1 action="/FirstProject/pickSubject.do"
+		method="post" accept-charset="">
+		<input type="hidden" name="grade" value="${grade}"> <input
+			type="hidden" name="major_sel" value="${major_sel}">
 		<fieldset>
 			<legend>수 업 목 록</legend>
-
-			<table border="1">
+			<table>
 				<tr>
-					<td bgcolor="skyblue" width="100">체  크</td>
-					<td bgcolor="skyblue" width="100">수강 코드</td>
-					<td bgcolor="skyblue" width="200">과 목 명</td>
-					<td bgcolor="skyblue" width="100">학 점</td>
-					<td bgcolor="skyblue" width="100">담당 교수</td>
-					<td bgcolor="skyblue" width="100">강의 시간</td>
-					
+					<td id="th" width="100">체 크</td>
+					<td id="th" width="100">수강 코드</td>
+					<td id="th" width="200">과 목 명</td>
+					<td id="th" width="100">학 점</td>
+					<td id="th" width="100">담당 교수</td>
+					<td id="th" width="100">강의 시간</td>
 				</tr>
 				<c:forEach var="list" items="${ list }">
 					<tr>
-						<td><input type="checkbox" name="check" value="${list.sub_code}"></td>
-						<td>${list.sub_code}</td>
-						<td>${list.sub_name}</td>
-						<td>${list.sub_hakjum}</td>
-						<td>${list.emp_name}</td>
-						<td>${list.sub_time}</td>
+						<td id="th2"><input type="checkbox" name="check"
+							value="${list.sub_code}"></td>
+						<td id="th2">${list.sub_code}</td>
+						<td id="th2">${list.sub_name}</td>
+						<td id="th2">${list.sub_hakjum}</td>
+						<td id="th2">${list.emp_name}</td>
+						<td id="th2">${list.sub_time}</td>
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="6" ><input type="submit" value="추가"></td>
-				</tr>				
+					<td id="th2" colspan="6"><input type="submit" value="추가"></td>
+				</tr>
 			</table>
 
 		</fieldset>
 	</form>
-	
-	<form name=pickForm2 action="/FirstProject/pickSubject.do" method="post"
-		accept-charset="">
-		<input type="hidden"  name="grade" value="${grade}">
-		<input type="hidden" name="major_sel" value="${major_sel}">
+
+	<form name=pickForm2 action="/FirstProject/pickSubject.do"
+		method="post" accept-charset="">
+		<input type="hidden" name="grade" value="${grade}"> <input
+			type="hidden" name="major_sel" value="${major_sel}">
 		<fieldset>
 			<legend>신 청 목 록</legend>
-			<table border="1">
+			<table>
 				<tr>
-					<td bgcolor="skyblue" width="100">체  크</td>
-					<td bgcolor="skyblue" width="100">수강 코드</td>
-					<td bgcolor="skyblue" width="200">과 목 명</td>
-					<td bgcolor="skyblue" width="100">학 점</td>
-					<td bgcolor="skyblue" width="100">담당 교수</td>
-					<td bgcolor="skyblue" width="100">강의 시간</td>
+					<td id="th" width="100">체 크</td>
+					<td id="th" width="100">수강 코드</td>
+					<td id="th" width="200">과 목 명</td>
+					<td id="th" width="100">학 점</td>
+					<td id="th" width="100">담당 교수</td>
+					<td id="th" width="100">강의 시간</td>
 				</tr>
 				<c:forEach var="picklist" items="${ picklist }">
 					<tr>
-						<td><input type="checkbox" name="check2" value="${picklist.sub_code}"></td>
-						<td>${picklist.sub_code}</td>
-						<td>${picklist.sub_name}</td>
-						<td>${picklist.sub_hakjum}</td>
-						<td>${picklist.emp_name}</td>
-						<td>${picklist.sub_time}</td>
+						<td id="th2"><input type="checkbox" name="check2"
+							value="${picklist.sub_code}"></td>
+						<td id="th2">${picklist.sub_code}</td>
+						<td id="th2">${picklist.sub_name}</td>
+						<td id="th2">${picklist.sub_hakjum}</td>
+						<td id="th2">${picklist.emp_name}</td>
+						<td id="th2">${picklist.sub_time}</td>
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="6" ><input type="submit" value="삭제"></td>
-				</tr>	
+					<td id="th2" colspan="6"><input type="submit" value="삭제">
+					</td>
+				</tr>
 			</table>
 		</fieldset>
 	</form>

@@ -23,10 +23,8 @@ public class MajorApproveAction implements CommandAction {
 		Team2DAO dao = Team2DAO.getInstance();
 		changeMajorVO vo = new changeMajorVO();
 		List list = null;
-		System.out.println("mem_num값입니다."+mem_num);
 		list = dao.ListAdminChangeMajor(mem_num);		//관리자함수만들기
 
-		System.out.println(list);
 		request.setAttribute("mem_num", mem_num);
 		request.setAttribute("list", list);
 

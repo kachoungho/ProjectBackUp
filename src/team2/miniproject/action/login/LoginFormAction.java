@@ -12,31 +12,23 @@ public class LoginFormAction implements CommandAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// System.out.println("여긴옴?");
+		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(60*30);
+		
 		String mem_num = request.getParameter("mem_num");
 		String mem_pwd = request.getParameter("mem_pwd");
 
 		int result = 0;
 		String mem_name = null;
 		String rt = null;
-
 		Team2DAO dao = Team2DAO.getInstance();
-
 		membersVO vo = new membersVO();
-
 		result = dao.loginDB(mem_num, mem_pwd); // result =1
 		mem_name = dao.ListloginDB(mem_num, mem_pwd);
 		
 
-		HttpSession session = request.getSession();
-
-		session.setMaxInactiveInterval(60*30);
-
 		session.setAttribute("mem_num", mem_num);
 		session.setAttribute("mem_pwd", mem_pwd);
-		
-
-		System.out.println("result  : " + result);
 		
 		if (result == 1) {
 			session.setAttribute("client", "user");
@@ -55,7 +47,6 @@ public class LoginFormAction implements CommandAction {
 			System.out.println("LoginFormAction부분 reuslt : " + result);
 		}
 
-		System.out.println("return 값 : " + rt);
 		request.setAttribute("result", new Integer(result));
 
 		return rt;

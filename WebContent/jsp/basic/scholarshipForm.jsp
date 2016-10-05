@@ -1,77 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="/FirstProject/css/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>th125 JSP Template</title>
 </head>
 <body>
-		<input type="hidden" name="mem_num" value="${mem_num}">
-		<input type="hidden" name="mem_name" value="${mem_name}"> 
-		<input type="hidden" name="result" value="${result}">
-	<table class="btn btn-default3" width="670" cellspacing="0"
-		cellpadding="0">
+	<br>
+	<table cellspacing="0" cellpadding="0">
 		<tr align="center">
-			<td width="200"><a href="/FirstProject/basic.do">기본 사항</a></td>
-			<td width="200"><a href="/FirstProject/scholarship.do">장학 사항</a></td>
-			<td width="200"><a href="/FirstProject/adviser.do">지도 교수</a></td>
+			<td id="th2" width="150"><a class="btn btn-default3"
+				href="/FirstProject/basic.do">기본 사항</a></td>
+			<td id="th2" width="150"><a class="btn btn-default3"
+				href="/FirstProject/scholarship.do">장학 사항</a></td>
+			<td id="th2" width="150"><a class="btn btn-default3"
+				href="/FirstProject/adviser.do">지도 교수</a></td>
 		</tr>
 	</table>
 	<br>
 	<br>
 	<br>
-
-	<table border="0" width="98%" cellspacing="0" cellpadding="0" valign="top" align="center">
+	
+	<!-- 장학사항 -->
+	<table width="670" cellspacing="1" cellpadding="3" height="20" >
 		<tr>
-			<td height="5"></td>
+			<td id="th2" height="10" valign="middle" colspan="6" bgcolor="white"><strong>장학사항</strong></td>
 		</tr>
 		<tr>
-			<td height="10">&nbsp;</td>
-		</tr>	
+			<td id="th" height="25" width="50">순번</td>
+			<td id="th" width="60">학년도</td>
+			<td id="th" width="50">학기</td>
+			<td id="th">장학명</td>
+			<td id="th" width="120">감면수업료</td>
+			<td id="th" width="120">감면입학금</td>
+		</tr>
+
+		<c:forEach var="list" items="${list}" varStatus="status">
+			<tr>
+				<td id="th" height="25" width="30">
+					<c:out value="${status.index+1 }" /></td>
+				<td id="th2" width="50">${list.jh_year }</td>
+				<td id="th2" width="30">${list.jh_term }</td>
+				<td id="th2">${list.jh_name }</td>
+				<td id="th2" width="80"><fmt:formatNumber>${list.money_su }</fmt:formatNumber>&nbsp;원</td>
+				<td id="th2" width="80"><fmt:formatNumber>${list.money_ip }</fmt:formatNumber>&nbsp;원</td>
+			</tr>
+			<c:set value="${tot_su + list.money_su }" var="tot_su" />
+			<c:set value="${tot_ip + list.money_ip }" var="tot_ip" />
+		</c:forEach>
 		<tr>
-			<td height="10" valign="middle"><strong>장학사항</strong></td>
-		</tr>					
-		<tr>
-			<td>
-				<table  width="670" bgcolor="#737373" cellspacing="1" cellpadding="3" height="20" valign="center">
-					<!-- 장학사항 -->
-					
-					<tr> 
-						<td height="25" bgcolor="#D0D8FF" width="50" align="center">순번</td>
-						<td bgcolor="#D0D8FF" width="60" align="center">학년도</td>
-						<td bgcolor="#D0D8FF" width="50" align="center">학기</td>
-						<td bgcolor="#D0D8FF" align="center">장학명</td>
-						<td bgcolor="#D0D8FF" width="120" align="center">감면수업료</td>
-						<td bgcolor="#D0D8FF" width="120" align="center">감면입학금</td>
-						<!--td bgcolor="#D0D8FF" width="80" align="center">지급일</td-->
-					</tr>
-					
-			<c:forEach var="list" items="${list}"  varStatus="status">		
-							<tr bgcolor="#F5F5F5"  align="center">    
-								<td height="25" bgcolor="#D0D8FF" width="30" align="center"><c:out value="${status.index+1 }"/></td>
-								<td width="50" align="center">${list.jh_year }</td>
-								<td width="30" align="center">${list.jh_term }</td>
-								<td align="left">&nbsp;${list.jh_name }</td>
-								<td width="80" align="right"><fmt:formatNumber>${list.money_su }</fmt:formatNumber>&nbsp;원</td>
-								<td width="80" align="right"><fmt:formatNumber>${list.money_ip }</fmt:formatNumber>&nbsp;원</td>
-								<!--td width="80" align="center">null</td-->
-							</tr>					
-							<c:set value="${tot_su + list.money_su }" var="tot_su"/>
-							<c:set value="${tot_ip + list.money_ip }" var="tot_ip"/>
-			</c:forEach>				
-							<tr bgcolor="#F5F5F5"  align="center">    
-								<td height="25" bgcolor="#D0D8FF" colspan="4">합 계 금 액 : </td>
-							
-								<td width="80" align="right">&nbsp; <fmt:formatNumber><c:out value="${tot_su }"/></fmt:formatNumber> 원</td>
-								<td width="80" align="right">&nbsp; <fmt:formatNumber><c:out value="${tot_ip }"/></fmt:formatNumber> 원</td>
-								<!--td width="80" align="center">null</td-->
-							</tr>					
-			
-				</table>
+			<td id="th" height="25" colspan="4">합 계 금 액</td>
+
+			<td id="th2" width="80">
+				<fmt:formatNumber><c:out value="${tot_su }" /></fmt:formatNumber> 원
+			</td>
+			<td id="th2" width="80">
+				<fmt:formatNumber><c:out value="${tot_ip }" /></fmt:formatNumber> 원
 			</td>
 		</tr>
 	</table>

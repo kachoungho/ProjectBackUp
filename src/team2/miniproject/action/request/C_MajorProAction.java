@@ -20,16 +20,12 @@ public class C_MajorProAction implements CommandAction {
 		Team2DAO dao = Team2DAO.getInstance();
 		changeMajorVO vo = new changeMajorVO();
 		
-		vo.setStu_email(request.getParameter("editEmail"));
-		vo.setTel(request.getParameter("editTel"));
 		vo.setChange_major(request.getParameter("editChangeMajor"));
 		vo.setReason_why(request.getParameter("editReasonWhy"));
 		
 		int check = dao.c_MajorPro(vo, mem_num );
 		
-		
 		request.setAttribute("check", check);
-		
 		return "/jsp/request/c_MajorPro.jsp";
 	}
 

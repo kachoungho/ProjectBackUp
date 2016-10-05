@@ -15,25 +15,23 @@ public class LectureDateAction implements CommandAction {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession(); 
-		String mem_num = (String)session.getAttribute("mem_num");
+		HttpSession session = request.getSession();
+		String mem_num = (String) session.getAttribute("mem_num");
 		String mem_name = request.getParameter("mem_name");
-	    String result = request.getParameter("result");
-	    
+		String result = request.getParameter("result");
+
 		Team2DAO dao = Team2DAO.getInstance();
 
 		int count = 0;
 
 		List list = null;
 		list = dao.getSelectAll(mem_num);
-		count=list.size();
-		
-		System.out.println(count);
-		
-			request.setAttribute("count", new Integer(count));
-			request.setAttribute("list",list);
-		
-			return "/jsp/lectureData/lectureDateForm.jsp";
+		count = list.size();
+
+		request.setAttribute("count", new Integer(count));
+		request.setAttribute("list", list);
+
+		return "/jsp/lectureData/lectureDateForm.jsp";
 	}
 
 }

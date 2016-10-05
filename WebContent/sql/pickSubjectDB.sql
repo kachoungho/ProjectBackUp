@@ -6,7 +6,7 @@ delete from picksubject where sub_code = 'COM107';
 create table picksubject(
 	stu_num varchar(10) not null,
 	sub_code  varchar(10) not null,
-	sub_name varchar(50) not null,-
+	sub_name varchar(50) not null,
 	sub_hakjum varchar(10) not null,
 	emp_name varchar(10) not null,
 	sub_time varchar(10) not null,
@@ -17,5 +17,5 @@ create table picksubject(
 select  STUDENTS.MAJOR, STUDENTS.STU_NAME, picksubject.*
 		from STUDENTS join picksubject
 		on STUDENTS.STU_NUM = picksubject.stu_num
-		where major = 'ÄÄÇ»ÅÍ°øÇÐ' ;
+		where major = 'ì»´í“¨í„°ê³µí•™' ;
 		

@@ -8,7 +8,7 @@
   	<servlet-class>team2.miniproject.controller.team2Controller</servlet-class>
   	<init-param>
   		<param-name>propertyConfigProject</param-name>
-  		<param-value>F:/th125/th125_Jsp_servlet/workspace/FirstProject/WebContent/WEB-INF/commandBoard.properties</param-value>
+      	<param-value>F:/th125/th125_Jsp_servlet/workspace/FirstProject/WebContent/WEB-INF/commandBoard.properties</param-value>
   	</init-param>
   </servlet>
   <servlet-mapping>

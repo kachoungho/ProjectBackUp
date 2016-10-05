@@ -50,6 +50,12 @@
 수 업 정 보
 </a><DIV style='display:none'>
 <a class="btn btn-default3" href="/FirstProject/adminLectureDateForm.do">
-└ 강의 목록 보기
+├ 강의 계획서 관리
+</a><br><p></p>
+<a class="btn btn-default3" href="/FirstProject/adminLectureMaterial.do">
+├ 강의 자료 관리
+</a><br><p></p>
+<a class="btn btn-default3" href="/FirstProject/adminSubmit.do">
+└ 강의 과제물 관리
 </a><br>
 </DIV>

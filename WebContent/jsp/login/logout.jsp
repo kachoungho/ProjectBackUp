@@ -4,4 +4,4 @@
 	alert("로그아웃 되었습니다.");
 	history.go(1);
 </script>
-<meta http-equiv="Refresh" content="0; url=/FirstProject/jsp/main.jsp">
+<meta http-equiv="Refresh" content="0; url=/FirstProject/main.do">

@@ -61,10 +61,10 @@
 <a class="btn btn-default3" href="/FirstProject/lectureDate.do">
 ├ 강 의 계 획 서
 </a><br><p></p>
-<a class="btn btn-default3" href="/FirstProject/program_Select.do">
+<a class="btn btn-default3" href="/FirstProject/lectureListForm.do">
 ├ 강 의 자 료
 </a><br><p></p>
-<a class="btn btn-default3" href="/FirstProject/submit.do">
+<a class="btn btn-default3" href="/FirstProject/stuSubmitListForm.do">
 └ 과 제 물 제 출
 </a>
 </div>

@@ -26,11 +26,8 @@ public class G_b_SchoolAction implements CommandAction {
 			Team2DAO dao = Team2DAO.getInstance();
 			temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
 			List list = null;
-		      
 		    list=dao.ListReturnSemester(mem_num);
-			
 			request.setAttribute("list", list);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -35,7 +35,7 @@
 				</tr>
 				<tr align="center" bgcolor="#F5F5F5" align="center">
 					<td bgcolor="#D0D8FF" width="220">생년월일</td>
-					<td>${ list.major }</td>
+					<td>${ list.stu_birthday }</td>
 					<td bgcolor="#D0D8FF" width="220">지도교수</td>
 					<td>${ list.stu_professor }</td>
 				</tr>

@@ -12,7 +12,6 @@
 <c:if test="${result == 1 }">
 	<% System.out.println("유저 로그인 성공");%>
 	<c:forEach var="mem_name" items="${ mem_name }">
-	<% System.out.println("가능?");%>
 		<meta http-equiv="Refresh" content="0; url=/FirstProject/loginSuc.do?result=${result}">
 	</c:forEach>
 	<script type="text/javascript">

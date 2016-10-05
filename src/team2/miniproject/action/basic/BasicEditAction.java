@@ -33,5 +33,4 @@ public class BasicEditAction implements CommandAction {
 
 		return "/jsp/basic/basicEditForm.jsp";
 	}
-
 }

@@ -30,7 +30,6 @@ public class StuGradeUpdateProAction implements CommandAction {
 		
 		check = dao.StuGradeUpdate(mem_num, vo);
 		request.setAttribute("check", check);
-		System.out.println("check : " + check);
 		
 		return "/jsp/stuBasic/stuGradeUpdatePro.jsp";
 	}

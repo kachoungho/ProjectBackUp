@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="/FirstProject/css/style.css">
 
 <script type="text/javascript">
 	// 한글 깨짐 처리 해결
@@ -24,59 +25,63 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<form  name="stuBasicForm" action="/FirstProject/stuBasic.do"
-		method="get" accept-charset="">
-		<table  id="table2"  border="1">
-			<td id="td" ><select name="major">
+<br><br>
+	<form name="stuBasicForm" action="/FirstProject/stuBasic.do" method="get" accept-charset="">
+		<table id="th">
+			<td width="100" >
+				<select height="30" name="major">
 					<option value="default">학 과 선 택</option>
 					<option value="com">컴퓨터공학</option>
 					<option value="human">인 문 학 과</option>
 					<option value="vision">시각디자인학과</option>
-			</select></td>
-			<td ><input type="button" value=" 선택 " onclick="gogogo2()">
+				</select>
+			</td>
+			<td>
+				<input type="button" value=" 선택 " onclick="gogogo2()">
 			</td>
 		</table>
+		
 		<br>
 		<br>
 		<c:forEach var="list" items="${ list }">
-			<table border="1" >
+			<table id="th">
 				<tr>
-					<td id="td2" bgcolor="skyblue" width="100">학  번</td>
-					<td id="td2" bgcolor="skyblue" width="100">이  름</td>
-					<td id="td2" bgcolor="skyblue" width="100">비밀번호</td>
-					<td id="td2" bgcolor="skyblue" width="100">성  별</td>
-					<td id="td2" bgcolor="skyblue" width="100">생년월일</td>
-					<td id="td2" bgcolor="skyblue" width="100">상  태</td>
-					<td id="td2" bgcolor="skyblue" width="100">담당교수</td>
+					<td id="th" width="100">학 번</td>
+					<td id="th" width="100">이 름</td>
+					<td id="th" width="100">비밀번호</td>
+					<td id="th" width="100">성 별</td>
+					<td id="th" width="100">생년월일</td>
+					<td id="th" width="100">상 태</td>
+					<td id="th" width="100">담당교수</td>
 				</tr>
+				
 				<tr>
-					<td id="td2" >${list.stu_num}</td>
-					<td id="td2" >${list.stu_name}</td>
-					<td id="td2">${list.stu_pwd}</td>
-					<td id="td2" >${list.stu_sex}</td>
-					<td id="td2" >${list.stu_birthday}</td>
-					<td id="td2">${list.stu_state}</td>
-					<td id="td2">${list.stu_professor}</td>
+					<td id="th2">${list.stu_num}</td>
+					<td id="th2">${list.stu_name}</td>
+					<td id="th2">${list.stu_pwd}</td>
+					<td id="th2">${list.stu_sex}</td>
+					<td id="th2">${list.stu_birthday}</td>
+					<td id="th2">${list.stu_state}</td>
+					<td id="th2">${list.stu_professor}</td>
 				</tr>
 				<hr>
 				<tr>
-					<td id="td2" bgcolor="skyblue" width="100">이 메 일</td>
-					<td id="td2" bgcolor="skyblue" width="100">학  과</td>
-					<td id="td2" bgcolor="skyblue" width="100">복수전공</td>
-					<td id="td2" bgcolor="skyblue" width="100">학  년</td>
-					<td id="td2" bgcolor="skyblue" width="100">주  소</td>
-					<td id="td2" bgcolor="skyblue" width="100">휴대전화</td>
-					<td id="td2" bgcolor="skyblue" width="100">유선전화</td>
+					<td id="th" width="100">이 메 일</td>
+					<td id="th" width="100">학 과</td>
+					<td id="th" width="100">복수전공</td>
+					<td id="th" width="100">학 년</td>
+					<td id="th" width="100">주 소</td>
+					<td id="th" width="100">휴대전화</td>
+					<td id="th" width="100">유선전화</td>
 				</tr>
 				<tr>
-					<td id="td2">${list.stu_email}</td>
-					<td id="td2">${list.major}</td>
-					<td id="td2">${list.submajor}</td>
-					<td id="td2">${list.grade}</td>
-					<td id="td2">${list.address}</td>
-					<td id="td2">${list.tel}</td>
-					<td id="td2">${list.home_tel}</td>
+					<td id="th2">${list.stu_email}</td>
+					<td id="th2">${list.major}</td>
+					<td id="th2">${list.submajor}</td>
+					<td id="th2">${list.grade}</td>
+					<td id="th2">${list.address}</td>
+					<td id="th2">${list.tel}</td>
+					<td id="th2">${list.home_tel}</td>
 				</tr>
 			</table>
 			<br>

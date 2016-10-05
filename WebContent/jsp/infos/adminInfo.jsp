@@ -9,68 +9,65 @@
 <title>th125 JSP Template</title>
 </head>
 <body>
-	<table border="1">
-		<tr align="center">
-			<td bgcolor="skyblue" width="100">구 분</td>
-			<td bgcolor="skyblue" width="400">세 부 메 뉴</td>
-			<td bgcolor="skyblue" width="200">주 요 기 능</td>
-			<td bgcolor="skyblue" width="200">전 화 번 호</td>
+	<table>
+		<tr id="info">
+			<th id="info"width="100">구 분</th>
+			<th id="info" width="400">세 부 메 뉴</th>
+			<th id="info" width="200">주 요 기 능</th>
+			<th id="info" width="200">전 화 번 호</th>
 		</tr>
-		<tr align="center">
-			<td rowspan="2">관리자 <br>개인정보
-			</td>
-			<td>개인 정보 보기</td>
-			<td>개인 정보 확인</td>
-			<td>031-0000-0001</td>
+		<tr id="info">
+			<td id="info" rowspan="2">관리자 <br>개인정보</td>
+			<td id="info">개인 정보 보기</td>
+			<td id="info">개인 정보 확인</td>
+			<td id="info">031-0000-0001</td>
 		</tr>
-		<tr align="center">
-			<td>개인 정보 수정</td>
-			<td>개인 정보 수정</td>
-			<td>031-0000-0001</td>
-		</tr>
-		
-		<tr align="center">
-			<td rowspan="3">학 생 정 보</td>
-			<td>학생 정보 보기</td>
-			<td>학생 개인 정보 보기</td>
-			<td>031-0000-0002</td>
-		</tr>
-		<tr align="center">
-			<td>학생 성적 보기</td>
-			<td>전체 학생 성적 조회</td>
-			<td>031-0000-0002</td>
-		</tr>
-		<tr align="center">
-			<td>학생 수강신청 내역</td>
-			<td>전체 학생 <br>수강신청 내역 조회
-			</td>
-			<td>031-0000-0002</td>
+		<tr id="info">
+			<td id="info">개인 정보 수정</td>
+			<td id="info">개인 정보 수정</td>
+			<td id="info">031-0000-0001</td>
 		</tr>
 		
-		<tr align="center">
-			<td rowspan="3">승인 페이지</td>
-			<td>휴학 승인</td>
-			<td>휴학 승인 처리</td>
-			<td>031-0000-0006</td>
+		<tr id="info">
+			<td id="info" rowspan="3">학 생 정 보</td>
+			<td id="info">학생 정보 보기</td>
+			<td id="info">학생 개인 정보 보기</td>
+			<td id="info">031-0000-0002</td>
 		</tr>
-		<tr align="center">
-			<td>복학 승인</td>
-			<td>복학 승인 처리</td>
-			<td>031-0000-0006</td>
+		<tr id="info">
+			<td id="info">학생 성적 보기</td>
+			<td id="info">전체 학생 성적 조회</td>
+			<td id="info">031-0000-0002</td>
 		</tr>
-		<tr align="center">
-			<td>전과 승인</td>
-			<td>전과 승인 처리</td>
-			<td>031-0000-0006</td>
+		<tr id="info">
+			<td id="info">학생 수강신청 내역</td>
+			<td id="info">전체 학생 <br>수강신청 내역 조회</td>
+			<td id="info">031-0000-0002</td>
 		</tr>
 		
-		<tr align="center">
-			<td >수 업 정 보</td>
-			<td>강의 목록 보기</td>
-			<td>강의 계획서<br>입력 및 수정</td>
-			<td>해당 수업 교수</td>
+		<tr id="info">
+			<td id="info" rowspan="3">승인 페이지</td>
+			<td id="info">휴학 승인</td>
+			<td id="info">휴학 승인 처리</td>
+			<td id="info">031-0000-0006</td>
 		</tr>
-
+		<tr id="info">
+			<td id="info">복학 승인</td>
+			<td id="info">복학 승인 처리</td>
+			<td id="info">031-0000-0006</td>
+		</tr>
+		<tr id="info">
+			<td id="info">전과 승인</td>
+			<td id="info">전과 승인 처리</td>
+			<td id="info">031-0000-0006</td>
+		</tr>
+		
+		<tr id="info">
+			<td id="info">수 업 정 보</td>
+			<td id="info">강의 목록 보기</td>
+			<td id="info">강의 계획서<br>입력 및 수정</td>
+			<td id="info">해당 수업 교수</td>
+		</tr>
 	</table>
 </body>
 </html>

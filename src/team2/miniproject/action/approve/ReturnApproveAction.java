@@ -14,8 +14,6 @@ public class ReturnApproveAction implements CommandAction {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		System.out.println("여기까지입니다.1");
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String mem_num = (String)session.getAttribute("mem_num"); 
@@ -24,12 +22,11 @@ public class ReturnApproveAction implements CommandAction {
 		Team2DAO dao = Team2DAO.getInstance();
 		temporary_absenceReturnVO vo = new temporary_absenceReturnVO();
 		List list = null;
-		System.out.println("여기까지입니다2.form="+mem_num);
+		
 		list=dao.ListReturnadminSemester(mem_num);
-		System.out.println("리스트입니다:"+list);
+		
 		request.setAttribute("mem_num", mem_num);
 		request.setAttribute("list", list);
-		
 		
 		return "/jsp/approve/returnApprove.jsp";	
 	}

@@ -17,7 +17,6 @@ public class UpdateLectureDateProAction implements CommandAction {
 		String mem_num = (String)session.getAttribute("mem_num");
 		
 		String sub_code = request.getParameter("sub_code");
-System.out.println("sub_code ==" + sub_code);
 		Sub_detailVO vo = new Sub_detailVO();
 		vo.setSub_code(sub_code);
 		vo.setLec_purpose(request.getParameter("lec_purpose"));
@@ -26,7 +25,6 @@ System.out.println("sub_code ==" + sub_code);
 		
 		Team2DAO dao = Team2DAO.getInstance();
 		dao.updateLectureDate(vo);
-		System.out.println("업댓 됨");
 
 		request.setAttribute("sub_code", vo.getSub_code());
 	  	

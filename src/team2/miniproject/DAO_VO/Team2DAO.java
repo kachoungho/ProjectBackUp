@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -690,7 +692,6 @@ public class Team2DAO {
 		return list;
 	}
 
-	// 복학신청서 method
 	public int G_b_SchoolPro(temporary_absenceReturnVO vo, String mem_num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -705,8 +706,8 @@ public class Team2DAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				String sql2 = "insert into temporary_absenceReturn(stu_num, stu_name, stu_grade, major, stu_birthday, stu_professor, stu_email, address, tel, return_semester)"
-						+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				String sql2 = "insert into temporary_absenceReturn(stu_num, stu_name, stu_grade, major, stu_birthday, stu_professor, stu_email, address, tel)"
+						+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
 				pstmt = conn.prepareStatement(sql2);
 				pstmt.setString(1, mem_num);
@@ -715,10 +716,9 @@ public class Team2DAO {
 				pstmt.setString(4, rs.getString("major"));
 				pstmt.setString(5, rs.getString("stu_birthday"));
 				pstmt.setString(6, rs.getString("stu_professor"));
-				pstmt.setString(7, vo.getStu_email());
-				pstmt.setString(8, vo.getAddress());
-				pstmt.setString(9, vo.getTel());
-				pstmt.setString(10, vo.getReturn_semester());
+				pstmt.setString(7, rs.getString("stu_email"));
+				pstmt.setString(8, rs.getString("address"));
+				pstmt.setString(9, rs.getString("tel"));
 
 				pstmt.executeUpdate();
 
@@ -860,14 +860,16 @@ public class Team2DAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 
-				sb.append("update students set Tel=?, stu_email=?, Address=?, Home_Tel=? where stu_num =?");
+				sb.append(
+						"update students set tel=?, stu_email=?, address=?, home_Tel=?, stu_pwd = ? where stu_num =?");
 				pstmt = conn.prepareStatement(sb.toString());
 
 				pstmt.setString(1, vo.getTel());
 				pstmt.setString(2, vo.getStu_email());
 				pstmt.setString(3, vo.getAddress());
 				pstmt.setString(4, vo.getHome_tel());
-				pstmt.setString(5, mem_num);
+				pstmt.setString(5, vo.getStu_pwd());
+				pstmt.setString(6, mem_num);
 				pstmt.executeUpdate();
 
 				result = 1; // update성공시 1 return
@@ -1206,9 +1208,9 @@ public class Team2DAO {
 				pstmt.setString(4, rs.getString("major"));
 				pstmt.setString(5, rs.getString("stu_birthday"));
 				pstmt.setString(6, rs.getString("stu_professor"));
-				pstmt.setString(7, vo.getStu_email());
-				pstmt.setString(8, vo.getAddress());
-				pstmt.setString(9, vo.getTel());
+				pstmt.setString(7, rs.getString("stu_email"));
+				pstmt.setString(8, rs.getString("address"));
+				pstmt.setString(9, rs.getString("tel"));
 				pstmt.setString(10, vo.getAbsence());
 
 				pstmt.executeUpdate();
@@ -1301,8 +1303,8 @@ public class Team2DAO {
 				pstmt.setString(4, rs.getString("major"));
 				pstmt.setString(5, rs.getString("stu_birthday"));
 				pstmt.setString(6, rs.getString("stu_professor"));
-				pstmt.setString(7, vo.getStu_email());
-				pstmt.setString(8, vo.getTel());
+				pstmt.setString(7, rs.getString("stu_email"));
+				pstmt.setString(8, rs.getString("tel"));
 				pstmt.setString(9, vo.getChange_major());
 				pstmt.setString(10, vo.getReason_why());
 
@@ -1951,7 +1953,6 @@ public class Team2DAO {
 					vo.setStu_grade(rs.getString("stu_grade"));
 					vo.setTel(rs.getString("tel"));
 					vo.setAbsence(rs.getString("absence"));
-					vo.setReturn_semester(rs.getString("return_semester"));
 					list.add(vo);
 				} while (rs.next());
 			}
@@ -1972,7 +1973,7 @@ public class Team2DAO {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
 		List list = null;
-		
+
 		try {
 			conn = getConnection();
 			String sql = "select * from temporary_absenceReturn where stu_num =?";
@@ -1993,7 +1994,6 @@ public class Team2DAO {
 					vo.setStu_grade(rs.getString("stu_grade"));
 					vo.setTel(rs.getString("tel"));
 					vo.setAbsence(rs.getString("absence"));
-					vo.setReturn_semester(rs.getString("return_semester"));
 					if (vo.getAbsence() != null) {
 						if (checkbox != null) {
 							String sql2 = "update students set stu_state=? where stu_num=?";
@@ -2025,7 +2025,7 @@ public class Team2DAO {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
 		List list2 = null;
-		
+
 		try {
 			conn = getConnection();
 			String sql = "select * from temporary_absenceReturn where stu_num = ?";
@@ -2045,8 +2045,6 @@ public class Team2DAO {
 				vo.setStu_grade(rs.getString("stu_grade"));
 				vo.setTel(rs.getString("tel"));
 				vo.setAbsence(rs.getString("absence"));
-				vo.setReturn_semester(rs.getString("return_semester"));
-				
 				if (vo.getAbsence() != null) {
 					if (checkbox != null) {
 						String sql2 = "delete from temporary_absenceReturn where stu_num=?";
@@ -2074,7 +2072,7 @@ public class Team2DAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List list = null;
-		
+
 		try {
 			conn = getConnection();
 			String sql = "select * from temporary_absenceReturn ";
@@ -2094,7 +2092,6 @@ public class Team2DAO {
 					vo.setStu_grade(rs.getString("stu_grade"));
 					vo.setTel(rs.getString("tel"));
 					vo.setAbsence(rs.getString("absence"));
-					vo.setReturn_semester(rs.getString("return_semester"));
 					list.add(vo);
 				} while (rs.next());
 			}
@@ -2136,18 +2133,15 @@ public class Team2DAO {
 					vo.setStu_grade(rs.getString("stu_grade"));
 					vo.setTel(rs.getString("tel"));
 					vo.setAbsence(rs.getString("absence"));
-					vo.setReturn_semester(rs.getString("return_semester"));
-					if (vo.getReturn_semester() != null) {
-						if (checkbox != null) {
-							String sql2 = "update students set stu_state=? where stu_num=?";
-							pstmt2 = conn.prepareStatement(sql2);
-							pstmt2.setString(1, "재학");
-							pstmt2.setString(2, rs.getString("stu_num"));
-							pstmt2.executeUpdate();
-							list.add(vo);
-						} // checkbox 체크여부 if end
+					if (checkbox != null) {
+						String sql2 = "update students set stu_state=? where stu_num=?";
+						pstmt2 = conn.prepareStatement(sql2);
+						pstmt2.setString(1, "재학");
+						pstmt2.setString(2, rs.getString("stu_num"));
+						pstmt2.executeUpdate();
 						list.add(vo);
-					}
+					} // checkbox 체크여부 if end
+					list.add(vo);
 				} while (rs.next());
 			}
 		} catch (SQLException e) {
@@ -2157,7 +2151,6 @@ public class Team2DAO {
 			CloseUtil.close(pstmt);
 			CloseUtil.close(conn);
 		}
-
 		return list;
 	}/// 관리자측 복학승인 Update부분
 
@@ -2188,7 +2181,6 @@ public class Team2DAO {
 					vo.setStu_grade(rs.getString("stu_grade"));
 					vo.setTel(rs.getString("tel"));
 					vo.setAbsence(rs.getString("absence"));
-					vo.setReturn_semester(rs.getString("return_semester"));
 					if (vo.getReturn_semester() != null) {
 						if (checkbox != null) {
 							String sql2 = "delete from temporary_absenceReturn where stu_num=?";
@@ -2347,4 +2339,282 @@ public class Team2DAO {
 		return list2;
 	}/// 관리자측 전과승인 delete부분
 
+	// 관리자측 강의자료 리스트 부분
+	public List<Sub_detailVO> adminLectureMaterialGetSelectAll(String mem_num, String sub_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = null;
+		String emp_name = null;
+		try {
+			conn = getConnection();
+			String sql2 = "select * from LectureMaterial where emp_num=? and sub_code=? ";
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, mem_num);
+			pstmt.setString(2, sub_code);
+			rs = pstmt.executeQuery();
+			list = new ArrayList();
+			while (rs.next()) {
+				SubmitVO vo = new SubmitVO();
+				vo.setSubmit_week(rs.getString("submit_week"));
+				vo.setSubmit_content(rs.getString("submit_content"));
+				vo.setSubmit_title(rs.getString("submit_title"));
+				vo.setSub_code(rs.getString("sub_code"));
+				list.add(vo);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+
+	//강의 자료 생성
+	public void insertLectureMaterial(Map<String, Object> map) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			String sql = "insert into LectureMaterial values(?, ?, ?, ?, ?, ?, ?, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, (String)map.get("submit_week"));
+			pstmt.setString(2, (String)map.get("sub_code"));
+			pstmt.setString(3, (String)map.get("emp_num"));
+			pstmt.setString(4, (String)map.get("submit_title"));
+			pstmt.setString(5, (String)map.get("submit_content"));
+			pstmt.setString(6, (String)map.get("filename"));
+			pstmt.setInt(7, (Integer)map.get("filesize"));
+			pstmt.setString(8, (String)map.get("description"));
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+
+	}
+
+	////////// 관리자 과제물 제출 - 과목불러오기 adminGetSelectAll() 그대로 사용
+	////////// 관리자 과제물 제출 - 과목에서 과제목록 불러오기.
+	public List<Sub_detailVO> adminSubmitGetSelectAll(String mem_num, String sub_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = null;
+		String emp_name = null;
+		try {
+			conn = getConnection();
+			String sql2 = "select * from submit where emp_num=? and sub_code=? ";
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, mem_num);
+			pstmt.setString(2, sub_code);
+			rs = pstmt.executeQuery();
+			list = new ArrayList();
+			while (rs.next()) {
+				SubmitVO vo = new SubmitVO();
+				vo.setSubmit_week(rs.getString("submit_week"));
+				vo.setSubmit_content(rs.getString("submit_content"));
+				vo.setSubmit_title(rs.getString("submit_title"));
+				vo.setSub_code(rs.getString("sub_code"));
+				list.add(vo);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+
+	////////// 관리자 과제물 제출 - 과제물 등록 .
+	public void insertSubmit(SubmitVO vo) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = getConnection();
+			String sql = "insert into submit(submit_week, sub_code, emp_num, submit_title, submit_content) values(?,?,?,?,?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getSubmit_week());
+			pstmt.setString(2, vo.getSub_code());
+			pstmt.setString(3, vo.getEmp_num());
+			pstmt.setString(4, vo.getSubmit_title());
+			pstmt.setString(5, vo.getSubmit_content());
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+
+	}
+
+	////////// 관리자 과제물 제출 - 과목불러오기 adminGetSelectAll() 그대로 사용
+	////////// 학생측 과제물 제출 - 과목에서 과제목록 불러오기.
+	public List<Sub_detailVO> stuSubmitGetSelectAll(String sub_code, String week) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+
+		List list = null;
+		String emp_name = null;
+		try {
+			conn = getConnection();
+			String sql2 = "select * from submit where sub_code=? and submit_week = ?";
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, sub_code);
+			pstmt.setString(2, week);
+			rs = pstmt.executeQuery();
+			list = new ArrayList();
+			while (rs.next()) {
+				SubmitVO vo = new SubmitVO();
+				vo.setSubmit_week(rs.getString("submit_week"));
+				vo.setSubmit_content(rs.getString("submit_content"));
+				vo.setSubmit_title(rs.getString("submit_title"));
+				vo.setSub_code(rs.getString("sub_code"));
+				vo.setEmp_num(rs.getString("emp_num"));
+				vo.setFilename(rs.getString("filename"));
+				list.add(vo);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+
+	public List<Sub_detailVO> lectureMaterialGetSelectAll(String sub_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+
+		List list = null;
+		String emp_name = null;
+		try {
+			conn = getConnection();
+			String sql2 = "select * from lectureMaterial where sub_code=? ";
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, sub_code);
+			rs = pstmt.executeQuery();
+			list = new ArrayList();
+			while (rs.next()) {
+				LectureMaterialVO vo = new LectureMaterialVO();
+				vo.setSubmit_week(rs.getString("submit_week"));
+				vo.setSub_code(rs.getString("sub_code"));
+				vo.setEmp_num(rs.getString("emp_num"));
+				vo.setSubmit_title(rs.getString("submit_title"));
+				vo.setSubmit_content(rs.getString("submit_content"));
+				vo.setFilename(rs.getString("filename"));
+				vo.setFilesize(rs.getInt("filesize"));
+				vo.setDescription(rs.getString("description"));
+				
+				list.add(vo);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
+
+	// 파일 업로드 처리
+	public int insertPds(Map<String, Object> map) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = -1;
+		try {
+			
+			String sql = "insert into submit(submit_week, sub_code, emp_num, submit_title, stu_num, filename, filesize, description) values(?, ?, ?, ?, ?, ?, ?, ?)";
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, (String) map.get("submit_week"));
+			pstmt.setString(2, (String) map.get("sub_code"));
+			pstmt.setString(3, (String) map.get("emp_num"));
+			pstmt.setString(4, (String) map.get("submit_title"));
+			pstmt.setString(5, (String) map.get("stu_num"));
+			pstmt.setString(6, (String) map.get("filename"));
+			pstmt.setInt(7, (Integer) map.get("filesize"));
+			pstmt.setString(8, (String) map.get("description"));
+			pstmt.executeUpdate();
+			result = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+
+		return result;
+	}
+
+	// 업로드된 파일 리스트 가져오기
+	public List<Map<String, Object>> getAllPds(String sub_code, String week) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+
+		try {
+			// 전체데이터를 가져오는 sql
+			String sql = "select * from submit where sub_code = ? and submit_week = ?";
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sub_code);
+			pstmt.setString(2, week);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();				
+				map.put("sub_code",rs.getString("sub_code"));
+				map.put("stu_num",rs.getString("stu_num"));
+				map.put("filename", rs.getString("filename"));
+				map.put("filesize", rs.getInt("filesize"));
+				map.put("description", rs.getString("description"));
+				map.put("submit_title", rs.getString("submit_title"));
+				map.put("submit_week", rs.getString("submit_week"));
+				list.add(map);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseUtil.close(rs);
+			CloseUtil.close(pstmt);
+			CloseUtil.close(conn);
+		}
+		return list;
+	}
 }

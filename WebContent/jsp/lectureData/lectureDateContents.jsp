@@ -11,57 +11,51 @@
 <title>강의계획서</title>
 </head>
 <body>
-	<center>
-		<h2>강의 계획서</h2><br>
+	<center><br>
+	<table id="th" align="center">
+		 <td id="th2" >강의 계획서</td><!-- 현학기 듣는 과목숫자. -->
+	 </table><br><br>
 		<form>
-			<table width="70%" border="1" cellspacing="2" cellpadding="0"
+			<table width="70%" cellspacing="2" cellpadding="0"
 				align="center">
 
 				<tr height="30">
-					<td align="center" width="125" bgcolor="skyblue">담당 교수</td>
-					<td align="center" width="125">${vo.emp_name }</td>
+					<td id="th" align="center" width="125" bgcolor="skyblue">담당 교수</td>
+					<td id="th2" align="center" width="125">${vo.emp_name }</td>
 
-					<td align="center" width="125" bgcolor="skyblue">과목코드</td>
-					<td align="center" width="125">${vo.sub_code }</td>
+					<td id="th" align="center" width="125" bgcolor="skyblue">과목코드</td>
+					<td id="th2" align="center" width="125">${vo.sub_code }</td>
 				</tr>
 				<tr height="30">
-					<td align="center" width="125" bgcolor="skyblue">수강 과목</td>
-					<td align="center" width="125">${vo.sub_name }</td>
+					<td id="th" align="center" width="125" bgcolor="skyblue">수강 과목</td>
+					<td id="th2" align="center" width="125">${vo.sub_name }</td>
 					
-					<td align="center" width="125" bgcolor="skyblue">담당 학과</td>
-					<td align="center" width="125">${major } </td>
+					<td id="th" align="center" width="125" bgcolor="skyblue">담당 학과</td>
+					<td id="th2" align="center" width="125">${major } </td>
 				</tr>
 				<tr height="30">
-					<td align="center" width="125" bgcolor="skyblue">이수 학점</td>
-					<td align="center" width="125">${vo.sub_hakjum }</td>
+					<td id="th" align="center" width="125" bgcolor="skyblue">이수 학점</td>
+					<td id="th2" align="center" width="125">${vo.sub_hakjum }</td>
 					
-					<td align="center" width="125" bgcolor="skyblue">시 간 표</td>
-					<td align="center" width="125">${vo.sub_time } </td>
+					<td id="th" align="center" width="125" bgcolor="skyblue">시 간 표</td>
+					<td id="th2" align="center" width="125">${vo.sub_time } </td>
 				</tr>
 				<tr>
-					<td align="center" width="125" bgcolor="skyblue">평가 요소</td>
-					<td align="center" width="500" colspan="3"
-						style="word-wrap: break-word"><pre>${vo.lec_exam }</pre></td>
+					<td id="th" align="center" width="125" bgcolor="skyblue">평가 요소</td>
+					<td id="th2" align="center" width="500" colspan="3"
+						style="word-wrap: break-word">${vo.lec_exam }</td>
 				</tr>			
 				<tr>
-					<td align="center" width="125" bgcolor="skyblue">강의 목표</td>
-					<td align="center" width="500" colspan="3"
-						style="word-wrap: break-word"><pre>${vo.lec_purpose }</pre></td>
+					<td id="th" align="center" width="125" bgcolor="skyblue">강의 목표</td>
+					<td id="th2" align="center" width="500" colspan="3"
+						style="word-wrap: break-word">${vo.lec_purpose }</td>
 				</tr>			
 				<tr>
-					<td align="center" width="125" bgcolor="skyblue">교과목<br>개요</td>
-					<td align="left" width="500" colspan="3"
-						style="word-wrap: break-word"><pre>${vo.lec_detail }</pre></td>
+					<td id="th" align="center" width="125" bgcolor="skyblue">교과목<br>개요</td>
+					<td id="th2" align="left" width="500" colspan="3"
+						style="word-wrap: break-word">${vo.lec_detail }</td>
 				</tr>
-<%-- 				<tr height="30">
-					<td colspan="4" align="right" >
-						<input type="button" value = "글수정" onclick="document.location.href='updateForm.do?num=${num}&pageNum=${pageNum}'"> 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value = "글삭제" onclick="document.location.href='deleteForm.do?num=${num}&pageNum=${pageNum}'">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input type = "button"  value = "답글작성" onclick="document.location.href='writeForm.do?num=${num}&ref=${ref}&re_step=${re_step}&re_level=${re_level}'">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	<input type = "button" value = "목록 보기" onclick="document.location.href='list.do?pageNum=${pageNum}'"> 
 
-					</td>
-				</tr> --%>
 			</table>
 		</form>
 	</center>

@@ -4,91 +4,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css"	href="/FirstProject/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="/FirstProject/css/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>th125 JSP Template</title>
 </head>
 <body>
+	<br>
+	<br>
 	<form action="/FirstProject/basicEditPro.do">
 		<c:forEach var="list" items="${list}">
-
-			<table width="670" border="0" cellspacing="0" cellpadding="0">
+			<table width="800" border="0" cellspacing="1" cellpadding="2">
+				<input type="hidden" name="mem_num" value="${mem_num}">
+				<tr>
+					<td width="90" colspan="2" rowspan="10" ><img name="sajin"
+						width="150" height="170"
+						src="/FirstProject/jsp/images/${list.stu_num}.jpg">
+					<td id="th" width="250" height="30">성 명</td>
+					<td id="th2" width="171">${list.stu_name}</td>
+					<td id="th" width="120">전 공 명</td>
+					<td id="th2" width="250" colspan="3">${list.major}</td>
+				</tr>
 
 				<tr>
-					<td>&nbsp;</td>
-				</tr>
-			</table>
-			<!-- 학생정보 테이블 -->
-			<table width="670" border="0" cellspacing="1" cellpadding="2"
-				bgcolor="#737373" >
-				<input type="hidden" name="mem_num" value="${mem_num}">
-
-
-				<tr bgcolor="#F5F5F5" align="center">
-
-					<td width="90" colspan="2" rowspan="10"><img name="sajin"
-						width="130" height="170" src=""> <!-- 경로 입력요망 --></td>
-
-					<td width="100" bgcolor="#D0D8FF" height="20">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명</td>
-					<td width="171" id="center">${list.stu_name}</td>
-					<!-- 데이터 얻어 와야할 곳 -->
-					<td width="120" bgcolor="#D0D8FF">전공명</td>
-					<td width="250" colspan="3" id="center">&nbsp;${list.major}&nbsp;
-					</td>
-					<!-- {데이터 얻어 와야할 곳 -->
+					<td id="th" width="120" height="30">생년월일</td>
+					<td id="th2" width="171">${list.stu_birthday }</td>
+					<td id="th" width="120">학 년</td>
+					<td id="th2" width="85">${list.grade }</td>
+					<td id="th" width="52">상 태</td>
+					<td id="th2" width="101">${list.stu_state}</td>
 				</tr>
 
-				<tr bgcolor="#F5F5F5" align="center">
-
-					<td width="120" bgcolor="#D0D8FF" height="20">생년월일</td>
-					<td width="171">${list.stu_birthday }</td>
-					<!-- {데이터 얻어 와야할 곳} -->
-
-					<td width="120" bgcolor="#D0D8FF">학&nbsp;&nbsp;&nbsp;년</td>
-					<td width="85">&nbsp;${list.grade }</td>
-					<!-- {데이터 얻어 와야할 곳} -->
-					<td width="52" bgcolor="#D0D8FF">상&nbsp;태</td>
-					<td width="101">&nbsp;${list.stu_state}</td>
-					<!-- {데이터 얻어 와야할 곳} -->
+				<tr>
+					<td id="th" width="120" height="30">휴 대 폰</td>
+					<td id="th2" width="171"><input type="text" name="editTel"
+						value="${list.tel }"></td>
+					<td id="th" width="120">이 메 일</td>
+					<td id="th2" width="250" colspan="3"><input type="text"
+						name="editEmail" value="${list.stu_email }"></td>
 				</tr>
 
-				<tr bgcolor="#F5F5F5" align="center">
-					<td width="120" bgcolor="#D0D8FF" height="20">휴 대 폰</td>
-					<td width="171" >
-						<input type="text" name="editTel" value="${list.tel }">
-					</td>
-					<td width="120" bgcolor="#D0D8FF">이 메 일</td>
-					<td width="250" colspan="3" align="left">
-						<input type="text" name="editEmail" value="${list.stu_email }">
-					</td>
+
+				<tr>
+					<td id="th" width="120" height="30">유선전화</td>
+					<td id="th2" width="171">
+						<input type="text" name="editHomeTel" value="${list.home_tel }"></td>
+					<td id="th" width="120" height="20">비밀번호</td>
+					<td id="th2" width="171" colspan="3">
+						<input type="text" name="editPwd" value="${list.stu_pwd }"></td>
 				</tr>
-				<tr bgcolor="#F5F5F5" align="center">
-					<td width="68" bgcolor="#D0D8FF" height="20">주 소</td>
-					<td width="591" colspan="5" align="left">&nbsp;<input
+
+				<tr>
+					<td id="th" width="68" height="30">주 소</td>
+					<td id="th2" width="591" colspan="5" align="left"><input
 						size="50px" type="text" name="editAddress"
-						value="${list.address }" onsubmit=" 여기에 경로..."></td>
-					<!-- {데이터 얻어 와야할 곳} -->
-
+						value="${list.address }"></td>
 				</tr>
 
-				<tr bgcolor="#F5F5F5" align="center">
-					<td width="120" bgcolor="#D0D8FF" height="20">유선전화</td>
-					<td width="171" colspan="6" align="left">&nbsp;<input
-						type="text" name="editHomeTel" value="${list.home_tel }"
-						onsubmit=" 여기에 경로..."></td>
-					<!-- {데이터 얻어 와야할 곳} -->
+				<tr>
+					<td colspan="6"><input type="submit" value="수정"> <input
+						type="reset" value="취소"></td>
 				</tr>
-
 			</table>
 		</c:forEach>
-
-		<table>
-			<tr>
-				<td><input type="submit" value="수정"> <!-- 수정하세여~  --> <input
-					type="reset" value="취소"> <!-- 수정하세여~  --></td>
-			</tr>
-
-		</table>
 	</form>
 </body>
 </html>

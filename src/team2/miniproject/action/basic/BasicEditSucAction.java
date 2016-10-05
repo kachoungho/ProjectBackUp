@@ -23,14 +23,8 @@ public class BasicEditSucAction implements CommandAction {
 			Team2DAO dao = Team2DAO.getInstance();
 			StudentVO vo = new StudentVO();
 			List list = null;
-			System.out.println("첫번째 list" + list);
-
-			list = dao.ListBasicDB(mem_num);
-			
-			
+			list = dao.ListBasicDB(mem_num);			
 			request.setAttribute("list", list);
-
-			System.out.println("두번째 list" + list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -28,7 +28,6 @@ public class LectureCreateProAction implements CommandAction {
 		vo.setSub_time(request.getParameter("sub_time"));
 		
 		int check = dao.CreateLecture(vo);
-		System.out.println("check : " + check);
 		request.setAttribute("check", check);
 		
 		return "/jsp/lectureSetting/lectureCreatePro.jsp";

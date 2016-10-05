@@ -43,21 +43,16 @@
 					<tr align="center" bgcolor="#F5F5F5" align="center">
 						<td bgcolor="#D0D8FF">이메일</td>
 						<td>${ list.stu_email }</td>
-						<td bgcolor="#D0D8FF">주소</td>
-						<td>${ list.address }</td>
-					</tr>
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF">복학학기</td>
-						<td> ${list.return_semester}</td>
 						<td bgcolor="#D0D8FF">휴대전화</td>
 						<td>${ list.tel }</td>
 					</tr>
-
+					<tr align="center" bgcolor="#F5F5F5" align="center">
+						<td bgcolor="#D0D8FF">주소</td>
+						<td colspan="3">${ list.address }</td>
+					</tr>
 				</table>
-				
 			</c:forEach>
 			<input type="submit" value="승인">
-	
 	</form>
 </body>
 </html>

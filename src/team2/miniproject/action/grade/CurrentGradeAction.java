@@ -20,17 +20,13 @@ public class CurrentGradeAction implements CommandAction {
 		String mem_name = (String)session.getAttribute("mem_name"); 
 		String result = (String)session.getAttribute("result"); 
 		
-		System.out.println("mem_num : " + mem_num);
 		ArrayList<CurrentSungJukVO> list = null;
 		
 		Team2DAO dao = Team2DAO.getInstance();
 		SungjukVO vo = new SungjukVO();
 		
-		
 		list=dao.ListCurrentGradeDB(mem_num);
 		
-		
-		System.out.println("list 크기 : " + list.size());
 		request.setAttribute("list", list);
 		
 		return "/jsp/grade/currentGradeForm.jsp";

@@ -10,51 +10,59 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="c_MajorPro.do" method="post">
-		
-		<b>※ 전과 신청은 지도교수님과 상담후 신청하시길 바랍니다. </b>
+	<form name=c_major action="c_MajorPro.do" method="post">
+		<b id="th2" height="70">※ 신청 전에 전화번호, E-mail 등 개인정보를 확인하여 주시길 바랍니다. </b></br>
+		<b id="th2" height="70">※ 전과 신청은 지도교수님과 상담후 신청하시길 바랍니다. </b>
 		<p>
 			<c:forEach var="list" items="${ list }">
 				<input type="hidden" name="mem_num" value="${mem_num}">
-				<table width="950" border="0" cellspacing="1" cellpadding="2"
-					bgcolor="#737373">
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF" width="220">전공</td>
-						<td>${ list.major }</td>
-						<td bgcolor="#D0D8FF" width="220">성명</td>
-						<td>${ list.stu_name }</td>
+				<table width="950" border="0" cellspacing="1" cellpadding="2">
+					<tr height="30">
+						<td id="th" width="220">전공</td>
+						<td id="th2">${ list.major }</td>
+						<td id="th" width="220">성명</td>
+						<td id="th2">${ list.stu_name }</td>
 					</tr>
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF" width="220">학년</td>
-						<td>${ list.grade }</td>
-						<td bgcolor="#D0D8FF" width="220">학번</td>
-						<td>${ list.stu_num }</td>
+					<tr height="30">
+						<td id="th" width="220">학년</td>
+						<td id="th2">${ list.grade }</td>
+						<td id="th" width="220">학번</td>
+						<td id="th2">${ list.stu_num }</td>
 					</tr>
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF" width="220">생년월일</td>
-						<td>${ list.major }</td>
-						<td bgcolor="#D0D8FF" width="220">지도교수</td>
-						<td>${ list.stu_professor }</td>
+					<tr height="30">
+						<td id="th" width="220">생년월일</td>
+						<td id="th2">${ list.stu_birthday }</td>
+						<td id="th" width="220">지도교수</td>
+						<td id="th2">${ list.stu_professor }</td>
 					</tr>
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF" width="220">이메일</td>
-						<td><input type="text" name="editEmail" value="${ list.stu_email }" style="width:94%;"></td>
-						<td bgcolor="#D0D8FF" width="220">휴대전화</td>
-						<td><input type="text" name="editTel" value="${ list.tel }" style="width:94%;"></td>
+					<tr height="30">
+						<td id="th" width="220">이메일</td>
+						<td id="th2">${ list.stu_email }</td>
+						<td id="th" width="220">휴대전화</td>
+						<td id="th2">${ list.tel }</td>
 					</tr>
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF" width="220">전과 희망학과</td>
-						<td colspan="3"><input type="text" name="editChangeMajor" value=" " style="width:98%;"></td>
+					<tr height="30">
+						<td id="th" width="220">전과 희망학과</td>
+						<td id="th2" colspan="3">
+							<select name="editChangeMajor" >
+								<option value="default">학 과 선 택</option>
+								<option value="컴퓨터공학">컴퓨터공학</option>
+								<option value="인문학과">인문학과</option>
+								<option value="시각디자인학과">시각디자인학과</option>
+							</select>
+						</td>
 					</tr>
-					<tr align="center" bgcolor="#F5F5F5" align="center">
-						<td bgcolor="#D0D8FF" width="220" height="150">변경사유</td>
-						<td colspan="3"><input type="text" name="editReasonWhy"  value=" " style="width:98%; height:95%"></td>
-					</tr>
-				</table>
-				<table align="center">
 					<tr>
-						<td><input type="submit" value="신청"> <!-- 수정하세여~  -->
-							<input type="reset" value="취소"> <!-- 수정하세여~  --></td>
+						<td id="th" width="220" height="150">변경사유</td>
+						<td id="th2" colspan="3">
+							<input type="text" name="editReasonWhy"  value=" " style="width:98%; height:95%">
+						</td>
+					</tr>
+					<tr height="30">
+						<td id="th2" colspan="4">
+							<input type="submit" value="신청">
+							<input type="reset" value="취소">
+						</td>
 					</tr>
 				</table>
 			</c:forEach>

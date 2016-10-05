@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/FirstProject/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="/FirstProject/css/style.css">
 
 <script language="JavaScript">
 	function pagestart() {
@@ -26,37 +27,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 </head>
-<body  onLoad="pagestart()">
-	<div class="main-overlay2">
-		<form name="mainForm2" action="" method="post">
-		<br><br><br><br>
-			<table align="center">
-				<tr align="center">
-					<td id="font" align="center">${sessionScope.mem_name} 님 접속중&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="font" type="button" value="로그아웃" onclick="document.location.href='/FirstProject/logout.do'"></td>
-					
-				</tr>
-			</table>
-			<table align="center">
-				<tr align="center" >
-					<td>
-						<a class="btn btn-default" href="#" >홈페이지</a>	
-					</td>
-					<td width="200">
-						<c:if test="${result == 1}">
-							<a class="btn btn-default" href="info.do">종합 정보 시스템</a>
-						</c:if>
-						<c:if test="${result == 2}">
-							<a class="btn btn-default" href="adminInfo.do">종합 정보 시스템</a>
-						</c:if>
-						<c:if test="${result == 3}">
-							<a class="btn btn-default" href="mainAdminInfo.do">종합 정보 시스템</a>
-						</c:if>
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
-		</form>
-	</div>
+<body onLoad="pagestart()">
+	<br><br><br>
+	<form name="mainForm2" action="" method="post">
+		<table align="center">
+			<tr align="center">
+				<td id="font" align="center">${sessionScope.mem_name}님
+					접속중&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="font"
+					type="button" value="로그아웃"
+					onclick="document.location.href='/FirstProject/logout.do'">
+				</td>
+
+			</tr>
+		</table>
+		<table align="center">
+			<tr align="center">
+				<td><a class="btn btn-default" href="#">홈페이지</a></td>
+				<td width="200"><c:if test="${result == 1}">
+						<a class="btn btn-default" href="info.do">종합 정보 시스템</a>
+					</c:if> <c:if test="${result == 2}">
+						<a class="btn btn-default" href="adminInfo.do">종합 정보 시스템</a>
+					</c:if> <c:if test="${result == 3}">
+						<a class="btn btn-default" href="mainAdminInfo.do">종합 정보 시스템</a>
+					</c:if></td>
+			</tr>
+		</table>
+	</form>
+	
 </body>
 </html>

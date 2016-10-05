@@ -19,28 +19,14 @@ public class BasicEditProAction implements CommandAction {
 		String mem_num = (String) session.getAttribute("mem_num");
 		String mem_name = (String) session.getAttribute("mem_name");
 		String result = (String) session.getAttribute("result");
-		
-		
-		String editTel = request.getParameter("editTel");
-		String editEmail = request.getParameter("editEmail");
-		String editAddress = request.getParameter("editAddress");
-		String editHomeTel = request.getParameter("editHomeTel");
-
-		System.out.println("여기까지3");
-
-		System.out.println("mem_num : " + mem_num);
-		System.out.println("editTel : " + editTel);
-		System.out.println("editEmail : " + editEmail);
-		System.out.println("editAddress : " + editAddress);
-		System.out.println("editHomeTel : " + editHomeTel);
 
 		Team2DAO dao = Team2DAO.getInstance();
-		System.out.println("여기까진 넘어옴");
 
-		vo.setTel(editTel);
-		vo.setStu_email(editEmail);
-		vo.setAddress(editAddress);
-		vo.setHome_tel(editHomeTel);
+		vo.setTel(request.getParameter("editTel"));
+		vo.setStu_email(request.getParameter("editEmail"));
+		vo.setAddress(request.getParameter("editAddress"));
+		vo.setHome_tel(request.getParameter("editHomeTel"));
+		vo.setStu_pwd(request.getParameter("editPwd"));
 
 		int check = dao.update(mem_num, vo);
 

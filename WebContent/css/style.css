@@ -1,4 +1,5 @@
 @CHARSET "UTF-8";
+
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 html, body {
@@ -6,7 +7,6 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	
 }
 
 #main {
@@ -42,7 +42,7 @@ html, body {
 	height: 20px;
 	line-height: 20px;
 	border: 2px solid #1E3449;
-	font-family: 'Jeju Gothic', sans-serif; 
+	font-family: 'Jeju Gothic', sans-serif;
 	color: black;
 	font-size: 20px;
 	padding: 12px 18px;
@@ -52,13 +52,17 @@ html, body {
 }
 
 .main-overlay {
-	position: absolute;
+	/* position: absolute; 
+	position:static;
+	position:relative;
+	position:fixed;*/
+	position:inherit;
 	width: 100%;
 	height: 100%;
 	z-index: 5;
-	background-image: url(../jsp/images/background.png);
-	background-size: cover;	
-	font-family: 'Jeju Gothic', sans-serif; 
+	/* background-image: url(../jsp/images/background.png); */
+	background-size: cover;
+	font-family: 'Jeju Gothic', sans-serif;
 }
 
 .main-overlay2 {
@@ -67,9 +71,9 @@ html, body {
 	height: 100%;
 	z-index: 5;
 	font-size: 100px;
-	background-image: url(../jsp/images/background.png);
-	background-size: cover;	
-	font-family: 'Jeju Gothic', sans-serif; 
+	/* background-image: url(../jsp/images/background.png); */
+	background-size: cover;
+	font-family: 'Jeju Gothic', sans-serif;
 }
 
 #table1 {
@@ -82,21 +86,20 @@ html, body {
 }
 
 .m-t-10 {
-	display:block;
-	margin-top:15px; 
+	display: block;
+	margin-top: 15px;
 }
 
 #font {
-	font-family: 'Jeju Gothic', sans-serif; 
+	font-family: 'Jeju Gothic', sans-serif;
 	font-size: 20px;
 }
-
 
 .btn-default2 {
 	width: 150px;
 	height: 20px;
 	line-height: 20px;
-	font-family: 'Jeju Gothic', sans-serif; 
+	font-family: 'Jeju Gothic', sans-serif;
 	color: black;
 	font-size: 23px;
 	padding: 12px 18px;
@@ -109,11 +112,64 @@ html, body {
 	width: 450px;
 	height: 20px;
 	line-height: 20px;
-	font-family: 'Jeju Gothic', sans-serif; 
+	font-family: 'Jeju Gothic', sans-serif;
 	color: black;
 	font-size: 20px;
 	padding: 12px 18px;
 	text-decoration: none;
 	margin-top: 10px;
 	z-index: 10;
+}
+
+.btn-default4 {
+	width: 450px;
+	height: 20px;
+	line-height: 20px;
+	font-family: 'Jeju Gothic', sans-serif;
+	color: black;
+	font-size: 15px;
+	padding: 12px 18px;
+	text-decoration: none;
+	margin-top: 10px;
+	z-index: 10;
+}
+
+#info {
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	text-align: center;
+	font-family: 'Jeju Gothic', sans-serif;
+	border-bottom-color: #1E3449;
+	border-right-color: #1E3449;
+}
+
+th {
+	background-color: #D0D8FF;
+	font-family: 'Jeju Gothic', sans-serif;
+	height: 30px;
+}
+
+#th {
+	background-color: #D0D8FF;
+	font-family: 'Jeju Gothic', sans-serif;
+	text-align: center;
+	font-size: 18px;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom-color: #1E3449;
+	border-right-color: #1E3449;
+}
+
+#th2 {
+	background-color: #F5F5F5;
+	font-family: 'Jeju Gothic', sans-serif;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom-color: #1E3449;
+	border-right-color: #1E3449;
+}
+
+#template {
+	border-color: #1E3449
 }

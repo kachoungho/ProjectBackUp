@@ -21,7 +21,6 @@ public class LectureUpdateProAction implements CommandAction {
 		String result = (String)session.getAttribute("result"); 
 		
 		String checklist = request.getParameter("checklist");
-		System.out.println("checklist : " + checklist);
 		ArrayList<SubjectVO> list = null;
 		Team2DAO dao = Team2DAO.getInstance();
 		list = dao.SubjectUpdateList(checklist);

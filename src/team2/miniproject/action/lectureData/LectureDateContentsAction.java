@@ -21,12 +21,8 @@ public class LectureDateContentsAction implements CommandAction {
 
 	    String sub_code =request.getParameter("sub_code");
 		
-		
-		
 		Team2DAO dao = Team2DAO.getInstance();
-		Sub_detailVO vo = dao.getDataDetail(sub_code);
-		System.out.println();
-			
+		Sub_detailVO vo = dao.getDataDetail(sub_code);			
 		
 	    
 	    switch (vo.getSub_code().substring(0, 3)) {
@@ -48,7 +44,6 @@ public class LectureDateContentsAction implements CommandAction {
 		
 		request.setAttribute("vo", vo);
 			
-		
 		return "/jsp/lectureData/lectureDateContents.jsp";
 	}
 

@@ -29,8 +29,6 @@ public class SeasonSubjcetAction implements CommandAction {
 		Team2DAO dao = Team2DAO.getInstance();
 		
 		String pick = "KYO1%";
-		System.out.println("\n\ncheck : " + check);
-		System.out.println("check2 : " + check2 + "\n\n");
 		
 		if(check2 != null){
 			dao.SeasonDelete(check2);

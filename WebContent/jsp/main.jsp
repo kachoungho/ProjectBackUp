@@ -9,10 +9,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>th125 JSP Template</title>
 </head>
-<body background="../jsp/images/background.png" Style="background-size:cover; ">
-	<div class="main-overlay" >
+<body>
+	<br>
+	<br>
 		<form name="mainForm" action="/FirstProject/login.do" method="post">
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
 			<table id="table1" align="center">
 				<tr>
 					<td id="font" align="left" font="30px"><font color="black">학 번</font></td>
